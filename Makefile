@@ -4,42 +4,49 @@ CC =		cc
 CFLAGS =	-Wall -Wextra -Werror
 INCLUDE = 	-I includes
 RM =		rm -rf
+LIB = -Llibft -lft -lncurses
+BUILD_LIBFT = make -C libft $@
 
-SRCS_RT_DIR =	srcs/
+SRCS_DIR =	srcs/
 
-CFILES =		data/a.c \
-				data/b.c \
-				data/c.c \
-				input/e.c \
-				input/d.c \
-				input/f.c
-CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
+CFILES =		main.c
+CFILES :=		$(addprefix $(SRCS_DIR), $(CFILES))
 
-SRCS_DIR = 		data/ input/
-SRCS_DIR :=		$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
-SRCS = $(notdir $(CFILES))
+SRCS = 			$(notdir $(CFILES))
 
 OBJS_DIR = 		objs/
-OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS = 			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-VPATH = $(SRCS_DIR)
-
-$(OBJS_DIR)%o: %c
+$(OBJS_DIR)%o: $(CFILES)
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $^
+$(NAME): make_mandatory
 
 all: $(NAME)
 
+bonus: make_bonus
+
+make_mandatory: $(OBJS)
+	$(BUILD_LIBFT)
+	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^
+	touch $@
+
+make_bonus: $(OBJS_BONUS)
+	$(BUILD_LIBFT)
+	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^
+	touch $@
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) make_mandatory make_bonus
+	$(BUILD_LIBFT)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(BUILD_LIBFT)
 
 re: 
 	make fclean
 	make all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
