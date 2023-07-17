@@ -7,17 +7,36 @@ RM =		rm -rf
 LIB = -Llibft -lft -lncurses
 BUILD_LIBFT = make -C libft $@
 
-SRCS_DIR =	srcs/
+SRCS_RT_DIR =	srcs/
 
-CFILES =		main.c
-CFILES :=		$(addprefix $(SRCS_DIR), $(CFILES))
+SRCS_DIR =		data/ \
+				parser/
+
+CFILES =		main.c \
+				data/token.c \
+                data/node.c \
+                data/token_list.c \
+                data/token_list_action.c \
+                data/tree.c \
+                data/tree_action.c \
+				parser/parse.c \
+				parser/tokenize.c \
+				parser/lex.c \
+				parser/translate_env.c \
+				parser/parse_tree.c \
+				parser/valid.c \
+				parser/error.c
+CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
 SRCS = 			$(notdir $(CFILES))
 
 OBJS_DIR = 		objs/
 OBJS = 			$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-$(OBJS_DIR)%o: $(CFILES)
+VPATH = 		$(SRCS_RT_DIR) \
+				$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
+
+$(OBJS_DIR)%o: %c
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
 
 $(NAME): make_mandatory
@@ -28,12 +47,12 @@ bonus: make_bonus
 
 make_mandatory: $(OBJS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^ -lreadline
 	touch $@
 
 make_bonus: $(OBJS_BONUS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^ -lreadline
 	touch $@
 
 clean:
