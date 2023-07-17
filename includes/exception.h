@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   exception.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 12:09:42 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/16 17:21:50 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/07/17 20:11:44 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef EXCEPTION_H
+# define EXCEPTION_H
 
 # include <errno.h>
-# include <unistd.h>
-# include <stdlib.h>
 
-# define ERROR -1
-
-void	print_error(int error_type);
+void	crash(char *message, int errnum);
 
 #endif

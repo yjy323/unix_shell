@@ -6,17 +6,14 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 20:16:07 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/17 11:29:54 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:02:00 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPE_H
 # define TYPE_H
 
-# include <stdlib.h>
-# include <stdio.h>
 # include <stdbool.h>
-# include "error.h"
 
 typedef enum e_type {
 	COMMAND,

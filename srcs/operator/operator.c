@@ -6,11 +6,11 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 04:36:50 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/17 19:09:35 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:12:40 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/operator.h"
+#include "../../includes/minishell.h"
 
 void	set_ipc(t_node *node, t_cmd *cmd);
 void	operator_main_process(t_node *parent_node, t_cmd *cmd);
@@ -23,7 +23,7 @@ void	set_ipc(t_node *node, t_cmd *cmd)
 	else if (node->parent->data->type == PIPELINE && !cmd->flag_last_cmd)
 	{
 		if (pipe(cmd->fd) == ERROR)
-			crash(errno);
+			crash(cmd->args[0], errno);
 	}
 }
 

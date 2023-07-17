@@ -6,12 +6,11 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:30:41 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/17 19:36:14 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:07:43 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/execute.h"
-#include "../../libft/includes/libft.h"
+#include "../../includes/minishell.h"
 
 void		execute(t_node *node, t_cmd *cmd);
 static void	execute_command(t_node *node, t_cmd *cmd);
@@ -38,7 +37,7 @@ static void	execute_command(t_node *node, t_cmd *cmd)
 	set_ipc(node, cmd);
 	pid = fork();
 	if (pid == ERROR)
-		crash(errno);
+		crash(cmd->args[0], errno);
 	else if (pid == 0)
 	{
 		fd_stdout = dup(STDOUT_FILENO);
@@ -101,5 +100,5 @@ static void	exec_file(t_node *node, t_cmd *cmd)
 	cmd->args = set_cmd_args(node);
 	cmd->cmd_path = set_cmd_path(cmd->args[0], cmd->path);
 	if (execve(cmd->cmd_path, cmd->args, cmd->envp) == ERROR)
-		crash(errno);
+		crash(cmd->args[0], errno);
 }

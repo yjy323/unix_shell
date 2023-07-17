@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:59:04 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/17 18:52:12 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:03:43 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <errno.h>
 
 # include "type.h"
 # include "builtin.h"
 # include "operator.h"
-
-# define ERROR -1
 
 void	execute(t_node *node, t_cmd *cmd);
 
@@ -39,6 +36,5 @@ bool	is_sequential_cmd(t_type type);
 bool	is_asynchronous_cmd(t_type type);
 bool	is_builtin(char *cmd_name);
 
-void	crash(int errnum);
 t_cmd	*init_cmd(char *envp[]);
 #endif

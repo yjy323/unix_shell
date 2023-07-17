@@ -6,12 +6,11 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:22:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/17 12:27:25 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:05:38 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/execute.h"
-#include "../../libft/includes/libft.h"
+#include "../../includes/minishell.h"
 
 char	**set_cmd_args(t_node *node);
 char	*set_cmd_path(char *cmd, char **path);
@@ -32,14 +31,14 @@ char	**set_cmd_args(t_node *node)
 	}
 	args = malloc(sizeof(char *) * (cnt + 1));
 	if (!args)
-		crash(errno);
+		crash(node->data->word, errno);
 	args[cnt] = NULL;
 	i = 0;
 	while (i < cnt)
 	{
 		args[i] = ft_strdup(node->data->word);
 		if (!args[i++])
-			crash(errno);
+			crash(node->data->word, errno);
 		node = node->right;
 	}
 	return (args);
@@ -56,12 +55,12 @@ char	*set_cmd_path(char *cmd, char **path)
 		return (cmd);
 	dir_cmd = ft_strjoin("/", cmd);
 	if (!dir_cmd)
-		crash(errno);
+		crash(cmd, errno);
 	while (*iter)
 	{
 		path_cmd = ft_strjoin(*iter, dir_cmd);
 		if (!path_cmd)
-			crash(errno);
+			crash(cmd, errno);
 		else if (access(path_cmd, F_OK) == 0)
 			break ;
 		else

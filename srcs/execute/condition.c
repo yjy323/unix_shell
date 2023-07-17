@@ -6,12 +6,11 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 04:51:28 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/17 12:30:35 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:03:29 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/execute.h"
-#include "../../libft/includes/libft.h"
+#include "../../includes/minishell.h"
 
 bool	is_single_command(t_node *head);
 bool	is_last_command(t_node *head);

@@ -6,11 +6,10 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:31:36 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/17 11:53:53 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:04:48 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/execute.h"
 #include "../includes/minishell.h"
 
 extern char	**environ;
