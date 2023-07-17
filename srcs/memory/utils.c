@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 17:31:36 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/17 11:53:53 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/13 17:46:07 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/13 20:48:26 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/execute.h"
-#include "../includes/minishell.h"
+#include <stdlib.h>
+#include "../../includes/type.h"
 
-extern char	**environ;
-
-int	main(void)
+void	free_pid_list(t_pid_list *head)
 {
-	t_tree	ast;
-	t_cmd	*cmd;
-	char	*str;
+	t_pid_list	*iter;
+	t_pid_list	*del;
 
-	str = readline("readline input : ");
-	init_tree(&ast);
-	parse(str, &ast);
-	free(str);
-	cmd = init_cmd(environ);
-	execute(ast.root, cmd);
-	clear_tree(&ast);
-	return (0);
+	if (head)
+	{
+		iter = head;
+		while (iter)
+		{
+			del = iter;
+			iter = iter->next;
+			free(del);
+		}
+	}
+}
+
+void	free_vector(char **vector)
+{
+	char	*del;
+	size_t	i;
+
+	del = *vector;
+	i = 0;
+	while (vector[i])
+	{
+		i++;
+		free(del);
+		del = vector[i];
+	}
+	free(vector);
 }

@@ -9,10 +9,17 @@ BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		data/ \
-				parser/
+SRCS_DIR =		execute/ operator/ except/ builtin/ memory/ data/ parser/
 
 CFILES =		main.c \
+				execute/execute.c \
+				execute/command.c \
+				execute/redirect.c \
+				execute/condition.c \
+				execute/wait.c \
+				operator/operator.c \
+				operator/pipe.c \
+				except/crash.c \
 				data/token.c \
                 data/node.c \
                 data/token_list.c \
@@ -25,7 +32,15 @@ CFILES =		main.c \
 				parser/translate_env.c \
 				parser/parse_tree.c \
 				parser/valid.c \
-				parser/error.c
+				parser/error.c \
+				builtin/cd.c \
+				builtin/echo.c \
+				builtin/env.c \
+				builtin/exit.c \
+				builtin/export.c \
+				builtin/pwd.c \
+				builtin/unset.c \
+				memory/initialize.c
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
 SRCS = 			$(notdir $(CFILES))

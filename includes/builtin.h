@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 17:31:36 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/17 11:53:53 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/13 19:41:41 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/13 19:43:44 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/execute.h"
-#include "../includes/minishell.h"
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
-extern char	**environ;
+void	ft_cd(void);
+void	ft_echo(void);
+void	ft_env(void);
+void	ft_exit(void);
+void	ft_export(void);
+void	ft_pwd(void);
+void	ft_unset(void);
 
-int	main(void)
-{
-	t_tree	ast;
-	t_cmd	*cmd;
-	char	*str;
-
-	str = readline("readline input : ");
-	init_tree(&ast);
-	parse(str, &ast);
-	free(str);
-	cmd = init_cmd(environ);
-	execute(ast.root, cmd);
-	clear_tree(&ast);
-	return (0);
-}
+#endif

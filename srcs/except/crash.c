@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   crash.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 17:31:36 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/17 11:53:53 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/14 14:51:59 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/17 11:54:43 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/execute.h"
-#include "../includes/minishell.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include "../../libft/includes/libft.h"
 
-extern char	**environ;
-
-int	main(void)
+void	crash(int errnum)
 {
-	t_tree	ast;
-	t_cmd	*cmd;
-	char	*str;
+	char	*error_message;
 
-	str = readline("readline input : ");
-	init_tree(&ast);
-	parse(str, &ast);
-	free(str);
-	cmd = init_cmd(environ);
-	execute(ast.root, cmd);
-	clear_tree(&ast);
-	return (0);
+	error_message = strerror(errnum);
+	write(2, error_message, ft_strlen(error_message));
+	write(2, "\n", 1);
+	exit(errnum);
 }

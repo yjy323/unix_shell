@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 17:31:36 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/17 11:53:53 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/13 20:11:52 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/13 20:15:35 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/execute.h"
-#include "../includes/minishell.h"
+#include "../../includes/type.h"
 
-extern char	**environ;
-
-int	main(void)
+void	destroy_cmd(t_cmd *cmd)
 {
-	t_tree	ast;
-	t_cmd	*cmd;
-	char	*str;
+	t_pid_list	*pid;
+	t_pid_list	*del_pid;
 
-	str = readline("readline input : ");
-	init_tree(&ast);
-	parse(str, &ast);
-	free(str);
-	cmd = init_cmd(environ);
-	execute(ast.root, cmd);
-	clear_tree(&ast);
-	return (0);
+	if (cmd)
+	{
+		if (cmd->path)
+			free(cmd->path);
+		if (cmd->sub_pid_head)
+			free_list(cmd->sub_pid_head);
+	}
 }

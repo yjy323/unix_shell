@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 20:16:07 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/16 22:09:14 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/07/17 11:29:54 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,24 @@ typedef struct s_token_list {
 typedef struct s_tree {
 	t_node	*root;
 }t_tree;
+
+typedef struct s_pid_list {
+	int					pid;
+	struct s_pid_list	*next;
+}	t_pid_list;
+
+typedef struct s_cmd
+{
+	char		*cmd_path;
+	char		**args;
+	char		**envp;
+	char		**path;
+	t_pid_list	*sub_pid_head;
+	int			fd[2];
+	int			pre_fd[2];
+	bool		flag_first_cmd;
+	bool		flag_last_cmd;
+}	t_cmd;
 
 // token
 t_token	*get_token(void);
