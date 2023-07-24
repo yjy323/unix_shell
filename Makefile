@@ -2,17 +2,30 @@ NAME =		minishell
 
 CC =		cc
 CFLAGS =	-Wall -Wextra -Werror
-INCLUDE = 	-I includes -I includes/execute
+INCLUDE = 	-I includes -I includes/data -I includes/execute
 RM =		rm -rf
 LIB = -Llibft -lft -lncurses
 BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		execute/ execute/command/ execute/operator/ \
+SRCS_DIR =		parse/ parse/ast/ parse/data/ \
+				execute/ execute/command/ execute/operator/ \
 				builtin/
 
 CFILES =		main.c \
+				parse/parse.c \
+				parse/ast/tokenize.c \
+				parse/ast/lex.c \
+				parse/ast/parse_tree.c \
+				parse/ast/translate_env.c \
+				parse/ast/valid.c \
+				parse/data/node.c \
+				parse/data/token.c \
+				parse/data/token_list.c \
+				parse/data/token_list_action.c \
+				parse/data/tree.c \
+				parse/data/tree_action.c \
 				execute/execute.c \
 				execute/command/exec_command.c \
 				execute/command/exec_redirect.c \
@@ -29,6 +42,7 @@ CFILES =		main.c \
 				builtin/ft_export.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c
+
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
 SRCS = 			$(notdir $(CFILES))

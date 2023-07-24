@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.h                                          :+:      :+:    :+:   */
+/*   type_parse.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 16:07:11 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/24 17:27:16 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/20 19:08:29 by youjeong          #+#    #+#             */
+/*   Updated: 2023/07/20 22:50:55 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_H
-# define EXECUTE_H
+#ifndef TYPE_PARSE_H
+# define TYPE_PARSE_H
 
 # include "../common.h"
-# include "type_execute.h"
 
-# include "operator.h"
+typedef struct s_token_list {
+	t_node	*front;
+	t_node	*rear;
+}t_token_list;
+
 
 #endif
+

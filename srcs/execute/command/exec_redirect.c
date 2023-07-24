@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:57:37 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/24 17:13:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/24 17:35:54 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <readline/history.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
 
 #include "../../../includes/execute/command.h"
 #include "../../../libft/includes/libft.h"

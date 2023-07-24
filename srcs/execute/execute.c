@@ -6,19 +6,19 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:30:41 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/24 17:10:21 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/24 17:36:19 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <errno.h>
 
 #include "../includes/execute/execute.h"
 
 void				execute(t_node *parsed, char ***p_envirion);
 static int			exec_operator(t_node *command_node, t_compound *comp_exec);
-static void			read_parse_tree_recurrsive(t_node *parsed, t_compound *comp_exec);
+static void			read_parse_tree_recurrsive(t_node *parsed,
+						t_compound *comp_exec);
 static t_compound	*initialize(char ***p_envirion);
 static void			destroy(t_compound *comp);
 
