@@ -9,10 +9,26 @@ BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		execute/ execute/builtin/ execute/operator/
+SRCS_DIR =		execute/ execute/command/ execute/operator/ \
+				builtin/
 
 CFILES =		main.c \
-				execute/execute.c
+				execute/execute.c \
+				execute/command/exec_command.c \
+				execute/command/exec_redirect.c \
+				execute/operator/operate_pipe.c \
+				execute/operator/operate_single_command.c \
+				execute/operator/sub_process_wait.c \
+				execute/operator/sub_process_add_lst.c \
+				execute/operator/is_first_operate_cmd.c \
+				execute/operator/is_last_operate_cmd.c \
+				builtin/ft_cd.c \
+				builtin/ft_echo.c \
+				builtin/ft_env.c \
+				builtin/ft_exit.c \
+				builtin/ft_export.c \
+				builtin/ft_pwd.c \
+				builtin/ft_unset.c
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
 SRCS = 			$(notdir $(CFILES))

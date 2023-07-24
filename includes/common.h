@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type.h                                             :+:      :+:    :+:   */
+/*   common.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 20:16:07 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/20 18:59:22 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/21 18:49:41 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPE_H
-# define TYPE_H
+#ifndef COMMON_H
+# define COMMON_H
+
+# define ERROR -1
+# define ENOCMD 127
 
 typedef enum e_type {
 	COMMAND,
@@ -34,5 +37,7 @@ typedef struct s_node {
 	struct s_node	*left;
 	struct s_node	*right;
 }t_node;
+
+void	crash(char *message, int errnum);
 
 #endif

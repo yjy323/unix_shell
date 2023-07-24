@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 16:59:04 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/20 18:59:33 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/24 16:07:11 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/24 16:34:06 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTE_H
 # define EXECUTE_H
 
+# include "../common.h"
 # include "type_execute.h"
-# include "../type.h"
 
-# define ERROR -1
+# include "operator.h"
 
 #endif

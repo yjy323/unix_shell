@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.h                                          :+:      :+:    :+:   */
+/*   sub_process_wait.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 18:51:04 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/20 18:59:43 by jy_23            ###   ########.fr       */
+/*   Created: 2023/07/24 16:29:54 by jy_23             #+#    #+#             */
+/*   Updated: 2023/07/24 16:46:07 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTIN_H
-# define BUILTIN_H
+#include <sys/wait.h>
 
-# include "type_execute.h"
+#include "../../../includes/execute/operator.h"
 
-# define ERROR -1
+void	sub_process_wait(t_pid_lst *head);
 
-#endif
+void	sub_process_wait(t_pid_lst *head)
+{
+	t_pid_lst	*sub_pid;
+	int			status;
+	extern int	g_status;
+
+	g_status = 0;
+	sub_pid = head->next;
+	while (sub_pid)
+	{
+		waitpid(-1, &status, 0);
+		sub_pid = sub_pid->next;
+	}
+}

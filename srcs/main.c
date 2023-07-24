@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:31:36 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/20 18:54:17 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/24 17:07:15 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "../includes/minishell.h"
 
-extern char	**environ;
+int	g_status;
 
 void	crash(char *message, int errnum)
 {
@@ -22,7 +22,10 @@ void	crash(char *message, int errnum)
 	exit(errnum);
 }
 
-int	main(void)
+int	main(int argc, char *args[], char **environ)
 {
+	(void)argc;
+	(void)args;
+	(void)environ;
 	return (0);
 }
