@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPE_H
-# define TYPE_H
+#ifndef COMMON_H
+# define COMMON_H
+
+# include <errno.h>
 
 typedef enum e_type {
 	COMMAND,
@@ -34,5 +36,11 @@ typedef struct s_node {
 	struct s_node	*left;
 	struct s_node	*right;
 }t_node;
+
+typedef struct s_tree {
+	t_node	*root;
+}t_tree;
+
+void	crash(char *message, int errnum);
 
 #endif
