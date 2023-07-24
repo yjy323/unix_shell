@@ -2,16 +2,28 @@ NAME =		minishell
 
 CC =		cc
 CFLAGS =	-Wall -Wextra -Werror
-INCLUDE = 	-I includes -I includes/execute
+INCLUDE = 	-I includes -I includes/data -I includes/execute
 RM =		rm -rf
 LIB = -Llibft -lft -lncurses
 BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		execute/ execute/builtin/ execute/operator/
+SRCS_DIR =		data/ parse/ execute/ execute/builtin/ execute/operator/
 
 CFILES =		main.c \
+				data/token.c \
+				data/node.c \
+				data/token_list.c \
+				data/token_list_action.c \
+				data/tree.c \
+				data/tree_action.c \
+				parse/parse.c \
+				parse/tokenize.c \
+				parse/lex.c \
+				parse/parse_tree.c \
+				parse/translate_env.c \
+				parse/valid.c \
 				execute/execute.c
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 

@@ -14,7 +14,7 @@
 # define EXECUTE_H
 
 # include "type_execute.h"
-# include "../type.h"
+# include "../common.h"
 
 # define ERROR -1
 
