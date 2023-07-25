@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 20:16:07 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/23 21:29:18 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/24 18:13:43 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ typedef struct s_pid_lst {
 
 typedef struct s_cmd
 {
-	char		*exec_path;
-	char		**args;
+	char	**args;
 }	t_cmd;
 
 typedef struct s_operator

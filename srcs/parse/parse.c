@@ -25,5 +25,4 @@ void	parse(char *str, t_tree *ast)
 	lex(&lst_token, &lst_lex);
 	valid_syntax(&lst_lex);
 	parse_tree(&lst_lex, ast);
-	clear_tree(ast);
 }

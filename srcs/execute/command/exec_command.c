@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:22:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/24 17:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/25 15:01:06 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ void	exec_command(t_node *command_node, t_compound *comp_exec)
 {
 	extern int	g_status;
 
-	comp_exec->cmd->args = set_cmd_args(command_node->left);
+	comp_exec->cmd->args = set_cmd_args(command_node);
 	exec_builtin(comp_exec->cmd->args);
 	if (g_status == ENOCMD)
-	{
-		comp_exec->cmd->exec_path = search_exec_file_path(
-				comp_exec->cmd->args[0]);
 		exec_external_file(comp_exec);
-	}
-	if (comp_exec->cmd->exec_path)
-		free(comp_exec->cmd->exec_path);
 	if (comp_exec->cmd->args)
 		while (*comp_exec->cmd->args)
 			free(*(comp_exec->cmd->args++));
@@ -47,6 +41,8 @@ static void	exec_builtin(char **args)
 	int			len;
 	char		*cmd_name;
 
+	g_status = ENOCMD;
+	return ;
 	cmd_name = args[0];
 	len = ft_strlen(cmd_name);
 	if (!ft_strncmp(cmd_name, "cd", len))
@@ -63,13 +59,12 @@ static void	exec_builtin(char **args)
 		g_status = ft_pwd();
 	else if (!ft_strncmp(cmd_name, "unset", len))
 		g_status = ft_unset();
-	else
-		g_status = ENOCMD;
 }
 
 static void	exec_external_file(t_compound *comp_exec)
 {
 	extern int	g_status;
+	char		*exec_path;
 	t_cmd		*cmd;
 	int			pid;
 	int			status;
@@ -79,7 +74,11 @@ static void	exec_external_file(t_compound *comp_exec)
 	if (pid == -1)
 		crash(comp_exec->cmd->args[0], errno);
 	else if (pid == 0)
-		execve(cmd->exec_path, cmd->args, *comp_exec->p_environ);
+	{
+		exec_path = search_exec_file_path(comp_exec->cmd->args[0]);
+		if (execve(exec_path, cmd->args, *comp_exec->p_environ) == ERROR)
+			crash(comp_exec->cmd->args[0], errno);
+	}
 	else
 	{
 		waitpid(pid, &status, 0);
@@ -126,13 +125,12 @@ static char	*search_exec_file_path(char *file)
 	if (access(file, F_OK) == 0)
 		return (file);
 	del = getenv("PATH");
-	path = ft_split(ft_strchr(del, '=') + 1, ':');
+	path = ft_split(del, ':');
 	rel_path_file = ft_strjoin("/", file);
 	if (!rel_path_file)
 		crash(file, errno);
 	while (*path)
 	{
-		free(del);
 		del = *path;
 		exec_file = ft_strjoin(*path++, rel_path_file);
 		if (!exec_file)
@@ -140,7 +138,8 @@ static char	*search_exec_file_path(char *file)
 		else if (access(exec_file, F_OK) == 0)
 			break ;
 		free(exec_file);
+		free(del);
 	}
 	free(rel_path_file);
-	return (file);
+	return (exec_file);
 }

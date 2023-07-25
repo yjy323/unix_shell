@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:29:40 by youjeong          #+#    #+#             */
-/*   Updated: 2023/07/21 19:03:26 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/24 17:46:15 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "common.h"
 
 // prompt();
-// parse();
-void	execute(t_node *parsed, char ***p_envirion, int status);
+void	parse(char *str, t_tree *ast);
+void	execute(t_node *parsed, char ***p_envirion);
 
 #endif

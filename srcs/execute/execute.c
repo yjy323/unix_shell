@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:30:41 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/24 17:36:19 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/07/25 14:44:41 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/execute/execute.h"
 
 void				execute(t_node *parsed, char ***p_envirion);
-static int			exec_operator(t_node *command_node, t_compound *comp_exec);
+static void			exec_operator(t_node *command_node, t_compound *comp_exec);
 static void			read_parse_tree_recurrsive(t_node *parsed,
 						t_compound *comp_exec);
 static t_compound	*initialize(char ***p_envirion);
@@ -33,16 +33,18 @@ void	execute(t_node *parsed, char ***p_envirion)
 	exit(g_status);
 }
 
-static int	exec_operator(t_node *command_node, t_compound *comp_exec)
+static void	exec_operator(t_node *command_node, t_compound *comp_exec)
 {
 	t_type	type;
 
 	if (!command_node->parent)
+	{
 		operate_single_command(command_node, comp_exec);
+		return ;
+	}
 	type = command_node->parent->data->type;
 	if (type == PIPELINE)
 		operate_pipe(command_node, comp_exec);
-	return (0);
 }
 
 static void	read_parse_tree_recurrsive(t_node *parsed, t_compound *comp_exec)
@@ -50,7 +52,10 @@ static void	read_parse_tree_recurrsive(t_node *parsed, t_compound *comp_exec)
 	if (!parsed)
 		return ;
 	else if (parsed->data->type == COMMAND)
+	{
 		exec_operator(parsed, comp_exec);
+		return ;
+	}
 	read_parse_tree_recurrsive(parsed->left, comp_exec);
 	read_parse_tree_recurrsive(parsed->right, comp_exec);
 }
