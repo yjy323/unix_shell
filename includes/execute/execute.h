@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 16:07:11 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/24 17:27:16 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/01 18:15:59 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/01 18:16:00 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTE_H
 # define EXECUTE_H
-
-# include "../common.h"
-# include "type_execute.h"
-
-# include "operator.h"
 
 #endif

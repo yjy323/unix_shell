@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin.h                                          :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 18:51:04 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/21 18:47:49 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/01 18:01:20 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/01 18:04:06 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTIN_H
-# define BUILTIN_H
+#ifndef ERROR_H
+# define ERROR_H
 
-# include "../common.h"
+# include <errno.h>
 
-int	ft_cd(void);
-int	ft_echo(void);
-int	ft_env(void);
-int	ft_exit(void);
-int	ft_export(void);
-int	ft_pwd(void);
-int	ft_unset(void);
+# define ERROR -1
+# define ENOCMD 127
+
+void	crash(char *message, int errnum);
 
 #endif

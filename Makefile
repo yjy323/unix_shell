@@ -2,46 +2,20 @@ NAME =		minishell
 
 CC =		cc
 CFLAGS =	-Wall -Wextra -Werror
-INCLUDE = 	-I includes -I includes/data -I includes/execute
+INCLUDE = 	-I includes \
+			-I libft/includes
+
 RM =		rm -rf
 LIB = -Llibft -lft -lncurses
+READLINE = -lreadline
 BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		parse/ parse/ast/ parse/data/ \
-				execute/ execute/command/ execute/operator/ \
-				builtin/
+SRCS_DIR =		parse/ \
+				execute/
 
-CFILES =		main.c \
-				parse/parse.c \
-				parse/ast/tokenize.c \
-				parse/ast/lex.c \
-				parse/ast/parse_tree.c \
-				parse/ast/translate_env.c \
-				parse/ast/valid.c \
-				parse/data/node.c \
-				parse/data/token.c \
-				parse/data/token_list.c \
-				parse/data/token_list_action.c \
-				parse/data/tree.c \
-				parse/data/tree_action.c \
-				execute/execute.c \
-				execute/command/exec_command.c \
-				execute/command/exec_redirect.c \
-				execute/operator/operate_pipe.c \
-				execute/operator/operate_single_command.c \
-				execute/operator/sub_process_wait.c \
-				execute/operator/sub_process_add_lst.c \
-				execute/operator/is_first_operate_cmd.c \
-				execute/operator/is_last_operate_cmd.c \
-				builtin/ft_cd.c \
-				builtin/ft_echo.c \
-				builtin/ft_env.c \
-				builtin/ft_exit.c \
-				builtin/ft_export.c \
-				builtin/ft_pwd.c \
-				builtin/ft_unset.c
+CFILES =		main.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
@@ -54,6 +28,7 @@ VPATH = 		$(SRCS_RT_DIR) \
 				$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
 
 $(OBJS_DIR)%o: %c
+	@if [ ! -d "$(OBJS_DIR)" ]; then mkdir $(OBJS_DIR); fi
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
 
 $(NAME): make_mandatory
@@ -64,16 +39,16 @@ bonus: make_bonus
 
 make_mandatory: $(OBJS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^ -lreadline
+	$(CC) $(CFLAGS) $(LIB) $(READLINE) -o $(NAME) $^
 	touch $@
 
 make_bonus: $(OBJS_BONUS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^ -lreadline
+	$(CC) $(CFLAGS) $(LIB) $(READLINE) -o $(NAME) $^
 	touch $@
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS_DIR)
 	$(RM) make_mandatory make_bonus
 	$(BUILD_LIBFT)
 
