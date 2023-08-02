@@ -13,10 +13,4 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "common.h"
-
-// prompt();
-void	parse(char *str, t_tree *ast);
-void	execute(t_node *parsed, char ***p_envirion);
-
 #endif

@@ -13,37 +13,28 @@
 #ifndef COMMON_H
 # define COMMON_H
 
-# define ERROR -1
-# define ENOCMD 127
+typedef enum e_command_type { cm_simple, cm_connection }t_command_type;
 
-# include <errno.h>
+typedef struct s_word_list {
+	struct s_word_list	*next;
+	char				*word;
+}t_word_list;
 
-typedef enum e_type {
-	COMMAND,
-	PIPELINE,
-	REDIRECT,
-	SPACE,
-	WORD,
-	SINGLE_QUOTE,
-	DOUBLE_QUOTE,
-}t_type;
+typedef struct s_redirect {
+	char	*word;
+	char	*filename;
+}t_redirect;
 
-typedef struct s_token {
-	char			*word;
-	t_type			type;
-}t_token;
+typedef struct s_simple_com {
+	t_word_list	*words;
+	t_redirect	*redirect;		
+}t_simple_com;
 
-typedef struct s_node {
-	t_token			*data;
-	struct s_node	*parent;
-	struct s_node	*left;
-	struct s_node	*right;
-}t_node;
-
-typedef struct s_tree {
-	t_node	*root;
-}t_tree;
-
-void	crash(char *message, int errnum);
+typedef struct s_command {
+	t_command_type		type;
+	t_simple_com		*simple;
+	struct s_command	*first;
+	struct s_command	*second;
+}t_command;
 
 #endif

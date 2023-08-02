@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 19:42:22 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/21 18:56:59 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/01 18:07:38 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/01 18:07:55 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/builtin/builtin.h"
+#ifndef PARSE_H
+# define PARSE_H
 
-int	ft_exit(void);
-
-int	ft_exit(void)
-{
-	return (0);
-}
+#endif

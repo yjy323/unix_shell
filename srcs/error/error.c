@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 19:42:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/07/21 18:57:02 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/01 18:09:45 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/builtin/builtin.h"
+#include <stdio.h>
 
-int	ft_export(void);
-
-int	ft_export(void)
+void	crash(char *message, int errnum)
 {
-	return (0);
+	perror(message);
+	exit(errnum);
 }
