@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lex_node.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/09 18:50:23 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/10 00:30:49 by youjeong         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "parser/lex.h"
+
+void			init_lex_node(t_lex_node *lex_node);
+t_lex_node		*get_lex_node(void);
+void			free_lex_node(t_lex_node *lex_node);
+
+void	init_lex_node(t_lex_node *lex_node)
+{
+	lex_node->word = 0;
+	lex_node->type = -1;
+	lex_node->flag = 0;
+}
+
+t_lex_node	*get_lex_node(void)
+{
+	t_lex_node	*lex_node;
+
+	lex_node = (t_lex_node *)malloc(sizeof(t_lex_node));
+	if (!lex_node)
+		crash(ENOMEM, 0);
+	init_lex_node(lex_node);
+	return (lex_node);
+}
+
+void	free_lex_node(t_lex_node *lex_node)
+{
+	if (lex_node->word)
+		free(lex_node->word);
+	free(lex_node);
+}
