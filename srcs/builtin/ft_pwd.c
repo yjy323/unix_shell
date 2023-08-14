@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 05:51:46 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/09 05:56:46 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/14 19:32:21 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,18 @@ int	ft_pwd(void)
 	printf("%s\n", pwd);
 	free(pwd);
 	return (0);
+}
+
+void	reader_loop(char **environ)
+{
+	// t_command	command;
+
+	(void)environ;
+	while (1)
+	{
+		// open_subshell
+		// read
+		// parse
+		// execute
+	}
 }

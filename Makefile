@@ -1,7 +1,12 @@
 NAME =		minishell
 
+<<<<<<< HEAD
 CC =		cc
 CFLAGS =	-Wall -Wextra -Werror -g
+=======
+CC =		cc -g3
+CFLAGS =	-Wall -Wextra -Werror
+>>>>>>> 513225e93aa3616f49f998471a79e0d847f9cd60
 INCLUDE = 	-I includes \
 			-I libft/includes
 
@@ -12,6 +17,7 @@ BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
+<<<<<<< HEAD
 SRCS_DIR =		parser/ execute/ builtin/ hashlib/ variables/
 
 CFILES =		main.c \
@@ -21,6 +27,33 @@ CFILES =		main.c \
 				variables/update_export_env.c variables/remove_export_env.c variables/find_export_env.c \
 				builtin/ft_cd.c \
 				parser/parse.c
+=======
+SRCS_DIR =		parser/ \
+				parser/env_replacer/ \
+				parser/tokenizer/ \
+				parser/lexer/ \
+				parser/syntex_check/ \
+				execute/ \
+				error/ \
+				common/
+
+CFILES =		test.c \
+				parser/parse.c \
+				parser/tokenizer/tokenize.c \
+				parser/tokenizer/token_list.c \
+				parser/lexer/lex.c \
+				parser/lexer/lex_node.c \
+				parser/lexer/lex_list.c \
+				parser/syntex_check/syntex_check.c \
+				common/command.c \
+				common/simple_com.c \
+				common/connection.c \
+				common/word_list.c \
+				common/redirect_list.c \
+				common/redirect.c \
+				common/word_desc.c \
+				error.c
+>>>>>>> 513225e93aa3616f49f998471a79e0d847f9cd60
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
@@ -33,7 +66,6 @@ VPATH = 		$(SRCS_RT_DIR) \
 				$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
 
 $(OBJS_DIR)%o: %c
-	@if [ ! -d "$(OBJS_DIR)" ]; then mkdir $(OBJS_DIR); fi
 	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
 
 $(NAME): make_mandatory
@@ -53,7 +85,7 @@ make_bonus: $(OBJS_BONUS)
 	touch $@
 
 clean:
-	$(RM) $(OBJS_DIR)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 	$(RM) make_mandatory make_bonus
 	$(BUILD_LIBFT)
 
