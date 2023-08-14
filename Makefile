@@ -1,7 +1,7 @@
 NAME =		minishell
 
 CC =		cc
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror -g
 INCLUDE = 	-I includes \
 			-I libft/includes
 
@@ -12,10 +12,15 @@ BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		parse/ \
-				execute/
+SRCS_DIR =		parser/ execute/ builtin/ hashlib/ variables/
 
-CFILES =		main.c
+CFILES =		main.c \
+				hash/hash_create.c hash/hash_dispose.c hash/hash_shouldgrow.c hash/hash_grow.c \
+				hash/hash_buckect.c hash/hash_str_equal.c hash/hash_search.c hash/hash_insert.c hash/hash_remove.c \
+				variables/create_variable.c variables/dispose_variable.c variables/bind_variable.c \
+				variables/update_export_env.c variables/remove_export_env.c variables/find_export_env.c \
+				builtin/ft_cd.c \
+				parser/parse.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 

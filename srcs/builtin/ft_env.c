@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 17:50:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/01 20:02:08 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/09 05:28:53 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/11 18:05:12 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <readline/readline.h>
-#include <readline/history.h>
+#include <stdio.h>
 
-int	main(int argc, char *args[], char **environ)
+#include "command.h"
+#include "hashlib.h"
+
+extern char	**environ;
+
+int	ft_env(t_word_list *list)
 {
-	(void)argc;
-	(void)args;
-	(void)environ;
+	char	**iter;
+
+	if (list)
+		perror(list->word->word);  // No such file or directory
+	iter = environ;
+	while (*iter)
+		printf("%s\n", iter++);
 	return (0);
 }
