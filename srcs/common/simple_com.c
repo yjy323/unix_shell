@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:23:54 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/10 02:12:17 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 02:38:54 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ t_simple_com	*get_simple_com(void)
 {
 	t_simple_com	*simple_com;
 
-	simple_com = (t_simple_com *)malloc(sizeof(t_simple_com));
-	if (!simple_com)
-		crash(ENOMEM, 0);
+	simple_com = (t_simple_com *)xmalloc(sizeof(t_simple_com));
 	init_simple_com(simple_com);
 	return (simple_com);
 }

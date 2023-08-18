@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:50:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/11 15:47:21 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/18 23:50:28 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "parser/tokenize.h"
 #include "parser/lex.h"
 #include "parser/parse.h"
+#include "expand/expand.h"
 
 int		main(int argc, char *args[], char **environ);
 void	intro();
@@ -25,6 +26,8 @@ void	type_test();
 void	tokenize_test();
 void	lex_test();
 void	parse_test();
+void	expander_test();
+void	expand_words_test();
 void	check_leaks();
 
 int	main(int argc, char *args[], char **environ) {
@@ -40,12 +43,16 @@ int	main(int argc, char *args[], char **environ) {
 		reader_loop(environ);
 	else if (!strcmp(str, "type") || !strcmp(str, "2"))
 		type_test();
-	else if (!strcmp(str, "token test") || !strcmp(str, "3"))
+	else if (!strcmp(str, "token") || !strcmp(str, "3"))
 		tokenize_test();
-	else if (!strcmp(str, "lex test") || !strcmp(str, "4"))
+	else if (!strcmp(str, "lex") || !strcmp(str, "4"))
 		lex_test();
-	else if (!strcmp(str, "parse test") || !strcmp(str, "5"))
+	else if (!strcmp(str, "parse") || !strcmp(str, "5"))
 		parse_test();
+	else if (!strcmp(str, "epd") || !strcmp(str, "6"))
+		expander_test();
+	else if (!strcmp(str, "ex_words") || !strcmp(str, "7"))
+		expand_words_test();
 	free(str);
 	return (0);
 }
@@ -54,9 +61,11 @@ void	intro() {
 	printf("Introduce test_type\n");
 	printf("1. reader : reader_loop test\n");
 	printf("2. type : type test\n");
-	printf("3. token test\n");
-	printf("4. lex test\n");
-	printf("5. parse test\n");
+	printf("3. toekn : token test\n");
+	printf("4. lex : lex test\n");
+	printf("5. parse : parse test\n");
+	printf("6. epd : expander test\n");
+	printf("7. ex_words : expand words test\n");
 }
 
 void	reader_loop(char **environ) {
@@ -126,6 +135,41 @@ void	parse_test() {
 	free(str);
 	if (res_parse)
 		free_command(res_parse);
+}
+
+void	expander_test() {
+	char	*res_epd;
+
+	char *str = readline("input one line: ");
+
+	res_epd = expand_str(str);
+
+	printf("\n");
+	printf(" [ expander result ]\n"); 
+	printf("%s\n", res_epd);
+	printf("\n");
+
+	// stop point
+	free(str);
+	free(res_epd);
+}
+
+void	expand_words_test() {
+	char *str = readline("input one line: ");
+	t_command	*res_parse = parse(str);
+	t_word_list *word_list = res_parse->simple->words;
+	t_word_list	*expand_res = expand_words(word_list);
+	
+	t_word_list	*pword;
+	pword = expand_res;
+	while (pword) {
+		printf("⎧word:\"%s\"\n", pword->word->word);
+		printf("⎩flag:\"%d\"\n", pword->word->flag);
+		pword = pword->next;
+	}
+	free_word_list(expand_res);
+	free_command(res_parse);
+	free(str);
 }
 
 static void word_desc_test() {

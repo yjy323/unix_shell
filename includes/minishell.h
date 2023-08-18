@@ -13,4 +13,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "common/common.h"
+
+t_command	*parse(char *str);
+
 #endif

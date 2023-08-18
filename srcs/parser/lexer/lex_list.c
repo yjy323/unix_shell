@@ -28,9 +28,7 @@ t_lex_list	*get_lex_list(void)
 {
 	t_lex_list	*lex_list;
 
-	lex_list = (t_lex_list *)malloc(sizeof(t_lex_list));
-	if (!lex_list)
-		crash(ENOMEM, 0);
+	lex_list = (t_lex_list *)xmalloc(sizeof(t_lex_list));
 	init_lex_list(lex_list);
 	return (lex_list);
 }

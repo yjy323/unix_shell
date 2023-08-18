@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:17:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/10 00:41:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 03:06:28 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEX_H
 
 # include "common/common.h"
+# include "utils.h"
 # include "tokenize.h"
 
 typedef struct s_lex_node {
@@ -40,6 +41,5 @@ t_lex_list		*get_lex_list(void);
 void			free_lex_list(t_lex_list *lex_list);
 void			push_lex_list(t_lex_list **lex_list, t_lex_node *node);
 t_lex_node		*pop_lex_list(t_lex_list **lex_list);
-
 
 #endif

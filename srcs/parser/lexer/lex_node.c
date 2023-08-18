@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 18:50:23 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/10 00:30:49 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 03:10:37 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ t_lex_node	*get_lex_node(void)
 {
 	t_lex_node	*lex_node;
 
-	lex_node = (t_lex_node *)malloc(sizeof(t_lex_node));
-	if (!lex_node)
-		crash(ENOMEM, 0);
+	lex_node = (t_lex_node *)xmalloc(sizeof(t_lex_node));
 	init_lex_node(lex_node);
 	return (lex_node);
 }

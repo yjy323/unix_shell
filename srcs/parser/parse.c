@@ -6,16 +6,16 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/11 16:51:19 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 03:09:17 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser/parse.h"
-#include "libft.h"
 
 t_command			*parse(char *str);
 static t_command	*parse_lex_list(t_lex_list *lex_list);
-static void			parse_redirect(t_parser *parser, char *word, char *filename);
+static void			parse_redirect(t_parser *parser, \
+									char *word, char *filename);
 static void			parse_connection(t_parser *parser, char *word);
 static void			parse_simple(t_parser *parser, t_lex_node *lex_data);
 
@@ -62,7 +62,7 @@ static t_command	*parse_lex_list(t_lex_list *lex_list)
 static void	parse_redirect(t_parser *parser, char *word, char *filename)
 {
 	t_redirect	*redirect;
-	
+
 	if (!parser->cur_command)
 	{
 		parser->root = get_command();
@@ -73,8 +73,6 @@ static void	parse_redirect(t_parser *parser, char *word, char *filename)
 	redirect = get_redirect();
 	redirect->word = ft_strdup(word);
 	redirect->filename = ft_strdup(filename);
-	if (!redirect->word || !redirect->filename)
-		crash(ENOMEM, "");
 	push_redirect_list(&parser->cur_command->simple->redirects, redirect);
 }
 
@@ -88,8 +86,6 @@ static void	parse_connection(t_parser *parser, char *word)
 	command->type = cm_connection;
 	word_desc = get_word_desc();
 	word_desc->word = ft_strdup(word);
-	if (!word_desc->word)
-		crash(ENOMEM, "");
 	push_word_list(&command->simple->words, word_desc);
 	command->simple->connection = get_connection();
 	command->simple->connection->first = parser->root;
@@ -116,7 +112,5 @@ static void	parse_simple(t_parser *parser, t_lex_node *lex_data)
 	word_desc = get_word_desc();
 	word_desc->flag = lex_data->flag;
 	word_desc->word = ft_strdup(lex_data->word);
-	if (!word_desc->word)
-		crash(ENOMEM, "");
 	push_word_list(&command->simple->words, word_desc);
 }

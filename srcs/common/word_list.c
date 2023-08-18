@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:26:47 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/09 23:48:38 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 02:39:09 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ t_word_list	*get_word_list(void)
 {
 	t_word_list	*word_list;
 
-	word_list = (t_word_list *)malloc(sizeof(t_word_list));
-	if (!word_list)
-		crash(ENOMEM, 0);
+	word_list = (t_word_list *)xmalloc(sizeof(t_word_list));
 	init_word_list(word_list);
 	return (word_list);
 }

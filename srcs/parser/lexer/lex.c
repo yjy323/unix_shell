@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:20:39 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/10 00:40:55 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 03:10:25 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static void	add_word_to_lex_list(t_lex_list **lex_list, char *word)
 
 	lex_data = get_lex_node();
 	lex_data->word = ft_strdup(word);
-	if (!lex_data->word)
-		crash(ENOMEM, "");
 	lex_data->type = get_command_type(word);
 	if (lex_data->type == cm_simple)
 		lex_data->flag = get_simple_com_flag(word);
@@ -78,8 +76,6 @@ static int	get_simple_com_flag(char *str)
 		else if (*str == '\"' && ft_strchr(str + 1, '\"'))
 		{
 			substr = ft_substr(str, 0, ft_strchr(str + 1, '\"') - str);
-			if (!substr)
-				crash(ENOMEM, "");
 			if (ft_strchr(substr, '$'))
 				flag |= W_HASDOLLAR;
 			flag |= W_DQUOTED;
@@ -90,12 +86,12 @@ static int	get_simple_com_flag(char *str)
 	return (flag);
 }
 
-static t_command_type get_command_type(char *word)
+static t_command_type	get_command_type(char *word)
 {
 	t_command_type	type;
 
 	if (*word == '|')
-		type = cm_connection;	
+		type = cm_connection;
 	else if (*word == '<' || *word == '>')
 		type = cm_redirect;
 	else

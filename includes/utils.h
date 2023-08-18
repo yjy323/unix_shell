@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juyyang <juyyang@student.42.kr>            +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 21:40:44 by juyyang           #+#    #+#             */
-/*   Updated: 2023/01/17 20:25:54 by juyyang          ###   ########.fr       */
+/*   Created: 2023/08/13 19:14:38 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/14 03:05:59 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-char	*ft_strdup(const char *s1)
-{
-	char	*s2;
-	size_t	s1_len;
+# include <unistd.h>
 
-	s1_len = ft_strlen(s1);
-	s2 = (char *)malloc(sizeof(char) * (s1_len + 1));
-	if (!s2)
-		return (0);
-	ft_memcpy(s2, (void *)s1, s1_len + 1);
-	return (s2);
-}
+void	*xmalloc(size_t bytes);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
+
+#endif

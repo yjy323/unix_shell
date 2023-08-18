@@ -18,7 +18,9 @@ SRCS_DIR =		parser/ \
 				parser/lexer/ \
 				parser/syntex_check/ \
 				execute/ \
+				expand/ \
 				error/ \
+				utils/ \
 				common/
 
 CFILES =		test.c \
@@ -29,6 +31,11 @@ CFILES =		test.c \
 				parser/lexer/lex_node.c \
 				parser/lexer/lex_list.c \
 				parser/syntex_check/syntex_check.c \
+				expand/expand.c \
+				expand/expand_word.c \
+				expand/expander.c \
+				expand/word_desc_split.c \
+				expand/remove_quote_nulls.c \
 				common/command.c \
 				common/simple_com.c \
 				common/connection.c \
@@ -36,6 +43,7 @@ CFILES =		test.c \
 				common/redirect_list.c \
 				common/redirect.c \
 				common/word_desc.c \
+				utils/utils.c \
 				error.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))

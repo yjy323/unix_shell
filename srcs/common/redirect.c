@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:20:18 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/09 21:49:25 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 02:38:48 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ t_redirect	*get_redirect(void)
 {
 	t_redirect	*redirect;
 
-	redirect = (t_redirect *)malloc(sizeof(t_redirect));
-	if (!redirect)
-		crash(ENOMEM, 0);
+	redirect = (t_redirect *)xmalloc(sizeof(t_redirect));
 	init_redirect(redirect);
 	return (redirect);
 }

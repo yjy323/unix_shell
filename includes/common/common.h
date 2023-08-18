@@ -14,7 +14,7 @@
 # define COMMON_H
 
 # include <stdlib.h>
-# include "error.h"
+# include "utils.h"
 
 # define W_HASDOLLAR 1
 # define W_QUOTED 2

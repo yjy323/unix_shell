@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 02:45:30 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/12 17:21:52 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/18 23:50:54 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#ifndef EXPAND_H
+# define EXPAND_H
 
-void	crash(int errnum)
-{
-	(void)errnum;
-}
+# include "utils.h"
+
+t_word_list	*expand_words(t_word_list *list);
+void		expand_word(t_word_desc *word);
+char		*expand_str(char *str);
+t_word_list	*word_desc_split(t_word_desc *word_desc);
+void		remove_quote_nulls(t_word_list *list);
+
+#endif
