@@ -6,18 +6,21 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:50:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/18 23:50:28 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:35:32 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <assert.h>
+#include <stdio.h>
 #include <readline/readline.h>
+#include <readline/history.h>
 #include "common/common.h"
 #include "parser/tokenize.h"
 #include "parser/lex.h"
 #include "parser/parse.h"
 #include "expand/expand.h"
+#include "signal/sig_handler.h"
 
 int		main(int argc, char *args[], char **environ);
 void	intro();
@@ -29,6 +32,7 @@ void	parse_test();
 void	expander_test();
 void	expand_words_test();
 void	check_leaks();
+void	setting_signal_test();
 
 int	main(int argc, char *args[], char **environ) {
 	char	*str;
@@ -53,6 +57,8 @@ int	main(int argc, char *args[], char **environ) {
 		expander_test();
 	else if (!strcmp(str, "ex_words") || !strcmp(str, "7"))
 		expand_words_test();
+	else if (!strcmp(str, "signal") || !strcmp(str, "8"))
+		setting_signal_test();	
 	free(str);
 	return (0);
 }
@@ -66,6 +72,7 @@ void	intro() {
 	printf("5. parse : parse test\n");
 	printf("6. epd : expander test\n");
 	printf("7. ex_words : expand words test\n");
+	printf("8. signal : test of setting the signal\n");
 }
 
 void	reader_loop(char **environ) {
@@ -170,6 +177,30 @@ void	expand_words_test() {
 	free_word_list(expand_res);
 	free_command(res_parse);
 	free(str);
+}
+
+void	setting_signal_test()
+{
+	char	*test;
+
+	initialize_shell_signals();
+	printf("test\n");
+	while (1) 
+	{
+		test = readline("test shell$ ");
+		if (test == 0)
+			printf("ctrl d\n");
+		else
+		{
+			add_history(test);
+			if (strcmp(test, "stop") == 0)
+			{
+				free(test);
+				break;
+			}
+			free(test);
+		}
+	}
 }
 
 static void word_desc_test() {

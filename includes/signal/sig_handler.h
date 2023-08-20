@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   sig_handler.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 17:29:40 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/20 19:35:20 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/19 00:10:13 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/20 19:28:20 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef SIG_HANDLER_H
+#define SIG_HANDLER_H
 
-# include "common/common.h"
-
-t_command	*parse(char *str);
-void		initialize_shell_signals(void);
+void	rl_set_signals();
 
 #endif

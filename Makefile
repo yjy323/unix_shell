@@ -7,12 +7,14 @@ INCLUDE = 	-I includes \
 
 RM =		rm -rf
 LIB = -Llibft -lft -lncurses
-READLINE = -lreadline
+LINKING_FLAGS = -lreadline -L/opt/homebrew/opt/readline/lib
+COMFILE_FLAGS = -I/opt/homebrew/opt/readline/include
 BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		parser/ \
+SRCS_DIR =		signal/ \
+				parser/ \
 				parser/env_replacer/ \
 				parser/tokenizer/ \
 				parser/lexer/ \
@@ -23,7 +25,8 @@ SRCS_DIR =		parser/ \
 				utils/ \
 				common/
 
-CFILES =		test.c \
+CFILES =		main.c \
+				signal/sig_handler.c \
 				parser/parse.c \
 				parser/tokenizer/tokenize.c \
 				parser/tokenizer/token_list.c \
@@ -43,8 +46,7 @@ CFILES =		test.c \
 				common/redirect_list.c \
 				common/redirect.c \
 				common/word_desc.c \
-				utils/utils.c \
-				error.c
+				utils/utils.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 
@@ -57,7 +59,7 @@ VPATH = 		$(SRCS_RT_DIR) \
 				$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
 
 $(OBJS_DIR)%o: %c
-	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
+	$(CC) $(CFLAGS) ${INCLUDE} $(COMFILE_FLAGS) -c $< -o $@
 
 $(NAME): make_mandatory
 
@@ -67,12 +69,12 @@ bonus: make_bonus
 
 make_mandatory: $(OBJS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) $(READLINE) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) $(LINKING_FLAGS) -o $(NAME) $^
 	touch $@
 
 make_bonus: $(OBJS_BONUS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) $(READLINE) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) $(LINKING_FLAGS) -o $(NAME) $^
 	touch $@
 
 clean:
