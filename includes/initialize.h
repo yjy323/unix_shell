@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   initialize.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/21 19:49:21 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/21 19:50:21 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "error.h"
+#ifndef INITIALIZE_H
+# define INITIALIZE_H
 
-void	crash(int errnum, char *word)
-{
-	(void)word;
-	exit(errnum);
-}
+void	initialize_shell_signals(void);
+void	set_tty(void);
+
+#endif

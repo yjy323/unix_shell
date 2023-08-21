@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:26:47 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:50:41 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ t_token_list	*get_token_list(void)
 {
 	t_token_list	*token_list;
 
-	token_list = (t_token_list *)malloc(sizeof(t_token_list));
-	if (!token_list)
-		crash(ENOMEM, 0);
+	token_list = (t_token_list *)xmalloc(sizeof(t_token_list));
 	init_token_list(token_list);
 	return (token_list);
 }
@@ -67,7 +65,7 @@ void	push_token_list(t_token_list **token_list, char *word)
 	}
 }
 
-char			*pop_token_list(t_token_list **token_list)
+char	*pop_token_list(t_token_list **token_list)
 {
 	char			*pop_word;
 	t_token_list	*rm_token_list;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   connection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:20:18 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:39 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ t_connection	*get_connection(void)
 {
 	t_connection	*connection;
 
-	connection = (t_connection *)malloc(sizeof(t_connection));
-	if (!connection)
-		crash(ENOMEM, 0);
+	connection = (t_connection *)xmalloc(sizeof(t_connection));
 	init_connection(connection);
 	return (connection);
 }

@@ -7,16 +7,32 @@ INCLUDE = 	-I includes \
 
 RM =		rm -rf
 LIB = -Llibft -lft -lncurses
-READLINE = -lreadline
+LINKING_FLAGS = -lreadline -L/opt/homebrew/opt/readline/lib
+COMFILE_FLAGS = -I/opt/homebrew/opt/readline/include
 BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		execute/ builtin/ hashlib/ variables/ error/ \
-				parser/ parser/tokenizer parser/lexer parser/syntex_check \
+SRCS_DIR =		initialize/ \
+				parser/ \
+				parser/env_replacer/ \
+				parser/tokenizer/ \
+				parser/lexer/ \
+				parser/syntex_check/ \
+				execute/ \
+				expand/ \
+				execute/ \
+				builtin/ \
+				hashlib/ \
+				variables/ \
+				error/ \
+				utils/ \
 				common/
 
 CFILES =		main.c \
+				initialize/initialize.c \
+				initialize/signal.c \
+				initialize/shtty.c \
 				hash/hash_create.c \
 				hash/hash_dispose.c \
 				hash/hash_shouldgrow.c \
@@ -42,6 +58,11 @@ CFILES =		main.c \
 				parser/lexer/lex_node.c \
 				parser/lexer/lex_list.c \
 				parser/syntex_check/syntex_check.c \
+				expand/expand.c \
+				expand/expand_word.c \
+				expand/expander.c \
+				expand/word_desc_split.c \
+				expand/remove_quote_nulls.c \
 				\
 				common/command.c \
 				common/simple_com.c \
@@ -50,6 +71,7 @@ CFILES =		main.c \
 				common/redirect_list.c \
 				common/redirect.c \
 				common/word_desc.c \
+				utils/utils.c \
 				\
 				execute/execute_command.c \
 				execute/execute_connection_command.c \
@@ -77,7 +99,7 @@ VPATH = 		$(SRCS_RT_DIR) \
 				$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
 
 $(OBJS_DIR)%o: %c
-	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
+	$(CC) $(CFLAGS) ${INCLUDE} $(COMFILE_FLAGS) -c $< -o $@
 
 $(NAME): make_mandatory
 
@@ -87,12 +109,12 @@ bonus: make_bonus
 
 make_mandatory: $(OBJS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) $(READLINE) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) $(LINKING_FLAGS) -o $(NAME) $^
 	touch $@
 
 make_bonus: $(OBJS_BONUS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) $(READLINE) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) $(LINKING_FLAGS) -o $(NAME) $^
 	touch $@
 
 clean:

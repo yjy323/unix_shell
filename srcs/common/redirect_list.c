@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 22:00:16 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:43 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ t_redirect_list	*get_redirect_list(void)
 {
 	t_redirect_list	*redirect_list;
 
-	redirect_list = (t_redirect_list *)malloc(sizeof(t_redirect_list));
-	if (!redirect_list)
-		crash(ENOMEM, 0);
+	redirect_list = (t_redirect_list *)xmalloc(sizeof(t_redirect_list));
 	init_redirect_list(redirect_list);
 	return (redirect_list);
 }

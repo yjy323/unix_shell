@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 15:27:41 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 21:04:18 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "error.h"
+# include "utils.h"
 
 # define W_HASDOLLAR 1
 # define W_QUOTED 2
@@ -38,14 +39,12 @@ typedef enum e_command_type {
 typedef struct s_command {
 	t_command_type		type;
 	t_simple_com		*simple;
-	struct s_command	*first;
-	struct s_command	*second;
+	t_connection		*connection;
 }t_command;
 
 typedef struct s_simple_com {
 	t_word_list		*words;
 	t_redirect_list	*redirects;
-	t_connection	*connection;
 }t_simple_com;
 
 typedef struct s_connection {

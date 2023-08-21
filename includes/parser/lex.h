@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lex.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:17:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:41:13 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:57:38 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ t_lex_list		*get_lex_list(void);
 void			free_lex_list(t_lex_list *lex_list);
 void			push_lex_list(t_lex_list **lex_list, t_lex_node *node);
 t_lex_node		*pop_lex_list(t_lex_list **lex_list);
-
 
 #endif

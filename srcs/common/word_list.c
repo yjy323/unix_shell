@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:26:47 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:56 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ t_word_list	*get_word_list(void)
 {
 	t_word_list	*word_list;
 
-	word_list = (t_word_list *)malloc(sizeof(t_word_list));
-	if (!word_list)
-		crash(ENOMEM, 0);
+	word_list = (t_word_list *)xmalloc(sizeof(t_word_list));
 	init_word_list(word_list);
 	return (word_list);
 }

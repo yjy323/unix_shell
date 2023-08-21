@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_desc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:49:32 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:53 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ t_word_desc	*get_word_desc(void)
 {
 	t_word_desc	*word_desc;
 
-	word_desc = (t_word_desc *)malloc(sizeof(t_word_desc));
-	if (!word_desc)
-		crash(ENOMEM, 0);
+	word_desc = (t_word_desc *)xmalloc(sizeof(t_word_desc));
 	init_word_desc(word_desc);
 	return (word_desc);
 }
