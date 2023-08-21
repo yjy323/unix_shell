@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 23:51:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 03:07:52 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:35:12 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 void		init_command(t_command *command);
 t_command	*get_command(void);
 void		clear_command(t_command *command);
-static void	free_command_recursive(t_command *command);
 void		free_command(t_command *command);
 
 void	init_command(t_command *command)
 {
-	command->first = 0;
-	command->second = 0;
 	command->simple = 0;
+	command->connection = 0;
 	command->type = -1;
 }
 
@@ -37,20 +35,11 @@ t_command	*get_command(void)
 
 void	clear_command(t_command *command)
 {
-	free_command_recursive(command->first);
-	free_command_recursive(command->second);
-	free_simple_com(command->simple);
+	if (command->simple)
+		free_simple_com(command->simple);
+	if (command->connection)
+		free_connection(command->connection);
 	init_command(command);
-}
-
-static void	free_command_recursive(t_command *command)
-{
-	if (!command)
-		return ;
-	free_command_recursive(command->first);
-	free_command_recursive(command->second);
-	free_simple_com(command->simple);
-	free(command);
 }
 
 void	free_command(t_command *command)

@@ -14,6 +14,7 @@ BUILD_LIBFT = make -C libft $@
 SRCS_RT_DIR =	srcs/
 
 SRCS_DIR =		signal/ \
+				input/ \
 				parser/ \
 				parser/env_replacer/ \
 				parser/tokenizer/ \
@@ -25,8 +26,9 @@ SRCS_DIR =		signal/ \
 				utils/ \
 				common/
 
-CFILES =		main.c \
+CFILES =		test.c \
 				signal/sig_handler.c \
+				input/get_input.c \
 				parser/parse.c \
 				parser/tokenizer/tokenize.c \
 				parser/tokenizer/token_list.c \

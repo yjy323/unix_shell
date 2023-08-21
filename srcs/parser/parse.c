@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 03:09:17 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:36:09 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ static void	parse_connection(t_parser *parser, char *word)
 	word_desc = get_word_desc();
 	word_desc->word = ft_strdup(word);
 	push_word_list(&command->simple->words, word_desc);
-	command->simple->connection = get_connection();
-	command->simple->connection->first = parser->root;
-	command->simple->connection->second = get_command();
-	command->simple->connection->second->simple = get_simple_com();
-	command->simple->connection->second->type = cm_simple;
+	command->connection = get_connection();
+	command->connection->first = parser->root;
+	command->connection->second = get_command();
+	command->connection->second->simple = get_simple_com();
+	command->connection->second->type = cm_simple;
 	parser->root = command;
-	parser->cur_command = command->simple->connection->second;
+	parser->cur_command = command->connection->second;
 }
 
 static void	parse_simple(t_parser *parser, t_lex_node *lex_data)
