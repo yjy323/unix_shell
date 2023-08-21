@@ -14,7 +14,7 @@ SRCS_RT_DIR =	srcs/
 
 SRCS_DIR =		execute/ builtin/ hashlib/ variables/ error/ \
 				parser/ parser/tokenizer parser/lexer parser/syntex_check \
-				common/
+				command/
 
 CFILES =		main.c \
 				hash/hash_create.c \
@@ -43,13 +43,13 @@ CFILES =		main.c \
 				parser/lexer/lex_list.c \
 				parser/syntex_check/syntex_check.c \
 				\
-				common/command.c \
-				common/simple_com.c \
-				common/connection.c \
-				common/word_list.c \
-				common/redirect_list.c \
-				common/redirect.c \
-				common/word_desc.c \
+				command/command.c \
+				command/simple_com.c \
+				command/connection.c \
+				command/word_list.c \
+				command/redirect_list.c \
+				command/redirect.c \
+				command/word_desc.c \
 				\
 				execute/execute_command.c \
 				execute/execute_connection_command.c \

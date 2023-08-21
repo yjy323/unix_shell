@@ -6,12 +6,12 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 15:27:41 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 21:04:37 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#ifndef COMMAND_H
+# define COMMAND_H
 
 # include <stdlib.h>
 # include "error.h"

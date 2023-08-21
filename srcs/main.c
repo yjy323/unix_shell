@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:42 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 21:06:10 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	reader_loop(char **initial_environ)
 		// parse
 		command = parse(str);
 		execute_command(command, environ);
-
 		free(str);
 		//free_command(command, environ);
 	}
