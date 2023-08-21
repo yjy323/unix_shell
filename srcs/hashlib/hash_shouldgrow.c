@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   hash_shouldgrow.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/06 16:54:21 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/20 20:25:28 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "error.h"
+#include "hashlib.h"
 
-void	crash(int errnum, char *word)
+bool	hash_shouldgrow(t_hash_table *table);
+
+bool	hash_shouldgrow(t_hash_table *table)
 {
-	(void)word;
-	exit(errnum);
+	if (table->nentries >= table->nbuckets * HASH_REHASH_FACTOR)
+		return (true);
+	else
+		return (false);
 }

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/09 05:51:46 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/20 20:16:50 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include "error.h"
+#include <stdio.h>
+#include <unistd.h>
 
-void	crash(int errnum, char *word)
+int	ft_pwd(void)
 {
-	(void)word;
-	exit(errnum);
+	char	*pwd;
+
+	pwd = getcwd(0, 0);
+	// if (pwd == 0)
+	//	 return (1)
+	printf("%s\n", pwd);
+	free(pwd);
+	return (0);
 }

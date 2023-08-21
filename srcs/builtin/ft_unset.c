@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.h                                          :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:15:59 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/01 18:16:00 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/21 20:37:21 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_H
-# define EXECUTE_H
+// valid
+// hash_remove
 
-#endif
+#include "builtin.h"
+
+int	ft_unset(void);
+
+int	ft_unset(void)
+{
+	return (0);
+}

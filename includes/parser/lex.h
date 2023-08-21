@@ -6,15 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:17:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 03:06:28 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:57:38 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEX_H
 # define LEX_H
 
-# include "common/common.h"
-# include "utils.h"
+# include "command.h"
 # include "tokenize.h"
 
 typedef struct s_lex_node {

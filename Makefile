@@ -21,6 +21,10 @@ SRCS_DIR =		initialize/ \
 				parser/syntex_check/ \
 				execute/ \
 				expand/ \
+				execute/ \
+				builtin/ \
+				hashlib/ \
+				variables/ \
 				error/ \
 				utils/ \
 				common/
@@ -29,6 +33,24 @@ CFILES =		main.c \
 				initialize/initialize.c \
 				initialize/signal.c \
 				initialize/shtty.c \
+				hash/hash_create.c \
+				hash/hash_dispose.c \
+				hash/hash_shouldgrow.c \
+				hash/hash_grow.c \
+				hash/hash_buckect.c \
+				hash/hash_str_equal.c \
+				hash/hash_search.c \
+				hash/hash_insert.c \
+				hash/hash_remove.c \
+				\
+				variables/create_variable.c \
+				variables/dispose_variable.c \
+				variables/bind_variable.c \
+				variables/update_export_env.c \
+				variables/remove_export_env.c \
+				variables/find_export_env.c \
+				variables/create_environmet_variable.c \
+				\
 				parser/parse.c \
 				parser/tokenizer/tokenize.c \
 				parser/tokenizer/token_list.c \
@@ -41,6 +63,7 @@ CFILES =		main.c \
 				expand/expander.c \
 				expand/word_desc_split.c \
 				expand/remove_quote_nulls.c \
+				\
 				common/command.c \
 				common/simple_com.c \
 				common/connection.c \
@@ -48,7 +71,22 @@ CFILES =		main.c \
 				common/redirect_list.c \
 				common/redirect.c \
 				common/word_desc.c \
-				utils/utils.c
+				utils/utils.c \
+				\
+				execute/execute_command.c \
+				execute/execute_connection_command.c \
+				execute/execute_simple_command.c \
+				execute/do_redirect.c \
+				execute/undo_redirect.c \
+				\
+				builtin/ft_cd.c \
+				builtin/ft_echo.c \
+				builtin/ft_env.c \
+				builtin/ft_exit.c \
+				builtin/ft_export.c \
+				builtin/ft_pwd.c \
+				builtin/ft_unset.c \
+				error.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 

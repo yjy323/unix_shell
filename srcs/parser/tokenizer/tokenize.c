@@ -6,12 +6,12 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:30:49 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 03:11:54 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:50:50 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser/tokenize.h"
-#include "common/common.h"
+#include "command.h"
 #include "libft.h"
 
 t_token_list	*tokenize(char *str);

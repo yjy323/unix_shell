@@ -6,11 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:49:32 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/16 22:40:46 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:53 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common/common.h"
+#include "command.h"
 
 void		init_word_desc(t_word_desc *word_desc);
 t_word_desc	*get_word_desc(void);

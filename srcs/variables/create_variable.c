@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   create_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/11 18:35:51 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/11 20:17:04 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include "error.h"
 
-void	crash(int errnum, char *word)
+#include "variables.h"
+
+t_variable	*create_variable(char *name, char *value);
+
+t_variable	*create_variable(char *name, char *value)
 {
-	(void)word;
-	exit(errnum);
+	t_variable	*entry;
+
+	entry = (t_variable *)malloc(sizeof(t_variable));
+	entry->name = name;
+	entry->value = value;
+	return (entry);
 }

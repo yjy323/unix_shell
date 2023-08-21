@@ -6,12 +6,12 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/15 17:55:27 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:58:17 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "common/common.h"
+#include "command.h"
 #include "expand/expander.h"
 #include "libft.h"
 

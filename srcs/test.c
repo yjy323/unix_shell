@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:50:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 19:39:04 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:28 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include "common/common.h"
+#include "command.h"
 #include "parser/tokenize.h"
 #include "parser/lex.h"
 #include "parser/parse.h"
