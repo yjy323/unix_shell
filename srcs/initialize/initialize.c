@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sig_handler.h                                      :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/19 00:10:13 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/20 19:28:20 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/21 19:47:38 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/21 20:00:06 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIG_HANDLER_H
-#define SIG_HANDLER_H
+#include "initialize.h"
 
-void	rl_set_signals();
-
-#endif
+void	initialize(void)
+{
+	set_tty();
+	initialize_shell_signals();
+}

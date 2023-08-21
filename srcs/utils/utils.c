@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 02:01:11 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/15 18:39:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:30:05 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 
 void	*xmalloc(size_t bytes);
+void	*xrealloc(void *ptr, size_t bytes);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
@@ -30,6 +31,16 @@ void	*xmalloc(size_t bytes)
 			"xmalloc", (unsigned long)bytes);
 		exit(ENOMEM);
 	}
+	return (temp);
+}
+
+void	*xrealloc(void *ptr, size_t bytes)
+{
+	void	*temp;
+
+	temp = xmalloc(bytes);
+	ft_memmove(temp, ptr, bytes);
+	free(ptr);
 	return (temp);
 }
 

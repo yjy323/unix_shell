@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   shtty.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 17:29:40 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:00:21 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/21 19:41:34 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/21 19:46:29 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <unistd.h>
+#include <termios.h>
+#include <term.h>
 
-# include "common/common.h"
+void	set_tty(void)
+{
+	struct termios	tty;
 
-void		initialize(void);
-t_command	*parse(char *str);
-
-#endif
+	if (tcgetattr(STDIN_FILENO, &tty) == -1)
+		; // crash
+	tty.c_lflag &= ~(ECHOCTL);
+	if (tcsetattr(STDIN_FILENO, TCSANOW, &tty) == -1)
+		; // crash
+}
