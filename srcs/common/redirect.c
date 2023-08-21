@@ -6,11 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:20:18 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 02:38:48 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:46 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common/common.h"
+#include "command.h"
 
 void		init_redirect(t_redirect *redirect);
 t_redirect	*get_redirect(void);

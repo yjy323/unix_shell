@@ -6,11 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:51:55 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/16 23:07:15 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:58:40 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common/common.h"
+#include "command.h"
 #include "expand/expander.h"
 #include "libft.h"
 

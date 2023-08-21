@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/11 19:38:32 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include "error.h"
 
-void	crash(int errnum, char *word)
+#include "command.h"
+#include "libft.h"
+
+int	ft_exit(t_word_list *list, int status)
 {
-	(void)word;
-	exit(errnum);
+	if (!list)
+		exit(status);
+	else
+	{
+		// valid numeric args, args count
+		exit(ft_atoi(list->word->word));
+	}
 }

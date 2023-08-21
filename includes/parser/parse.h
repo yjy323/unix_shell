@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:07:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 02:30:53 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:48:49 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PARSE_H
 
 # include "stdbool.h"
-# include "common/common.h"
+# include "command.h"
 # include "lex.h"
 # include "utils.h"
 

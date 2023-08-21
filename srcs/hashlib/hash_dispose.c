@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   hash_dispose.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/06 16:50:46 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/09 04:02:47 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include "error.h"
 
-void	crash(int errnum, char *word)
+#include "hashlib.h"
+
+void	hash_dispose(t_hash_table *table);
+
+void	hash_dispose(t_hash_table *table)
 {
-	(void)word;
-	exit(errnum);
+	free(table->bucket_array);
+	free(table);
 }
