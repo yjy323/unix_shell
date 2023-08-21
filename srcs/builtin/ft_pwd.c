@@ -6,12 +6,13 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 05:51:46 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/14 19:32:21 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/20 20:16:50 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int	ft_pwd(void)
 {
@@ -23,18 +24,4 @@ int	ft_pwd(void)
 	printf("%s\n", pwd);
 	free(pwd);
 	return (0);
-}
-
-void	reader_loop(char **environ)
-{
-	// t_command	command;
-
-	(void)environ;
-	while (1)
-	{
-		// open_subshell
-		// read
-		// parse
-		// execute
-	}
 }

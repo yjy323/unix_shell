@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   token_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:26:47 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/09 23:58:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser/tokenize.h"
-#include "common/common.h"
+#include "command.h"
 
 void			init_token_list(t_token_list *token_list);
 t_token_list	*get_token_list(void);

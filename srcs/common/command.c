@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 23:51:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/11 15:46:47 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "common/common.h"
+#include "command.h"
 
 void		init_command(t_command *command);
 t_command	*get_command(void);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:50:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/11 15:47:21 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <assert.h>
 #include <readline/readline.h>
-#include "common/common.h"
+#include "command.h"
 #include "parser/tokenize.h"
 #include "parser/lex.h"
 #include "parser/parse.h"

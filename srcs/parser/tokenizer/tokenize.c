@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:30:49 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/10 00:22:24 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser/tokenize.h"
-#include "common/common.h"
+#include "command.h"
 #include "libft.h"
 
 t_token_list	*tokenize(char *str);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lex.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:17:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/10 00:41:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:41:13 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEX_H
 # define LEX_H
 
-# include "common/common.h"
+# include "command.h"
 # include "tokenize.h"
 
 typedef struct s_lex_node {

@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:03:26 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/11 22:29:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/20 19:59:30 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 #include "variables.h"
 #include "libft.h"
 
-extern char	**environ;
-
-char		**update_export_env(char *name, char *value, t_hash_table *table, int flag);
+char		**update_export_env(char *name, char *value, t_environment *environ, int flag);
 static char	**update_export_env_internal(char *name, char *value, char **export_env);
 static char	**add_export_env(char *name, char *value, char **export_env);
 static char	*make_export_env(char *name, char *value);
 static char	**resize_export_env(char **export_env, size_t export_env_size);
 
-char	**update_export_env(char *name, char *value, t_hash_table *table, int flag)
+char	**update_export_env(char *name, char *value, t_environment *environ, int flag)
 {
 	char				**export_env;
 	t_bucket_contents	*bucket;
+	t_hash_table		*table;
 
-	export_env = environ;
+	table = environ->env_table;
+	export_env = environ->env_array;
 	bucket = hash_search(name, table);
 	if (!bucket && flag == V_CREATE)
 		add_export_env(name, value, export_env);
 	else
 		update_export_env_internal(name, value, export_env);
-	environ = export_env;
+	environ->env_array = export_env;
 	return (export_env);
 }
 
@@ -70,7 +70,7 @@ static char	**add_export_env(char *name, char *value, char **export_env)
 	export_env[export_env_idx] = make_export_env(name, value);
 	return (export_env);
 }
-#include <stdio.h>
+
 static char	*make_export_env(char *name, char *value)
 {
 	size_t	new_len;

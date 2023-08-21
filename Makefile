@@ -1,12 +1,7 @@
 NAME =		minishell
 
-<<<<<<< HEAD
-CC =		cc
-CFLAGS =	-Wall -Wextra -Werror -g
-=======
 CC =		cc -g3
 CFLAGS =	-Wall -Wextra -Werror
->>>>>>> 513225e93aa3616f49f998471a79e0d847f9cd60
 INCLUDE = 	-I includes \
 			-I libft/includes
 
@@ -17,27 +12,29 @@ BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-<<<<<<< HEAD
-SRCS_DIR =		parser/ execute/ builtin/ hashlib/ variables/
-
-CFILES =		main.c \
-				hash/hash_create.c hash/hash_dispose.c hash/hash_shouldgrow.c hash/hash_grow.c \
-				hash/hash_buckect.c hash/hash_str_equal.c hash/hash_search.c hash/hash_insert.c hash/hash_remove.c \
-				variables/create_variable.c variables/dispose_variable.c variables/bind_variable.c \
-				variables/update_export_env.c variables/remove_export_env.c variables/find_export_env.c \
-				builtin/ft_cd.c \
-				parser/parse.c
-=======
-SRCS_DIR =		parser/ \
-				parser/env_replacer/ \
-				parser/tokenizer/ \
-				parser/lexer/ \
-				parser/syntex_check/ \
-				execute/ \
-				error/ \
+SRCS_DIR =		execute/ builtin/ hashlib/ variables/ error/ \
+				parser/ parser/tokenizer parser/lexer parser/syntex_check \
 				common/
 
-CFILES =		test.c \
+CFILES =		main.c \
+				hash/hash_create.c \
+				hash/hash_dispose.c \
+				hash/hash_shouldgrow.c \
+				hash/hash_grow.c \
+				hash/hash_buckect.c \
+				hash/hash_str_equal.c \
+				hash/hash_search.c \
+				hash/hash_insert.c \
+				hash/hash_remove.c \
+				\
+				variables/create_variable.c \
+				variables/dispose_variable.c \
+				variables/bind_variable.c \
+				variables/update_export_env.c \
+				variables/remove_export_env.c \
+				variables/find_export_env.c \
+				variables/create_environmet_variable.c \
+				\
 				parser/parse.c \
 				parser/tokenizer/tokenize.c \
 				parser/tokenizer/token_list.c \
@@ -45,6 +42,7 @@ CFILES =		test.c \
 				parser/lexer/lex_node.c \
 				parser/lexer/lex_list.c \
 				parser/syntex_check/syntex_check.c \
+				\
 				common/command.c \
 				common/simple_com.c \
 				common/connection.c \
@@ -52,8 +50,21 @@ CFILES =		test.c \
 				common/redirect_list.c \
 				common/redirect.c \
 				common/word_desc.c \
+				\
+				execute/execute_command.c \
+				execute/execute_connection_command.c \
+				execute/execute_simple_command.c \
+				execute/do_redirect.c \
+				execute/undo_redirect.c \
+				\
+				builtin/ft_cd.c \
+				builtin/ft_echo.c \
+				builtin/ft_env.c \
+				builtin/ft_exit.c \
+				builtin/ft_export.c \
+				builtin/ft_pwd.c \
+				builtin/ft_unset.c \
 				error.c
->>>>>>> 513225e93aa3616f49f998471a79e0d847f9cd60
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   env_replace.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:32:27 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/06 21:26:55 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "common/common.h"
+#include "command.h"
 #include "parser/env_replace.h"
 #include "libft.h"
 
