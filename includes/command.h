@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 21:15:31 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:40:21 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_simple_com {
 typedef struct s_connection {
 	t_command	*first;
 	t_command	*second;
+	char		*word;
 }t_connection;
 
 typedef struct s_word_list {

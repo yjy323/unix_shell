@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 15:36:09 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:12:20 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_command	*parse(char *str)
 
 	command = 0;
 	lex_list = lex(str);
-	if (syntex_check(lex_list))
+	if (syntex_check(lex_list) == true)
 		command = parse_lex_list(lex_list);
 	free_lex_list(lex_list);
 	return (command);
@@ -79,15 +79,12 @@ static void	parse_redirect(t_parser *parser, char *word, char *filename)
 static void	parse_connection(t_parser *parser, char *word)
 {
 	t_command	*command;
-	t_word_desc	*word_desc;
 
 	command = get_command();
 	command->simple = get_simple_com();
 	command->type = cm_connection;
-	word_desc = get_word_desc();
-	word_desc->word = ft_strdup(word);
-	push_word_list(&command->simple->words, word_desc);
 	command->connection = get_connection();
+	command->connection->word = ft_strdup(word);
 	command->connection->first = parser->root;
 	command->connection->second = get_command();
 	command->connection->second->simple = get_simple_com();

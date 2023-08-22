@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:01:20 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 14:01:48 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:40:41 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <errno.h>
 
+# define SYNTEX_ERROR 1
+# define SYNTEX_ERROR_MESSAGE "syntax error near unexpected token"
+# define SYNTEX_ERROR_FORMAT "%s: %s `%s'\n"
 # define INVOPT 2
 # define ENOPMS 126
 # define ENOCMD 127

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 14:53:45 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:40:44 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
+#include "expand/expand.h"
 
 #include "libft.h"
 
@@ -31,8 +32,9 @@ static char	*search_file(char *file);
 
 int		execute_simple_command(t_command *command, t_environment *environ, int pipe_in_fd, int pipe_out_fd)
 {
-	int	save_stdin_fd;
-	int	save_stdout_fd;
+	int			save_stdin_fd;
+	int			save_stdout_fd;
+	t_word_list	*tmp;
 
 	if (pipe_in_fd != -1)
 		dup2(pipe_in_fd, STDIN_FILENO);
@@ -41,6 +43,9 @@ int		execute_simple_command(t_command *command, t_environment *environ, int pipe
 	save_stdin_fd = dup(STDIN_FILENO);
 	save_stdout_fd = dup(STDOUT_FILENO);
 	do_redirect(command->simple->redirects);
+	tmp = command->simple->words;
+	command->simple->words = expand_words(command->simple->words);
+	free(tmp);
 	g_status = execute_buitin(command->simple->words, environ);
 	if (g_status == ENOCMD)
 		g_status = execute_filesystem(command->simple->words, environ->env_array);
