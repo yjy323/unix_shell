@@ -6,12 +6,12 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 14:33:52 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:40:21 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#ifndef COMMAND_H
+# define COMMAND_H
 
 # include <stdlib.h>
 # include "error.h"

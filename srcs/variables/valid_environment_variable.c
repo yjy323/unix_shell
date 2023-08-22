@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   undo_redirect.c                                    :+:      :+:    :+:   */
+/*   valid_environment_variable.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 16:58:41 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 13:01:07 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/22 16:43:53 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/22 17:34:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdbool.h>
 
-int	undo_redirect(int save_stdin_fd, int save_stdout_fd)
+#include "libft.h"
+
+bool	valid_env_variable(char *name)
 {
-	dup2(save_stdin_fd, STDIN_FILENO);
-	dup2(save_stdout_fd, STDOUT_FILENO);
-	close(save_stdin_fd);
-	close(save_stdout_fd);
+	int i;
+
+	if (ft_isdigit(*name))
+		return (1);
+	i = 0;
+	while (name[i])
+	{
+		if (ft_isalnum(name[i])
+			|| name[i] != '_')
+			return (1);
+		i++;
+	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 17:50:50 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:07:59 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/21 21:15:15 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ void	reader_loop(char **initial_environ)
 		add_history(str);
 		// parse
 		command = parse(str);
-		// execute
-		free(str);
 		execute_command(command, environ);
+		free(str);
 		if (command)
 			free_command(command);
 	}

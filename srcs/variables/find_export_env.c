@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 20:30:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/11 22:04:00 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 22:36:06 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,31 @@ int	find_export_env(char *name, char **export_env)
 {
 	char	**iter;
 	char	*str;
-	int		idx;
+	int		array_idx;
+	int		str_idx;
 
 	iter = export_env;
-	while (*iter)
+	array_idx = 0;
+	while (iter[array_idx])
 	{
-		idx = 0;
-		str = *iter;
-		while (str[idx])
+		str_idx = 0;
+		str = iter[array_idx];
+		while (str[str_idx])
 		{
-			if (str[idx] == '=')
+			if (str[str_idx] == '=')
 			{
-				str[idx] = 0;
+				str[str_idx] = 0;
 				if (hash_str_equal(name, str))
 				{
-					str[idx] = '=';
-					return (idx);
+					str[str_idx] = '=';
+					return (array_idx);
 				}
-				str[idx] = '=';
+				else
+					str[str_idx] = '=';
 			}
-			idx++;
+			str_idx++;
 		}
-		iter++;
+		array_idx++;
 	}
 	return (-1);
 }

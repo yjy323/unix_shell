@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 15:05:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 15:57:57 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_environment	*create_environmet_variable(char **initial_environ)
 	size = get_environ_size(initial_environ);
 	env->env_table = hash_create(size * HASH_REHASH_MULTIPLIER);
 	env->env_array = malloc(sizeof(char *) * (size + 1));
+	env->array_size = size;
+	env->env_array[size] = 0;
 	create_environmet_variable_contents(initial_environ, env, size);
 	return (env);
 }

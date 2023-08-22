@@ -27,7 +27,7 @@ SRCS_DIR =		initialize/ \
 				variables/ \
 				error/ \
 				utils/ \
-				common/
+				command/
 
 CFILES =		main.c \
 				initialize/initialize.c \
@@ -50,6 +50,7 @@ CFILES =		main.c \
 				variables/remove_export_env.c \
 				variables/find_export_env.c \
 				variables/create_environmet_variable.c \
+				variables/valid_environment_variable.c \
 				\
 				parser/parse.c \
 				parser/tokenizer/tokenize.c \
@@ -64,13 +65,13 @@ CFILES =		main.c \
 				expand/word_desc_split.c \
 				expand/remove_quote_nulls.c \
 				\
-				common/command.c \
-				common/simple_com.c \
-				common/connection.c \
-				common/word_list.c \
-				common/redirect_list.c \
-				common/redirect.c \
-				common/word_desc.c \
+				command/command.c \
+				command/simple_com.c \
+				command/connection.c \
+				command/word_list.c \
+				command/redirect_list.c \
+				command/redirect.c \
+				command/word_desc.c \
 				utils/utils.c \
 				\
 				execute/execute_command.c \
