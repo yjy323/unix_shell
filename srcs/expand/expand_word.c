@@ -3,35 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   expand_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:58:17 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:55:57 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include "command.h"
 #include "expand/expander.h"
+#include "hashlib.h"
+#include "variables.h"
 #include "libft.h"
 
-void		expand_word(t_word_desc *word);
-char		*expand_str(char *str);
-static void	expand_hashdollor(t_expander *epd);
-static void	expand_question(t_expander *epd);
-static void	expand_env(t_expander *epd);
+extern int	g_status;
 
-void	expand_word(t_word_desc *word)
+void		expand_word(t_environment *environ, t_word_desc *word);
+char		*expand_str(t_environment *environ, char *str);
+static void	expand_hashdollor(t_environment *environ, t_expander *epd);
+static void	expand_question(t_expander *epd);
+static void	expand_env(t_environment *environ, t_expander *epd);
+
+void		expand_word(t_environment *environ, t_word_desc *word)
 {
 	char	*new_str;
 
-	new_str = expand_str(word->word);
+	new_str = expand_str(environ, word->word);
 	word->flag = (word->flag) ^ W_HASDOLLAR;
 	free(word->word);
 	word->word = new_str;
 }
 
-char	*expand_str(char *str)
+char	*expand_str(t_environment *environ, char *str)
 {
 	t_expander	epd;
 
@@ -39,7 +43,7 @@ char	*expand_str(char *str)
 	while (*epd.pstr)
 	{
 		if (*epd.pstr == '$' && !epd.isin_singlequote)
-			expand_hashdollor(&epd);
+			expand_hashdollor(environ, &epd);
 		else
 		{
 			if (*epd.pstr == '\'' \
@@ -53,7 +57,7 @@ char	*expand_str(char *str)
 	return (epd.ostr);
 }
 
-static void	expand_hashdollor(t_expander *epd)
+static void	expand_hashdollor(t_environment *environ, t_expander *epd)
 {
 	if (ft_strncmp(epd->pstr, "$?", 2) == 0)
 		expand_question(epd);
@@ -63,7 +67,7 @@ static void	expand_hashdollor(t_expander *epd)
 		epd->pstr++;
 	}
 	else
-		expand_env(epd);
+		expand_env(environ, epd);
 }
 
 static void	expand_question(t_expander *epd)
@@ -71,25 +75,27 @@ static void	expand_question(t_expander *epd)
 	char	*str_exit_num;
 
 	str_exit_num = ft_strdup("[exit code]");
-	// str_exit_num = ft_itoa(?)
+	str_exit_num = ft_itoa(g_status);
 	add_expander_str(epd, str_exit_num);
 	epd->pstr = epd->pstr + 2;
 	free(str_exit_num);
 }
 
-static void	expand_env(t_expander *epd)
+static void	expand_env(t_environment *environ, t_expander *epd)
 {
-	char	*env_key;
-	char	*skey;
-	char	*ekey;
-	char	*env_val;
+	t_bucket_contents	*bucket;
+	char				*env_key;
+	char				*skey;
+	char				*ekey;
+	char				*env_val;
 
 	skey = epd->pstr;
 	ekey = epd->pstr + 1;
 	while (ft_isalnum(*ekey))
 		ekey++;
 	env_key = ft_substr(skey, 1, ekey - skey - 1);
-	env_val = getenv(env_key);
+	bucket = hash_search(env_key, environ->env_table);
+	env_val = ((t_variable *)bucket->data)->value;
 	if (env_val)
 		add_expander_str(epd, env_val);
 	epd->pstr = epd->pstr + ft_strlen(env_key) + 1;

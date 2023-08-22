@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:21:52 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/18 23:50:54 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:56:53 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPAND_H
 # define EXPAND_H
 
-# include "utils.h"
+# include "variables.h"
 
-t_word_list	*expand_words(t_word_list *list);
-void		expand_word(t_word_desc *word);
-char		*expand_str(char *str);
+t_word_list	*expand_words(t_environment *environ, t_word_list *list);
+void		expand_word(t_environment *environ, t_word_desc *word);
+char		*expand_str(t_environment *environ, char *str);
 t_word_list	*word_desc_split(t_word_desc *word_desc);
 void		remove_quote_nulls(t_word_list *list);
 

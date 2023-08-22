@@ -6,16 +6,22 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 17:42:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 17:48:07 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "error.h"
+#include "minishell.h"
+
+extern int	g_status;
 
 void	crash(int errnum, char *word)
 {
-	(void)word;
-	exit(errnum);
+	if (errnum == SYNTEX_ERROR)
+	{
+		printf(SYNTEX_ERROR_FORMAT, SH_NAME, SYNTEX_ERROR_MESSAGE, word);
+		g_status = 258;
+	}
 }
