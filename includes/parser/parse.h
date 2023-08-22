@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:07:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:41:13 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 20:48:49 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "stdbool.h"
 # include "command.h"
 # include "lex.h"
+# include "utils.h"
 
 typedef struct s_parser {
 	t_command	*root;

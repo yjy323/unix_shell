@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 20:37:31 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 14:53:45 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,28 @@ int		execute_simple_command(t_command *command, t_environment *environ, int pipe
 
 static int	execute_buitin(t_word_list *words, t_environment *environ)
 {
-	int		status;
-	int		len;
-	char	*command;
+	int			status;
+	int			len;
+	char		*command;
+	t_word_list	*argument;
 
-	return (ENOCMD);
 	command = words->word->word;
+	argument = words->next;
 	len = ft_strlen(command);
 	if (!ft_strncmp(command, "cd", len))
-		status = ft_cd(words, environ);
+		status = ft_cd(argument, environ);
 	else if (!ft_strncmp(command, "echo", len))
-		status = ft_echo();
+		status = ft_echo(argument);
 	else if (!ft_strncmp(command, "env", len))
-		status = ft_env(words);
+		status = ft_env(argument, environ);
 	else if (!ft_strncmp(command, "exit", len))
-		status = ft_exit(words, g_status);
+		status = ft_exit(argument, g_status);
 	else if (!ft_strncmp(command, "export", len))
-		status = ft_export();
+		status = ft_export(argument, environ);
 	else if (!ft_strncmp(command, "pwd", len))
 		status = ft_pwd();
 	else if (!ft_strncmp(command, "unset", len))
-		status = ft_unset();
+		status = ft_unset(argument, environ);
 	else
 		return (ENOCMD);
 	return (status);

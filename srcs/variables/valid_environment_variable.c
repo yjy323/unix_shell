@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   valid_environment_variable.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juyyang <juyyang@student.42.kr>            +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 21:40:44 by juyyang           #+#    #+#             */
-/*   Updated: 2023/01/17 20:25:54 by juyyang          ###   ########.fr       */
+/*   Created: 2023/08/22 16:43:53 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/22 17:34:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
+
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+bool	valid_env_variable(char *name)
 {
-	char	*s2;
-	size_t	s1_len;
+	int i;
 
-	s1_len = ft_strlen(s1);
-	s2 = (char *)malloc(sizeof(char) * (s1_len + 1));
-	if (!s2)
-		return (0);
-	ft_memcpy(s2, (void *)s1, s1_len + 1);
-	return (s2);
+	if (ft_isdigit(*name))
+		return (1);
+	i = 0;
+	while (name[i])
+	{
+		if (ft_isalnum(name[i])
+			|| name[i] != '_')
+			return (1);
+		i++;
+	}
+	return (0);
 }

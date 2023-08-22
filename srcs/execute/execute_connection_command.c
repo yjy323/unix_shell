@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:12:59 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 12:30:46 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	execute_connection_command(t_command *command, t_environment *environ, int p
 
 	pipe(pipe_fd);
 	make_pram_pipe_fd(param_pipe_fd, pre_in, pipe_fd[1]);
-	pids[0] = execute_subprocess(command->simple->connection->first, environ, param_pipe_fd, pipe_fd[0]);
+	pids[0] = execute_subprocess(command->connection->first, environ, param_pipe_fd, pipe_fd[0]);
 	make_pram_pipe_fd(param_pipe_fd, pipe_fd[0], pre_out);
-	pids[1] = execute_subprocess(command->simple->connection->second, environ, param_pipe_fd, pipe_fd[1]);
+	pids[1] = execute_subprocess(command->connection->second, environ, param_pipe_fd, pipe_fd[1]);
 	idx = 0;
 	while (idx < 2)
 	{

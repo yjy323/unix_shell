@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:01:20 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:05:01 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 14:01:48 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include <errno.h>
 
-# define STR_ENOMEM "%s: Out of memory\n"
+# define INVOPT 2
+# define ENOPMS 126
+# define ENOCMD 127
+# define EOPTION 255
 
 void	crash(int errnum, char *word);
 

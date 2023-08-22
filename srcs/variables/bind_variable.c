@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:22:00 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/11 22:01:47 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 22:51:24 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ t_variable	*bind_variable(char *name, char *value, t_hash_table *table, int flag
 	}
 	else
 	{
-		free(entry->value);
-		entry->value = ft_strdup(value);
+		if (entry)
+		{
+			free(entry->value);
+			entry->value = ft_strdup(value);
+		}
 	}
 	return (entry);
 }

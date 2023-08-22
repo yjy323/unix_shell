@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   shtty.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 21:02:31 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/21 19:41:34 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/21 19:46:29 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "error.h"
+#include <unistd.h>
+#include <termios.h>
+#include <term.h>
 
-void	crash(int errnum, char *word)
+void	set_tty(void)
 {
-	(void)word;
-	exit(errnum);
+	struct termios	tty;
+
+	if (tcgetattr(STDIN_FILENO, &tty) == -1)
+		; // crash
+	tty.c_lflag &= ~(ECHOCTL);
+	if (tcsetattr(STDIN_FILENO, TCSANOW, &tty) == -1)
+		; // crash
 }

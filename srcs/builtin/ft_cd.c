@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 20:35:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/21 23:02:34 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,25 @@
 #include "hashlib.h"
 #include "variables.h"
 
-extern char	**environ;
-
 int			ft_cd(t_word_list *list, t_environment *environ);
-static int	setpwd(t_environment *environ);
-static int	setoldpwd(t_environment *environ);
+static int	set_pwd(t_environment *environ);
+static int	set_oldpwd(t_environment *environ);
 
 int	ft_cd(t_word_list *list, t_environment *environ)
 {
 	char	*dir_name;
-	int		no_free_var;
 
-	no_free_var = 1;
 	if (list)
 		dir_name = list->word->word;
 	else
-	{
 		dir_name = getenv("HOME");
-		no_free_var = 0;
-	}
 	chdir(dir_name);
-	setoldpwd(environ);
-	setpwd(environ);
-	if (!no_free_var)
-		free(dir_name);
+	set_oldpwd(environ);
+	set_pwd(environ);
 	return (0);
 }
 
-static int	setpwd(t_environment *environ)
+static int	set_pwd(t_environment *environ)
 {
 	char	*value;
 
@@ -56,7 +47,7 @@ static int	setpwd(t_environment *environ)
 
 }
 
-static int	setoldpwd(t_environment *environ)
+static int	set_oldpwd(t_environment *environ)
 {
 	char				*value;
 	t_bucket_contents	*bucket;
