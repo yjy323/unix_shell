@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 21:04:18 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:33:52 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_simple_com {
 typedef struct s_connection {
 	t_command	*first;
 	t_command	*second;
+	char		*word;
 }t_connection;
 
 typedef struct s_word_list {
