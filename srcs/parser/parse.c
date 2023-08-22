@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 14:36:32 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:12:20 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_command	*parse(char *str)
 
 	command = 0;
 	lex_list = lex(str);
-	if (syntex_check(lex_list))
+	if (syntex_check(lex_list) == true)
 		command = parse_lex_list(lex_list);
 	free_lex_list(lex_list);
 	return (command);
