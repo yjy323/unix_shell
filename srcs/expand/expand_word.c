@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 17:55:57 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/22 23:49:55 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ extern int	g_status;
 
 void		expand_word(t_environment *environ, t_word_desc *word);
 char		*expand_str(t_environment *environ, char *str);
-static void	expand_hashdollor(t_environment *environ, t_expander *epd);
+void		expand_hashdollor(t_environment *environ, t_expander *epd);
 static void	expand_question(t_expander *epd);
 static void	expand_env(t_environment *environ, t_expander *epd);
 
@@ -57,7 +57,7 @@ char	*expand_str(t_environment *environ, char *str)
 	return (epd.ostr);
 }
 
-static void	expand_hashdollor(t_environment *environ, t_expander *epd)
+void	expand_hashdollor(t_environment *environ, t_expander *epd)
 {
 	if (ft_strncmp(epd->pstr, "$?", 2) == 0)
 		expand_question(epd);

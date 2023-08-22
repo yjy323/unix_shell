@@ -59,6 +59,7 @@ CFILES =		main.c \
 				parser/lexer/lex_node.c \
 				parser/lexer/lex_list.c \
 				parser/syntex_check/syntex_check.c \
+				expand/expand_heredoc.c \
 				expand/expand.c \
 				expand/expand_word.c \
 				expand/expander.c \
