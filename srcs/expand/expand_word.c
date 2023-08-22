@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:58:17 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:22:06 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "command.h"
 #include "expand/expander.h"
 #include "libft.h"
+
+extern int	g_status;
 
 void		expand_word(t_word_desc *word);
 char		*expand_str(char *str);
@@ -71,7 +73,7 @@ static void	expand_question(t_expander *epd)
 	char	*str_exit_num;
 
 	str_exit_num = ft_strdup("[exit code]");
-	// str_exit_num = ft_itoa(?)
+	str_exit_num = ft_itoa(g_status);
 	add_expander_str(epd, str_exit_num);
 	epd->pstr = epd->pstr + 2;
 	free(str_exit_num);
