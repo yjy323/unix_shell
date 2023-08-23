@@ -27,7 +27,8 @@ SRCS_DIR =		initialize/ \
 				variables/ \
 				error/ \
 				utils/ \
-				command/
+				command/ \
+				heredoc/
 
 CFILES =		main.c \
 				initialize/initialize.c \
@@ -87,6 +88,7 @@ CFILES =		main.c \
 				builtin/ft_export.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c \
+				here_doc/do_here_doc.c \
 				error.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
