@@ -6,15 +6,17 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 20:30:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 22:36:06 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/24 01:23:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdbool.h>
 
 #include "hashlib.h"
 
-int	find_export_env(char *name, char **export_env);
+int			find_export_env(char *name, char **export_env);
+static bool	compare_export_env_name(char *name, char *str, int equal_sign_idx);
 
 int	find_export_env(char *name, char **export_env)
 {
@@ -31,20 +33,21 @@ int	find_export_env(char *name, char **export_env)
 		str = iter[array_idx];
 		while (str[str_idx])
 		{
-			if (str[str_idx] == '=')
-			{
-				str[str_idx] = 0;
-				if (hash_str_equal(name, str))
-				{
-					str[str_idx] = '=';
-					return (array_idx);
-				}
-				else
-					str[str_idx] = '=';
-			}
+			if (str[str_idx] == '='
+				&& compare_export_env_name(name, str, str_idx))
+				return (array_idx);
 			str_idx++;
 		}
 		array_idx++;
 	}
 	return (-1);
+}
+
+static bool	compare_export_env_name(char *name, char *str, int equal_sign_idx)
+{
+	str[equal_sign_idx] = 0;
+	if (hash_str_equal(name, str))
+		return (true);
+	else
+		return (false);
 }

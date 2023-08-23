@@ -6,12 +6,12 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:08:09 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 14:53:25 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:01:48 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILT_IN
-# define BUILT_IN
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
 # include "command.h"
 # include "hashlib.h"

@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 15:57:57 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:08:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 #include "libft.h"
 
 t_environment	*create_environmet_variable(char **initial_environ);
-static void		create_environmet_variable_contents(char **initial_environ, t_environment *env, int size);
+static void		create_environmet_variable_contents(char **initial_environ,
+					t_environment *env, int size);
 static int		get_environ_size(char **environ);
 static char		*get_name(char *exported_env);
 static char		*get_value(char *exported_env);
@@ -37,7 +38,8 @@ t_environment	*create_environmet_variable(char **initial_environ)
 	return (env);
 }
 
-static void	create_environmet_variable_contents(char **initial_environ, t_environment *env, int size)
+static void	create_environmet_variable_contents(char **initial_environ,
+				t_environment *env, int size)
 {
 	int				i;
 	char			*name;
@@ -64,7 +66,6 @@ static int	get_environ_size(char **environ)
 		size++;
 	return (size);
 }
-
 
 static char	*get_name(char *exported_env)
 {

@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 23:02:34 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:02:40 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static int	set_pwd(t_environment *environ)
 	update_export_env("PWD", value, environ, V_NOCREATE);
 	free(value);
 	return (0);
-
 }
 
 static int	set_oldpwd(t_environment *environ)

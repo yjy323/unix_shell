@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 17:17:10 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 20:41:13 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 18:39:13 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 typedef struct s_bucket_contents {
 	struct s_bucket_contents	*next;
 	char						*key;
-	void 						*data;
+	void						*data;
 	unsigned int				khash;
 }	t_bucket_contents;
 
@@ -46,8 +46,9 @@ t_bucket_contents	*hash_search(
 						const char *string, t_hash_table *table);
 t_bucket_contents	*hash_remove(
 						const char *string, t_hash_table *table);
-t_bucket_contents 	*hash_insert(char *string, t_hash_table *table);
+t_bucket_contents	*hash_insert(char *string, t_hash_table *table);
 
 bool				hash_str_equal(const char *key, const char *string);
+char				*hash_search_variable_value(char *key, t_hash_table *table);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 17:16:33 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/09 04:02:50 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:06:43 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 
 void		hash_grow(t_hash_table *table);
 static void	hash_rehash(t_hash_table *table, int nsize);
-static void	copy_bucket(t_hash_table *table, t_bucket_contents **old_bucket_array, int osize);
+static void	copy_bucket(t_hash_table *table,
+				t_bucket_contents **old_bucket_array, int osize);
 
 void	hash_grow(t_hash_table *table)
 {
-  int nsize;
+	int	nsize;
 
-  nsize = table->nbuckets * HASH_REHASH_MULTIPLIER;
-  if (nsize > 0)
-    hash_rehash (table, nsize);
+	nsize = table->nbuckets * HASH_REHASH_MULTIPLIER;
+	if (nsize > 0)
+		hash_rehash(table, nsize);
 }
 
 static void	hash_rehash(t_hash_table *table, int nsize)
@@ -38,7 +39,8 @@ static void	hash_rehash(t_hash_table *table, int nsize)
 	osize = table->nbuckets;
 	old_bucket_array = table->bucket_array;
 	table->nbuckets = nsize;
-	table->bucket_array = (t_bucket_contents **)malloc (table->nbuckets * sizeof (t_bucket_contents *));
+	table->bucket_array = (t_bucket_contents **)malloc(
+			table->nbuckets * sizeof (t_bucket_contents *));
 	i = 0;
 	while (i < table->nbuckets)
 		table->bucket_array[i++] = (t_bucket_contents *)0;
@@ -46,7 +48,8 @@ static void	hash_rehash(t_hash_table *table, int nsize)
 	free (old_bucket_array);
 }
 
-static void	copy_bucket(t_hash_table *table, t_bucket_contents **old_bucket_array, int osize)
+static void	copy_bucket(t_hash_table *table,
+				t_bucket_contents **old_bucket_array, int osize)
 {
 	int					i;
 	int					j;

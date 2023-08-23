@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 18:00:14 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 18:41:00 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	expand_hashdollor(t_environment *environ, t_expander *epd);
 static void	expand_question(t_expander *epd);
 static void	expand_env(t_environment *environ, t_expander *epd);
 
-void		expand_word(t_environment *environ, t_word_desc *word)
+void	expand_word(t_environment *environ, t_word_desc *word)
 {
 	char	*new_str;
 
@@ -83,7 +83,6 @@ static void	expand_question(t_expander *epd)
 
 static void	expand_env(t_environment *environ, t_expander *epd)
 {
-	t_bucket_contents	*bucket;
 	char				*env_key;
 	char				*skey;
 	char				*ekey;
@@ -94,8 +93,7 @@ static void	expand_env(t_environment *environ, t_expander *epd)
 	while (ft_isalnum(*ekey))
 		ekey++;
 	env_key = ft_substr(skey, 1, ekey - skey - 1);
-	bucket = hash_search(env_key, environ->env_table);
-	env_val = ((t_variable *)bucket->data)->value;
+	env_val = hash_search_variable_value(env_key, environ->env_table);
 	if (env_val)
 		add_expander_str(epd, env_val);
 	epd->pstr = epd->pstr + ft_strlen(env_key) + 1;

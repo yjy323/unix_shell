@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntex_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 15:22:45 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 16:09:36 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:07:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static bool	redirect_syntex_check(t_lex_list *lex_list)
 {
 	if (!lex_list->next
 		|| !(lex_list->next->data->type == cm_simple))
-		{
-			crash(SYNTEX_ERROR, "newline");
-			return (false);
-		}
+	{
+		crash(SYNTEX_ERROR, "newline");
+		return (false);
+	}
 	return (true);
 }
 
@@ -58,9 +58,9 @@ static bool	connection_syntex_check(t_lex_list *pre_lex_list)
 	if (!pre_lex_list
 		|| !(pre_lex_list->next->next)
 		|| (pre_lex_list->next->next->data->type == cm_connection))
-		{
-			crash(SYNTEX_ERROR, "|");
-			return (false);
-		}
+	{
+		crash(SYNTEX_ERROR, "|");
+		return (false);
+	}
 	return (true);
 }

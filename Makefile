@@ -43,6 +43,7 @@ CFILES =		main.c \
 				hash/hash_search.c \
 				hash/hash_insert.c \
 				hash/hash_remove.c \
+				hash/hash_search_variable_value.c \
 				\
 				variables/create_variable.c \
 				variables/dispose_variable.c \
@@ -78,8 +79,11 @@ CFILES =		main.c \
 				execute/execute_command.c \
 				execute/execute_connection_command.c \
 				execute/execute_simple_command.c \
+				execute/execute_filesystem.c \
+				execute/execute_builtin.c \
 				execute/do_redirect.c \
 				execute/undo_redirect.c \
+				execute/do_pipe_redirect.c \
 				\
 				builtin/ft_cd.c \
 				builtin/ft_echo.c \
@@ -89,7 +93,10 @@ CFILES =		main.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c \
 				here_doc/do_here_doc.c \
-				error.c
+				error/crash.c \
+				error/exception_handler.c \
+				error/exception_handler_sub_ps.c \
+				error/print_error_msg.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))
 

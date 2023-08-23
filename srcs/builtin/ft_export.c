@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 16:44:23 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 19:05:23 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 int			ft_export(t_word_list *list, t_environment *environ);
 static int	ft_export_without_args(t_hash_table *table);
 static int	ft_export_word(char *word, t_environment *environ);
-static int	ft_export_word_appned(char *name, char *value, t_environment *environ);
-static int	get_variable(char *word, char **p_name, char **p_value, int *exp_append);
+static int	ft_export_word_appned(char *name,
+				char *value, t_environment *environ);
+static char	*get_variable(char *word,
+				char **p_name, char **p_value, int *exp_append);
 
 int	ft_export(t_word_list *list, t_environment *environ)
 {
 	int	status;
 
 	status = 0;
-	
 	if (list)
 	{
 		if (list->word->word && *list->word->word == '-')
@@ -46,10 +47,11 @@ int	ft_export(t_word_list *list, t_environment *environ)
 
 static int	ft_export_without_args(t_hash_table *table)
 {
-	int	i = 0;
-
+	int					i;
 	t_bucket_contents	*bucket;
 	t_variable			*var;
+
+	i = 0;
 	while (i < table->nbuckets)
 	{
 		if (table->bucket_array[i])
@@ -79,7 +81,8 @@ static int	ft_export_word(char *word, t_environment *environ)
 	exp_append = 0;
 	name = 0;
 	value = 0;
-	get_variable(word, &name, &value, &exp_append);
+	if (get_variable(word, &name, &value, &exp_append) == 0)
+		name = ft_strdup(word);
 	if (exp_append)
 		ft_export_word_appned(name, value, environ);
 	else
@@ -91,11 +94,12 @@ static int	ft_export_word(char *word, t_environment *environ)
 	return (0);
 }
 
-static int	ft_export_word_appned(char *name, char *value, t_environment *environ)
+static int	ft_export_word_appned(char *name,
+				char *value, t_environment *environ)
 {
 	t_bucket_contents	*bucket;
 	t_variable			*entry;
-	char		*temp;
+	char				*temp;
 
 	temp = value;
 	bucket = hash_search(name, environ->env_table);
@@ -114,7 +118,8 @@ static int	ft_export_word_appned(char *name, char *value, t_environment *environ
 	return (0);
 }
 
-static int	get_variable(char *word, char **p_name, char **p_value, int *p_exp_append)
+static char	*get_variable(char *word,
+				char **p_name, char **p_value, int *p_exp_append)
 {
 	int	idx;
 
@@ -140,7 +145,5 @@ static int	get_variable(char *word, char **p_name, char **p_value, int *p_exp_ap
 		}
 		idx++;
 	}
-	if (!*p_name)
-		*p_name = ft_strdup(word);
-	return (*p_exp_append);
+	return (*p_name);
 }

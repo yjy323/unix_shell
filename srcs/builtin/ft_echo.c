@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:20 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 13:27:55 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:03:02 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_echo(t_word_list *list)
 
 	no_newline = 0;
 	status = 0;
-	if (list && list->word->word &&is_option(list->word->word))
+	if (list && list->word->word && is_option(list->word->word))
 		status = ft_echo_option(&list, &no_newline);
 	if (status == 0)
 	{

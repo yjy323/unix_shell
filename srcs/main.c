@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 21:15:15 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:09:40 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char *args[], char **environment)
 {
 	(void)argc;
 	(void)args;
-	
 	initialize();
 	reader_loop(environment);
 	return (0);
@@ -39,12 +38,11 @@ int	main(int argc, char *args[], char **environment)
 
 void	reader_loop(char **initial_environ)
 {
-	char	*str;
-	t_command	*command;
-	t_environment *environ;
+	char			*str;
+	t_command		*command;
+	t_environment	*environ;
 
 	environ = create_environmet_variable(initial_environ);
-
 	while (1)
 	{
 		// read
@@ -63,4 +61,3 @@ void	reader_loop(char **initial_environ)
 			free_command(command);
 	}
 }
-
