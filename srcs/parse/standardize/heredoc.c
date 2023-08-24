@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:43:19 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:03:43 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #include "variables.h"
 #include "utils.h"
 #include "error.h"
-// ft_itoa();
+// ft_xitoa();
 #include "libft.h"
 
 int			take_heredoc(t_lex_list *cur, \
@@ -65,8 +65,8 @@ static char	*get_heredoc_name(char *wtd, int heredoc_num)
 	char	*res;
 	char	*str_num;
 
-	str_num = ft_itoa(heredoc_num);
-	res = ft_strjoin(wtd, str_num);
+	str_num = ft_xitoa(heredoc_num);
+	res = ft_xstrjoin(wtd, str_num);
 	free(str_num);
 	return (res);
 }

@@ -30,7 +30,6 @@ FILES =		ft_isalpha \
 			ft_atoi \
 			ft_strmapi \
 			ft_split \
-			ft_itoa \
 			ft_striteri \
 			ft_putchar_fd \
 			ft_putstr_fd \

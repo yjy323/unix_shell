@@ -82,7 +82,8 @@ CFILES =		main.c \
 				command/redirect_list.c \
 				command/redirect.c \
 				command/word_desc.c \
-				utils/utils.c \
+				utils/xalloc.c \
+				utils/xstr.c \
 				\
 				execute/execute_command.c \
 				execute/execute_connection_command.c \

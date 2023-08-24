@@ -1,50 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   xstr.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 02:01:11 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 16:30:05 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/24 17:57:27 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/24 18:01:24 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <stdio.h>
+#include "utils.h"
 #include "libft.h"
 
-void	*xmalloc(size_t bytes);
-void	*xrealloc(void *ptr, size_t bytes);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_strjoin(const char *s1, const char *s2);
+char		*ft_xstrdup(const char *s1);
+char		*ft_xsubstr(const char *s, unsigned int start, size_t len);
+char		*ft_xstrjoin(const char *s1, const char *s2);
+char		*ft_xitoa(int n);
+static int	calculate_size(long nbr);
 
-void	*xmalloc(size_t bytes)
-{
-	void	*temp;
-
-	temp = malloc(bytes);
-	if (temp == 0)
-	{
-		printf("%s: cannot allocate %lu bytes", \
-			"xmalloc", (unsigned long)bytes);
-		exit(ENOMEM);
-	}
-	return (temp);
-}
-
-void	*xrealloc(void *ptr, size_t bytes)
-{
-	void	*temp;
-
-	temp = xmalloc(bytes);
-	ft_memmove(temp, ptr, bytes);
-	free(ptr);
-	return (temp);
-}
-
-char	*ft_strdup(const char *s1)
+char	*ft_xstrdup(const char *s1)
 {
 	char	*s2;
 	size_t	s1_len;
@@ -55,7 +30,7 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_xsubstr(const char *s, unsigned int start, size_t len)
 {
 	char	*dst;
 	size_t	i;
@@ -79,7 +54,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	return (dst);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_xstrjoin(const char *s1, const char *s2)
 {
 	char	*new_str;
 	size_t	i;
@@ -103,4 +78,50 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	new_str[s1_len + i] = 0;
 	return (new_str);
+}
+
+char	*ft_xitoa(int n)
+{
+	long	nbr;
+	int		size;
+	char	*str;
+
+	nbr = n;
+	size = calculate_size(nbr);
+	if (n < 0)
+		nbr *= -1;
+	str = (char *)xmalloc(sizeof(char) * (size + 1));
+	if (!str)
+		return (0);
+	str[size] = 0;
+	while (nbr)
+	{
+		str[size - 1] = nbr % 10 + '0';
+		nbr /= 10;
+		size--;
+	}
+	if (n == 0)
+		str[0] = '0';
+	else if (n < 0)
+		str[0] = '-';
+	return (str);
+}
+
+static int	calculate_size(long nbr)
+{
+	int		size;
+
+	if (nbr <= 0)
+	{
+		size = 1;
+		nbr *= -1;
+	}
+	else
+		size = 0;
+	while (nbr)
+	{
+		nbr /= 10;
+		size++;
+	}
+	return (size);
 }

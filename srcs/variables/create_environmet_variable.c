@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 15:06:07 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:19 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	create_environmet_variable_contents(char **initial_environ, t_enviro
 		name = get_name(initial_environ[i]);
 		value = get_value(initial_environ[i]);
 		bind_variable(name, value, env->env_table, V_CREATE);
-		env->env_array[i] = ft_strdup(initial_environ[i]);
+		env->env_array[i] = ft_xstrdup(initial_environ[i]);
 		i++;
 	}
 	return ;
@@ -79,7 +79,7 @@ static char	*get_name(char *exported_env)
 		if (exported_env[i] == '=')
 		{
 			exported_env[i] = 0;
-			name = ft_strdup(exported_env);
+			name = ft_xstrdup(exported_env);
 			exported_env[i] = '=';
 			break ;
 		}
@@ -99,7 +99,7 @@ static char	*get_value(char *exported_env)
 	{
 		if (exported_env[i] == '=')
 		{
-			value = ft_strdup(exported_env + (i + 1));
+			value = ft_xstrdup(exported_env + (i + 1));
 			break ;
 		}
 		i++;

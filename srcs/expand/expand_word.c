@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/23 14:23:28 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:03:43 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	expand_question(t_expander *epd)
 {
 	char	*str_exit_num;
 
-	str_exit_num = ft_strdup("[exit code]");
-	str_exit_num = ft_itoa(g_status);
+	str_exit_num = ft_xstrdup("[exit code]");
+	str_exit_num = ft_xitoa(g_status);
 	add_expander_str(epd, str_exit_num);
 	epd->pstr = epd->pstr + 2;
 	free(str_exit_num);
@@ -93,7 +93,7 @@ static void	expand_env(t_environment *environ, t_expander *epd)
 	ekey = epd->pstr + 1;
 	while (ft_isalnum(*ekey))
 		ekey++;
-	env_key = ft_substr(skey, 1, ekey - skey - 1);
+	env_key = ft_xsubstr(skey, 1, ekey - skey - 1);
 	bucket = hash_search(env_key, environ->env_table);
 	env_val = ((t_variable *)bucket->data)->value;
 	if (env_val)

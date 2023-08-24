@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 15:07:32 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:45 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ static char	**make_argument(t_word_list *words)
 	i = 0;
 	while (i < cnt)
 	{
-		argument[i] = ft_strdup(words->word->word);
+		argument[i] = ft_xstrdup(words->word->word);
 		if (!argument[i++])
 			crash(1, words->word->word);
 		words = words->next;
@@ -156,13 +156,13 @@ static char	*search_file(char *file)
 		return (file);
 	del = getenv("PATH");
 	path = ft_split(del, ':');
-	rel_path_file = ft_strjoin("/", file);
+	rel_path_file = ft_xstrjoin("/", file);
 	if (!rel_path_file)
 		crash(1, file);
 	while (*path)
 	{
 		del = *path;
-		exec_file = ft_strjoin(*path++, rel_path_file);
+		exec_file = ft_xstrjoin(*path++, rel_path_file);
 		if (!exec_file)
 			crash(1, file);
 		else if (access(exec_file, F_OK) == 0)

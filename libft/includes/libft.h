@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:56:52 by juyyang           #+#    #+#             */
-/*   Updated: 2023/08/24 15:27:24 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:02:30 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_isprint(int ch);
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
 int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
 
 void	*ft_memset(void *ptr, int value, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

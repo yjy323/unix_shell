@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   xalloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 19:14:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 18:04:08 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/14 02:01:11 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/24 17:58:11 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-
-# include <unistd.h>
+#include <errno.h>
+#include <stdio.h>
+#include "libft.h"
 
 void	*xmalloc(size_t bytes);
 void	*xrealloc(void *ptr, size_t bytes);
-char	*ft_xstrdup(const char *s1);
-char	*ft_xsubstr(const char *s, unsigned int start, size_t len);
-char	*ft_xstrjoin(const char *s1, const char *s2);
-char	*ft_xitoa(int n);
 
-#endif
+void	*xmalloc(size_t bytes)
+{
+	void	*temp;
+
+	temp = malloc(bytes);
+	if (temp == 0)
+	{
+		printf("%s: cannot allocate %lu bytes", \
+			"xmalloc", (unsigned long)bytes);
+		exit(ENOMEM);
+	}
+	return (temp);
+}
+
+void	*xrealloc(void *ptr, size_t bytes)
+{
+	void	*temp;
+
+	temp = xmalloc(bytes);
+	ft_memmove(temp, ptr, bytes);
+	free(ptr);
+	return (temp);
+}

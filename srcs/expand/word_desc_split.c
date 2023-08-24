@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 17:57:17 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:58:26 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static size_t	add_word_desc_to_word_list(t_word_list **word_list, char *word)
 		pend++;
 	}
 	pend--;
-	word_desc->word = ft_substr(word, 0, pend - word + 1);
+	word_desc->word = ft_xsubstr(word, 0, pend - word + 1);
 	push_word_list(word_list, word_desc);
 	size_word = ft_strlen(word_desc->word);
 	return (size_word);

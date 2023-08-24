@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:22:00 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 15:05:55 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:19 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_variable	*bind_variable(char *name, char *value, t_hash_table *table, int flag
 	entry = hash_lookup(name, table);
 	if (!entry && flag == V_CREATE)
 	{
-		bucket = hash_insert(ft_strdup(name), table);
-		entry = create_variable(ft_strdup(name), ft_strdup(value));
+		bucket = hash_insert(ft_xstrdup(name), table);
+		entry = create_variable(ft_xstrdup(name), ft_xstrdup(value));
 		bucket->data = (void *)entry;
 	}
 	else
@@ -35,7 +35,7 @@ t_variable	*bind_variable(char *name, char *value, t_hash_table *table, int flag
 		if (entry)
 		{
 			free(entry->value);
-			entry->value = ft_strdup(value);
+			entry->value = ft_xstrdup(value);
 		}
 	}
 	return (entry);

@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:35:50 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:19 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	parse_redirect(t_parser *parser, char *word, char *filename)
 		parser->cur_command = parser->root;
 	}
 	redirect = get_redirect();
-	redirect->word = ft_strdup(word);
-	redirect->filename = ft_strdup(filename);
+	redirect->word = ft_xstrdup(word);
+	redirect->filename = ft_xstrdup(filename);
 	push_redirect_list(&parser->cur_command->simple->redirects, redirect);
 }
 
@@ -87,7 +87,7 @@ static void	parse_connection(t_parser *parser, char *word)
 	command->simple = get_simple_com();
 	command->type = cm_connection;
 	command->connection = get_connection();
-	command->connection->word = ft_strdup(word);
+	command->connection->word = ft_xstrdup(word);
 	command->connection->first = parser->root;
 	command->connection->second = get_command();
 	command->connection->second->simple = get_simple_com();
@@ -111,6 +111,6 @@ static void	parse_simple(t_parser *parser, t_lex_node *lex_data)
 	command = parser->cur_command;
 	word_desc = get_word_desc();
 	word_desc->flag = lex_data->flag;
-	word_desc->word = ft_strdup(lex_data->word);
+	word_desc->word = ft_xstrdup(lex_data->word);
 	push_word_list(&command->simple->words, word_desc);
 }

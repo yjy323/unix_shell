@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 15:07:49 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:45 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ static int	ft_export_word_appned(char *name, char *value, t_environment *environ
 	{
 		entry = (t_variable *)bucket->data;
 		if (entry && entry->value)
-			value = ft_strjoin(entry->value, value);
+			value = ft_xstrjoin(entry->value, value);
 		else
-			value = ft_strdup(value);
+			value = ft_xstrdup(value);
 		free(temp);
 	}
 	if (value)
@@ -125,16 +125,16 @@ static int	get_variable(char *word, char **p_name, char **p_value, int *p_exp_ap
 		if (word[idx] == '=')
 		{
 			word[idx] = 0;
-			*p_name = ft_strdup(word);
-			*p_value = ft_strdup(word + idx + 1);
+			*p_name = ft_xstrdup(word);
+			*p_value = ft_xstrdup(word + idx + 1);
 			word[idx] = '=';
 			break ;
 		}
 		else if (word[idx] == '+' && word[idx + 1] == '=')
 		{
 			word[idx] = 0;
-			*p_name = ft_strdup(word);
-			*p_value = ft_strdup(word + idx + 2);
+			*p_name = ft_xstrdup(word);
+			*p_value = ft_xstrdup(word + idx + 2);
 			word[idx] = '+';
 			*p_exp_append = 1;
 			break ;
@@ -142,6 +142,6 @@ static int	get_variable(char *word, char **p_name, char **p_value, int *p_exp_ap
 		idx++;
 	}
 	if (!*p_name)
-		*p_name = ft_strdup(word);
+		*p_name = ft_xstrdup(word);
 	return (*p_exp_append);
 }
