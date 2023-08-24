@@ -44,6 +44,8 @@ CFILES =		main.c \
 				hash/hash_insert.c \
 				hash/hash_remove.c \
 				\
+				variables/init_sh_variable.c \
+				variables/clear_sh_variable.c \
 				variables/create_variable.c \
 				variables/dispose_variable.c \
 				variables/bind_variable.c \
@@ -66,6 +68,7 @@ CFILES =		main.c \
 				expand/expander.c \
 				expand/word_desc_split.c \
 				expand/remove_quote_nulls.c \
+				heredoc/heredoc.c \
 				heredoc/do_here_doc.c \
 				\
 				command/command.c \

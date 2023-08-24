@@ -6,26 +6,28 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 16:12:20 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:41:41 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser/parse.h"
+#include "heredoc.h"
 
-t_command			*parse(char *str);
+t_command			*parse(char *str, t_sh_variable *sh_variable);
 static t_command	*parse_lex_list(t_lex_list *lex_list);
 static void			parse_redirect(t_parser *parser, \
 									char *word, char *filename);
 static void			parse_connection(t_parser *parser, char *word);
 static void			parse_simple(t_parser *parser, t_lex_node *lex_data);
 
-t_command	*parse(char *str)
+t_command	*parse(char *str, t_sh_variable *sh_variable)
 {
 	t_lex_list	*lex_list;
 	t_command	*command;
 
 	command = 0;
 	lex_list = lex(str);
+	expand_heredoc(lex_list, sh_variable);
 	if (syntex_check(lex_list) == true)
 		command = parse_lex_list(lex_list);
 	free_lex_list(lex_list);

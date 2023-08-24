@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:29:40 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 16:01:04 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:37:05 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define MINISHELL_H
 
 # include "command.h"
+# include "variables.h"
 
 # define SH_NAME "minishell"
 
 void		initialize(void);
-t_command	*parse(char *str);
+t_command	*parse(char *str, t_sh_variable *sh_variable);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 21:15:15 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/24 13:39:53 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,26 @@
 int	g_status;
 
 int		main(int argc, char *args[], char **environment);
-void	reader_loop(char **environ);
+void	reader_loop(t_sh_variable *sh_variable);
 
 int	main(int argc, char *args[], char **environment)
 {
+	t_sh_variable	sh_variable;
+	
 	(void)argc;
 	(void)args;
-	
 	initialize();
-	reader_loop(environment);
+	init_sh_variable(&sh_variable);
+	sh_variable.mwd = getcwd(0, 0);
+	sh_variable.environment = create_environmet_variable(environment);
+	reader_loop(&sh_variable);
 	return (0);
 }
 
-void	reader_loop(char **initial_environ)
+void	reader_loop(t_sh_variable *sh_variable)
 {
 	char	*str;
 	t_command	*command;
-	t_environment *environ;
-
-	environ = create_environmet_variable(initial_environ);
 
 	while (1)
 	{
@@ -56,8 +57,8 @@ void	reader_loop(char **initial_environ)
 		}
 		add_history(str);
 		// parse
-		command = parse(str);
-		execute_command(command, environ);
+		command = parse(str, sh_variable);
+		execute_command(command, sh_variable->environment);
 		free(str);
 		if (command)
 			free_command(command);
