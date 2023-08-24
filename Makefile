@@ -18,6 +18,7 @@ SRCS_DIR =		initialize/ \
 				parse/env_replacer/ \
 				parse/tokenize/ \
 				parse/lex/ \
+				parse/standardize/ \
 				parse/syntex_check/ \
 				execute/ \
 				expand/ \
@@ -62,6 +63,9 @@ CFILES =		main.c \
 				parse/lex/lex.c \
 				parse/lex/lex_node.c \
 				parse/lex/lex_list.c \
+				parse/standardize/standardize.c \
+				parse/standardize/syntex_check.c \
+				parse/standardize/standardize.c \
 				parse/syntex_check/syntex_check.c \
 				expand/expand_heredoc.c \
 				expand/expand.c \
@@ -70,7 +74,6 @@ CFILES =		main.c \
 				expand/word_desc_split.c \
 				expand/remove_quote_nulls.c \
 				heredoc/heredoc.c \
-				heredoc/do_here_doc.c \
 				\
 				command/command.c \
 				command/simple_com.c \
@@ -94,7 +97,6 @@ CFILES =		main.c \
 				builtin/ft_export.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c \
-				here_doc/do_here_doc.c \
 				error.c
 
 CFILES :=		$(addprefix $(SRCS_RT_DIR), $(CFILES))

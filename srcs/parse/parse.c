@@ -6,13 +6,13 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 16:06:45 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:35:50 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse/parser.h"
-#include "parse/syntex.h"
-#include "heredoc.h"
+#include "parse/lex.h"
+#include "parse/standardize.h"
 #include "utils.h"
 
 t_command			*parse(char *str, t_sh_variable *sh_variable);
@@ -29,9 +29,7 @@ t_command	*parse(char *str, t_sh_variable *sh_variable)
 
 	command = 0;
 	lex_list = lex(str);
-	// prepare before parse : syntex_check and make heredoc file(get contents too)
-	expand_heredoc(lex_list, sh_variable);
-	if (syntex_check(lex_list) == true)
+	if(standardize(lex_list, sh_variable) == 0)
 		command = parse_lex_list(lex_list);
 	free_lex_list(lex_list);
 	return (command);

@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:35:16 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/23 18:37:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:55:44 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void	clear_sh_variable(t_sh_variable *sh_variable)
 		free(sh_variable->environment);
 	if (sh_variable->mwd)
 		free(sh_variable->mwd);
+	if (sh_variable->wtd)
+		free(sh_variable->wtd);
 }
