@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:10:49 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 18:43:35 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/24 15:07:43 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
+#include "error.h"
 
 #include "libft.h"
 

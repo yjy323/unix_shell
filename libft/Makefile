@@ -29,7 +29,6 @@ FILES =		ft_isalpha \
 			ft_calloc \
 			ft_atoi \
 			ft_strmapi \
-			ft_strtrim \
 			ft_split \
 			ft_itoa \
 			ft_striteri \

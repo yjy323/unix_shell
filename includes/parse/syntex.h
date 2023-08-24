@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   syntex.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 14:16:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 15:52:26 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/24 15:58:22 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/24 16:03:12 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#ifndef SYNTEX_H
+# define SYNTEX_H
 
-# include "variables.h"
-# include "parse/lex.h"
+# include <stdbool.h>
+# include "parse/lex_list.h"
 
-void	do_here_doc(char *filename, char *limiter, t_environment *environ);
-void	expand_heredoc(t_lex_list *list, t_sh_variable *sh_variable);
+bool		syntex_check(t_lex_list *lex_list);
 
 #endif

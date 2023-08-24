@@ -6,14 +6,15 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 13:24:23 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 13:54:17 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:53:12 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
-#include "parser/lex.h"
+#include "parse/lex.h"
 #include "variables.h"
 #include "libft.h"
+#include "utils.h"
 
 void	expand_heredoc(t_lex_list *list, t_sh_variable *sh_variable)
 {

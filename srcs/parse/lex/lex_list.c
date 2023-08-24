@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser/lex.h"
+#include <stdlib.h>
+#include "parse/lex_list.h"
+#include "utils.h"
 
 void		init_lex_list(t_lex_list *lex_list);
 t_lex_list	*get_lex_list(void);

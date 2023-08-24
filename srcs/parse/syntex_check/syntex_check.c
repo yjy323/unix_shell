@@ -6,12 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 15:22:45 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 16:09:36 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:53:08 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include "parser/lex.h"
+#include "parse/lex.h"
+#include "error.h"
+#include "utils.h"
 
 bool		syntex_check(t_lex_list *lex_list);
 static bool	redirect_syntex_check(t_lex_list *lex_list);

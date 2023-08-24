@@ -6,11 +6,15 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:23:54 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:49:49 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:10:02 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 #include "command.h"
+#include "error.h"
+#include "utils.h"
 
 void			init_simple_com(t_simple_com *simple_com);
 t_simple_com	*get_simple_com(void);

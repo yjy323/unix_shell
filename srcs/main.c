@@ -6,9 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 14:59:49 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:10:16 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 #include <stdio.h>
 #include <readline/readline.h>

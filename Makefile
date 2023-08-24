@@ -14,11 +14,11 @@ BUILD_LIBFT = make -C libft $@
 SRCS_RT_DIR =	srcs/
 
 SRCS_DIR =		initialize/ \
-				parser/ \
-				parser/env_replacer/ \
-				parser/tokenizer/ \
-				parser/lexer/ \
-				parser/syntex_check/ \
+				parse/ \
+				parse/env_replacer/ \
+				parse/tokenize/ \
+				parse/lex/ \
+				parse/syntex_check/ \
 				execute/ \
 				expand/ \
 				execute/ \
@@ -56,13 +56,13 @@ CFILES =		main.c \
 				variables/create_environmet_variable.c \
 				variables/valid_environment_variable.c \
 				\
-				parser/parse.c \
-				parser/tokenizer/tokenize.c \
-				parser/tokenizer/token_list.c \
-				parser/lexer/lex.c \
-				parser/lexer/lex_node.c \
-				parser/lexer/lex_list.c \
-				parser/syntex_check/syntex_check.c \
+				parse/parse.c \
+				parse/tokenize/tokenize.c \
+				parse/tokenize/token_list.c \
+				parse/lex/lex.c \
+				parse/lex/lex_node.c \
+				parse/lex/lex_list.c \
+				parse/syntex_check/syntex_check.c \
 				expand/expand_heredoc.c \
 				expand/expand.c \
 				expand/expand_word.c \

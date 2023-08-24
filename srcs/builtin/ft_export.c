@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 16:44:23 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/24 15:07:49 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "hashlib.h"
 #include "variables.h"
 #include "libft.h"
+#include "utils.h"
 
 int			ft_export(t_word_list *list, t_environment *environ);
 static int	ft_export_without_args(t_hash_table *table);

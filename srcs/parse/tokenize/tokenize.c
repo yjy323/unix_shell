@@ -6,13 +6,13 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:30:49 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 20:50:50 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:52:32 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser/tokenize.h"
-#include "command.h"
+#include "parse/token_list.h"
 #include "libft.h"
+#include "utils.h"
 
 t_token_list	*tokenize(char *str);
 static size_t	add_oper_to_token_list(t_token_list **new_token, char *str);

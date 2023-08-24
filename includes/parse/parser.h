@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 14:16:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 15:52:26 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/24 16:01:37 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/24 16:02:13 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# include "variables.h"
-# include "parse/lex.h"
+# include "command.h"
 
-void	do_here_doc(char *filename, char *limiter, t_environment *environ);
-void	expand_heredoc(t_lex_list *list, t_sh_variable *sh_variable);
+typedef struct s_parser {
+	t_command	*root;
+	t_command	*cur_command;
+}t_parser;
 
 #endif

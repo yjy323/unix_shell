@@ -6,13 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:20:39 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 03:10:25 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:52:48 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser/tokenize.h"
-#include "parser/lex.h"
+#include "parse/tokenize.h"
+#include "parse/lex_list.h"
 #include "libft.h"
+#include "utils.h"
 
 t_lex_list				*lex(char *str);
 static t_lex_list		*lex_token_list(t_token_list *token_list);

@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:29:40 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 14:26:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:52:07 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "command.h"
 # include "variables.h"
 # include "initialize.h"
-# include "parser/parse.h"
+# include "parse/parse.h"
 
 # define SH_NAME "minishell"
 

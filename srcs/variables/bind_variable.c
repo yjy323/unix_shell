@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   bind_variable.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:22:00 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/21 22:51:24 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/24 15:05:55 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "variables.h"
 #include "hashlib.h"
 #include "libft.h"
+#include "utils.h"
 
 t_variable			*bind_variable(char *name, char *value, t_hash_table *table, int flag);
 static t_variable	*hash_lookup(char *key, t_hash_table *table);
