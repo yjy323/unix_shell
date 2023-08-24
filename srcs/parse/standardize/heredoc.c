@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 18:03:43 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:15:35 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ static void	do_heredoc(char *filename, char *limiter, t_environment *environ)
 	while (1)
 	{
 		line = readline("> ");
+		if (rl_eof_found)
+			exit(1);
 		if (ft_strlen(line) == ft_strlen(limiter)
 			&& !ft_strncmp(line, limiter, ft_strlen(line)))
 			break ;
