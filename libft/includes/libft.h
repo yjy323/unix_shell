@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juyyang <juyyang@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:56:52 by juyyang           #+#    #+#             */
-/*   Updated: 2023/08/24 18:02:30 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:04:34 by juyyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_isprint(int ch);
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
 int		ft_atoi(const char *str);
+char	*ft_itoa(int n);
 
 void	*ft_memset(void *ptr, int value, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -45,7 +46,11 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+char	*ft_strtrim(const char *s1, const char *set);
 char	**ft_split(const char *s, char c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
