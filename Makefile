@@ -34,6 +34,7 @@ CFILES =		main.c \
 				initialize/initialize.c \
 				initialize/signal.c \
 				initialize/shtty.c \
+				initialize/shell.c \
 				hash/hash_create.c \
 				hash/hash_dispose.c \
 				hash/hash_shouldgrow.c \

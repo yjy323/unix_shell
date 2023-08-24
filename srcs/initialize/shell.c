@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.h                                       :+:      :+:    :+:   */
+/*   shell.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 19:49:21 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 14:57:39 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/24 14:32:09 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/24 14:57:14 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITIALIZE_H
-# define INITIALIZE_H
+#include "variables.h"
 
-# include "variables.h"
-
-void	initialize(t_sh_variable *sh_variable, char **environment);
-void	initialize_shell_signals(int process_level);
-void	set_tty(void);
-void	set_sh_variable(t_sh_variable *sh_variable, char **environment);
-
-#endif
+void	set_sh_variable(t_sh_variable *sh_variable, char **environment)
+{
+	init_sh_variable(sh_variable);
+	sh_variable->mwd = getcwd(0, 0);
+	sh_variable->environment = create_environmet_variable(environment);
+}

@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:11:06 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 13:42:20 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:18:56 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	do_here_doc(char *filename, char *limiter, t_environment *environ)
 		if (ft_strlen(line) == ft_strlen(limiter)
 			&& !ft_strncmp(line, limiter, ft_strlen(line)))
 			break ;
-		// line = expand(line) & free(old_line)
 		oline = line;
 		line = expand_for_heredoc(line, environ);
 		free(oline);
