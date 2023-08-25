@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:54:09 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:19:09 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:28:22 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	expand_question(t_expander *epd)
 {
 	char	*str_exit_num;
 
-	str_exit_num = ft_xstrdup("[exit code]");
 	str_exit_num = ft_xitoa(g_sh_variable.status);
 	add_expander_str(epd, str_exit_num);
 	epd->pstr = epd->pstr + 2;
