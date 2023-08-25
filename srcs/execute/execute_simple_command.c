@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:09:08 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:02:00 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@
 
 int					execute_simple_command(t_command *command, char *curr_cmd, int pipe_in_fd, int pipe_out_fd);
 static int			save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd);
-static t_word_list	*update_expanded_words(t_word_list *words, t_environment *environ);
+static t_word_list	*update_expanded_words(t_word_list *words);
 
 int	execute_simple_command(t_command *command, char *curr_cmd, int pipe_in_fd, int pipe_out_fd)
 {
 	int	save_stdin_fd;
 	int	save_stdout_fd;
 
-	command->simple->words = update_expanded_words(command->simple->words, g_sh_variable.environment);
+	command->simple->words = update_expanded_words(command->simple->words);
 	if (do_pipe_redirect(curr_cmd, &pipe_in_fd, &pipe_out_fd)
 		|| save_standard_fd(curr_cmd, &save_stdin_fd, &save_stdout_fd)
 		|| do_redirect(curr_cmd, command->simple->redirects))
@@ -57,12 +57,11 @@ static int	save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_st
 	return (SUCCESS);
 }
 
-static t_word_list	*update_expanded_words(t_word_list *words,
-				t_environment *environ)
+static t_word_list	*update_expanded_words(t_word_list *words)
 {
 	t_word_list	*expanded_words;
 
-	expanded_words = expand_words(environ, words);
+	expanded_words = expand_words(words);
 	free_word_list(words);
 	return (expanded_words);
 }

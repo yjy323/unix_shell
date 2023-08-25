@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 18:23:53 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:00:08 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	do_heredoc(char *filename, char *limiter)
 			&& !ft_strncmp(line, limiter, ft_strlen(line)))
 			break ;
 		oline = line;
-		line = expand_for_heredoc(line, g_sh_variable.environment);
+		line = expand_for_heredoc(line);
 		free(oline);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);

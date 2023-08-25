@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 23:45:31 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 16:32:02 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 19:59:13 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "hashlib.h"
 #include "variables.h"
 
-char	*expand_for_heredoc(char *str, t_environment *environ)
+char	*expand_for_heredoc(char *str)
 {
 	t_expander	epd;
 
@@ -25,7 +25,7 @@ char	*expand_for_heredoc(char *str, t_environment *environ)
 	while (*epd.pstr)
 	{
 		if (*epd.pstr == '$' && !epd.isin_singlequote)
-			expand_hashdollor(environ, &epd);
+			expand_hashdollor(&epd);
 		else
 		{
 			add_expander_c(&epd, *epd.pstr);
