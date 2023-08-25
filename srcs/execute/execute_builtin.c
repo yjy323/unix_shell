@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:42:09 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 04:19:24 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 15:36:50 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "status.h"
 
 #include "libft.h"
-
-extern int	g_status;
 
 int	execute_buitin(t_word_list *words, t_environment *environ);
 

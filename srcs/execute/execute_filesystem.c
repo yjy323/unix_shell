@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 15:27:32 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:06:28 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 #include "libft.h"
 #include "utils.h"
-
-extern int	g_status;
 
 int			execute_filesystem(t_word_list *words, t_environment *environ);
 static void	execute_filesystem_internal(t_word_list *words,

@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:01:20 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:45:54 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:58:02 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 int	g_status;
 
-# define SYNTEX_ERROR 1
-# define SYNTEX_ERROR_MESSAGE "syntax error near unexpected token"
-# define SYNTEX_ERROR_FORMAT "%s: %s `%s'\n"
 # define EOPTION 255
 
 # define SUCCESS 0
@@ -26,6 +23,7 @@ int	g_status;
 # define ENOPERM 126
 # define ENOCOMD 127
 # define ESIGNAL 128
+# define ESYNTEX 258
 
 # define MNOPERM ""
 # define MNOCOMD ""
