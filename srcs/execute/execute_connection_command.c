@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:12:59 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 17:12:25 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 17:55:20 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
+#include "initialize.h"
 #include "execute.h"
 #include "command.h"
 #include "hashlib.h"
@@ -68,6 +69,7 @@ static int	execute_subprocess(t_command *command, char *curr_cmd, int *io_fd, in
 	pid = fork();
 	if (pid == 0)
 	{
+		initialize_shell_signals(1);
 		if (unused_fd != -1 && close(unused_fd) == -1)
 			exception_handler_sub_ps(EGENRAL, curr_cmd);
 		status = execute_command_internal(command, io_fd[0], io_fd[1]);
