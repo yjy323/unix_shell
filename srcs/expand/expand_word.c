@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 16:32:43 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 19:59:50 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@
 #include "variables.h"
 #include "libft.h"
 
-void		expand_word(t_environment *environ, t_word_desc *word);
-static char	*expand_str(t_environment *environ, char *str);
+void		expand_word(t_word_desc *word);
+static char	*expand_str(char *str);
 
-void	expand_word(t_environment *environ, t_word_desc *word)
+void	expand_word(t_word_desc *word)
 {
 	char	*new_str;
 
-	new_str = expand_str(environ, word->word);
+	new_str = expand_str(word->word);
 	word->flag = (word->flag) ^ W_HASDOLLAR;
 	free(word->word);
 	word->word = new_str;
 }
 
-static char	*expand_str(t_environment *environ, char *str)
+static char	*expand_str(char *str)
 {
 	t_expander	epd;
 
@@ -39,7 +39,7 @@ static char	*expand_str(t_environment *environ, char *str)
 	while (*epd.pstr)
 	{
 		if (*epd.pstr == '$' && !epd.isin_singlequote)
-			expand_hashdollor(environ, &epd);
+			expand_hashdollor(&epd);
 		else
 		{
 			if (*epd.pstr == '\'' \

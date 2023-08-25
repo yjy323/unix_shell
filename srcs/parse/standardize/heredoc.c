@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:49:41 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 21:24:09 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	*get_heredoc_name(int heredoc_num)
 	char	*str_num;
 
 	str_num = ft_xitoa(heredoc_num);
-	res = ft_xstrjoin(g_sh_variable.wtd, str_num);
+	res = ft_xstrjoin(g_sh_variable.temp_dir_path, str_num);
 	free(str_num);
 	return (res);
 }
@@ -85,7 +85,7 @@ static void	do_heredoc(char *filename, char *limiter)
 			&& !ft_strncmp(line, limiter, ft_strlen(line)))
 			break ;
 		oline = line;
-		line = expand_for_heredoc(line, g_sh_variable.environment);
+		line = expand_for_heredoc(line);
 		free(oline);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);

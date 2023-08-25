@@ -34,6 +34,7 @@ SRCS_DIR =		initialize/ \
 CFILES =		main.c \
 				initialize/initialize.c \
 				initialize/signal.c \
+				initialize/signal_handler.c \
 				initialize/shtty.c \
 				initialize/shell.c \
 				hash/hash_create.c \

@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 23:16:01 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 18:22:46 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:02:07 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
+#include "initialize.h"
+
 void		initialize_shell_signals(int process_level);
 static void	initialize_shell_signals_rl(void);
 static void	initialize_shell_signals_root(void);
 static void	initialize_shell_signals_child(void);
 static void	*set_signal_handler(int sig, void (*handler)(int signo));
-static void	sigint_sighandler(int signo);
 
 void	initialize_shell_signals(int process_level)
 {
@@ -62,13 +63,4 @@ static void	*set_signal_handler(int sig, void (*handler)(int signo))
 		return (oact.sa_handler);
 	else
 		return (SIG_DFL);
-}
-
-static void	sigint_sighandler(int signo)
-{
-	(void)signo;
-	printf("\n");
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
 }
