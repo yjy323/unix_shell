@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:45:44 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 14:13:39 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char *args[], char **environment)
 	(void)args;
 	initialize(&sh_variable, environment);
 	reader_loop(&sh_variable);
+	clear_sh_variable(&sh_variable);
 	return (0);
 }
 
