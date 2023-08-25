@@ -69,7 +69,8 @@ CFILES =		main.c \
 				parse/standardize/standardize.c \
 				parse/syntex_check/syntex_check.c \
 				expand/expand_heredoc.c \
-				expand/expand.c \
+				expand/expand_words.c \
+				expand/exapnd_hashdollor.c \
 				expand/expand_word.c \
 				expand/expander.c \
 				expand/word_desc_split.c \
