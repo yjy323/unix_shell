@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntex_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:38:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 15:57:35 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:48:31 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	redirect_syntex_check(t_lex_list *cur)
 	if (!cur->next
 		|| !(cur->next->data->type == cm_simple))
 	{
-		exception_handler(EGENRAL, "newline");
+		exception_handler(ESYNTEX, 0, 0, "`newline'");
 		return (-1);
 	}
 	return (0);
@@ -49,7 +49,7 @@ static int	connection_syntex_check(t_lex_list *pre)
 		|| !(pre->next->next)
 		|| (pre->next->next->data->type == cm_connection))
 	{
-		exception_handler(EGENRAL, "|");
+		exception_handler(ESYNTEX, 0, 0, "`|'");
 		return (-1);
 	}
 	return (0);

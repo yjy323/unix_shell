@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:52:37 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 19:51:02 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,14 @@ static int	set_oldpwd(t_environment *environ)
 	}
 	else
 	{
-		hash_remove("OLDPWD", environ->env_table);
+		bucket = hash_remove("OLDPWD", environ->env_table);
 		remove_export_env("OLDPWD", environ->env_array);
+		if (bucket)
+		{
+			if (bucket->key)
+				free(bucket->key);
+			free(bucket);
+		}
 	}
 	return (0);
 }

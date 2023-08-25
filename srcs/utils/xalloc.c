@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xalloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 02:01:11 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 15:45:30 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:49:33 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*xmalloc(size_t bytes)
 
 	temp = malloc(bytes);
 	if (temp == 0)
-		crash(EGENRAL, "xmalloc()");
+		crash(EGENRAL, "xalloc()", 0, 0);
 	return (temp);
 }
 

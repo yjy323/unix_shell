@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_filesystem.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:23:19 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:14:25 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 #include "libft.h"
 #include "utils.h"
 
-int	execute_filesystem(t_word_list *words);
-static void	execute_filesystem_internal(t_word_list *words,
+int	execute_filesystem(t_word_list *words, char *curr_cmd);
+static void	execute_filesystem_internal(t_word_list *words, char *curr_cmd,
 				t_environment *environ);
 static char	**make_argument(t_word_list *words);
 static char	*set_excutable_file(char *file, t_hash_table *table);
 static char	*search_excutable_file(char *file, char **path);
 
-int	execute_filesystem(t_word_list *words)
+int	execute_filesystem(t_word_list *words, char *curr_cmd)
 {
 	int			pid;
 	int			status;
@@ -41,9 +41,9 @@ int	execute_filesystem(t_word_list *words)
 	status = g_sh_variable.status;
 	pid = fork();
 	if (pid == -1)
-		return (exception_handler(EGENRAL, "fork()"));
+		return (exception_handler(EGENRAL, curr_cmd, 0, 0));
 	else if (pid == 0)
-		execute_filesystem_internal(words, g_sh_variable.environment);
+		execute_filesystem_internal(words, curr_cmd, g_sh_variable.environment);
 	else
 	{
 		waitpid(pid, &status, 0);
@@ -52,7 +52,7 @@ int	execute_filesystem(t_word_list *words)
 	return (status);
 }
 
-static void	execute_filesystem_internal(t_word_list *words,
+static void	execute_filesystem_internal(t_word_list *words, char *curr_cmd,
 				t_environment *environ)
 {
 	char	**argument;
@@ -64,11 +64,11 @@ static void	execute_filesystem_internal(t_word_list *words,
 	argument = make_argument(words);
 	executable_file = set_excutable_file(file, environ->env_table);
 	if (access(executable_file, F_OK) != 0)
-		exit (exception_handler(ENOCOMD, file));
-	else if (access(executable_file, F_OK) != 0)
-		exit (exception_handler(ENOPERM, file));
+		exception_handler_sub_ps(ENOCMD, curr_cmd, 0, MNOCMD);
+	else if (access(executable_file, X_OK) != 0)
+		exception_handler_sub_ps(ENOPERM, curr_cmd, 0, 0);
 	else if (execve(executable_file, argument, environ->env_array) == -1)
-		exit (exception_handler(EMISUSE, file));
+		exception_handler_sub_ps(EGENRAL, curr_cmd, 0, 0);
 }
 
 static char	**make_argument(t_word_list *words)
@@ -106,7 +106,10 @@ static char	*set_excutable_file(char *file, t_hash_table *table)
 		return (file);
 	path = ft_split(hash_search_variable_value("PATH", table), ':'); // seg check
 	executable_file = search_excutable_file(ft_xstrjoin("/", file), path);
-	return (executable_file);
+	if (!executable_file)
+		return (file);
+	else
+		return (executable_file);
 }
 
 static char	*search_excutable_file(char *file, char **path)

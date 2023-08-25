@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_connection_command.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:12:59 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:23:14 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:38:01 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 int			execute_connection_command(t_command *command, char *curr_cmd, int pre_in, int pre_out);
 static void	make_pram_pipe_fd(int *param_fd, int in_fd, int out_fd);
-static int	close_pipe_fd(int in_fd, int out_fd);
+static int	close_pipe_fd(char *curr_cmd, int in_fd, int out_fd);
 static int	execute_subprocess(t_command *command, char *curr_cmd, int *io_fd, int unused_fd);
 
 int			execute_connection_command(t_command *command, char *curr_cmd, int pre_in, int pre_out)
@@ -38,7 +38,7 @@ int			execute_connection_command(t_command *command, char *curr_cmd, int pre_in,
 
 	pipe(pipe_fd);
 	if (pipe_fd[0] == -1 || pipe_fd[1] == -1)
-		return (exception_handler(EGENRAL, "|"));
+		return (exception_handler(EGENRAL, curr_cmd, "|", 0));
 	make_pram_pipe_fd(io_fd, pre_in, pipe_fd[1]);
 	pids[0] = execute_subprocess(command->connection->first, curr_cmd, io_fd, pipe_fd[0]);
 	make_pram_pipe_fd(io_fd, pipe_fd[0], pre_out);
@@ -67,24 +67,26 @@ static int	execute_subprocess(t_command *command, char *curr_cmd, int *io_fd, in
 	int	status;
 
 	pid = fork();
-	if (pid == 0)
+	if (pid == -1)
+		return (exception_handler(EGENRAL, curr_cmd, 0, 0));
+	else if (pid == 0)
 	{
 		initialize_shell_signals(2);
 		if (unused_fd != -1 && close(unused_fd) == -1)
-			exception_handler_sub_ps(EGENRAL, curr_cmd);
+			return (exception_handler(EGENRAL, curr_cmd, 0, 0));
 		status = execute_command_internal(command, io_fd[0], io_fd[1]);
 		exit(status);
 	}
 	else
-		close_pipe_fd(io_fd[0], io_fd[1]);
+		close_pipe_fd(curr_cmd, io_fd[0], io_fd[1]);
 	return (pid);
 }
 
-static int	close_pipe_fd(int in_fd, int out_fd)
+static int	close_pipe_fd(char *curr_cmd, int in_fd, int out_fd)
 {
 	if (in_fd != -1 && close(in_fd) == -1)
-		return (exception_handler(EGENRAL, "|"));
+		return (exception_handler(EGENRAL, curr_cmd, 0, 0));
 	if (out_fd != -1 && close(out_fd) == -1)
-		return (exception_handler(EGENRAL, "|"));
+		return (exception_handler(EGENRAL, curr_cmd, 0, 0));
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:09:08 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:06:33 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,20 @@ int	execute_simple_command(t_command *command, char *curr_cmd, int pipe_in_fd, i
 {
 	int	save_stdin_fd;
 	int	save_stdout_fd;
+	int	status;
 
+	status = SUCCESS;
 	command->simple->words = update_expanded_words(command->simple->words, g_sh_variable.environment);
 	if (do_pipe_redirect(curr_cmd, &pipe_in_fd, &pipe_out_fd)
 		|| save_standard_fd(curr_cmd, &save_stdin_fd, &save_stdout_fd)
 		|| do_redirect(curr_cmd, command->simple->redirects))
-		return (1);
-	if (execute_buitin(command->simple->words) == ENOCOMD)
-		execute_filesystem(command->simple->words);
+		return (EGENRAL);
+	status = execute_buitin(command->simple->words);
+	if (status == ENOCMD)
+		status = execute_filesystem(command->simple->words, curr_cmd);
 	if (undo_redirect(curr_cmd, save_stdin_fd, save_stdout_fd))
-		return (1);
-	return (SUCCESS);
+		return (EGENRAL);
+	return (status);
 }
 
 static int	save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd)
@@ -53,7 +56,7 @@ static int	save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_st
 	*p_save_stdout_fd = dup(STDOUT_FILENO);
 	if (*p_save_stdin_fd == -1
 		|| *p_save_stdout_fd == -1)
-		return (exception_handler(EGENRAL, curr_cmd));
+		return (exception_handler(EGENRAL, curr_cmd, 0, 0));
 	return (SUCCESS);
 }
 

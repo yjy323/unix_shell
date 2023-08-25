@@ -6,11 +6,13 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:48:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 17:12:05 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 21:06:01 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+#include <stdlib.h>	
 
 #include "execute.h"
 #include "command.h"
@@ -28,7 +30,7 @@ int	execute_command(t_command *command)
 	execute_command_internal(command, -1, -1);
 	return (0);
 }
-
+#include <stdio.h>
 int	execute_command_internal(t_command *command, int pre_in, int pre_out)
 {
 	char	*curr_cmd;
@@ -41,7 +43,11 @@ int	execute_command_internal(t_command *command, int pre_in, int pre_out)
 	else if (command->type == cm_simple)
 	{
 		curr_cmd = get_curr_cmd(command->simple->words);
+		if (curr_cmd)
+			curr_cmd = ft_xstrdup(curr_cmd);
 		execute_simple_command(command, curr_cmd, pre_in, pre_out);
+		if (curr_cmd)
+			free(curr_cmd);
 	}
 	return (0);
 }
