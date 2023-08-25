@@ -6,9 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 17:09:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:09:03 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,14 +19,16 @@
 #include "hashlib.h"
 #include "variables.h"
 
-int	ft_unset(t_word_list *list, t_environment *environ);
+int	ft_unset(t_word_list *list);
 
-int	ft_unset(t_word_list *list, t_environment *environ)
+int	ft_unset(t_word_list *list)
 {
 	t_word_list			*iter;
 	char				*name;
 	t_bucket_contents	*bucket;
+	t_environment		*environ;
 
+	environ = g_sh_variable.environment;
 	iter = list;
 	while (iter)
 	{

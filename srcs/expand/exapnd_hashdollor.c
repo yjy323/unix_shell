@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exapnd_hashdollor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:54:09 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:57:36 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 17:29:51 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #include <stdbool.h>
 #include "command.h"
@@ -40,7 +42,7 @@ static void	expand_question(t_expander *epd)
 	char	*str_exit_num;
 
 	str_exit_num = ft_xstrdup("[exit code]");
-	str_exit_num = ft_xitoa(g_status);
+	str_exit_num = ft_xitoa(g_sh_variable.status);
 	add_expander_str(epd, str_exit_num);
 	epd->pstr = epd->pstr + 2;
 	free(str_exit_num);

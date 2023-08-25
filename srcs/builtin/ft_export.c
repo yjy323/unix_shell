@@ -6,9 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:49:59 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:09:00 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #include <stdio.h>
 
@@ -18,7 +20,7 @@
 #include "libft.h"
 #include "utils.h"
 
-int			ft_export(t_word_list *list, t_environment *environ);
+int			ft_export(t_word_list *list);
 static int	ft_export_without_args(t_hash_table *table);
 static int	ft_export_word(char *word, t_environment *environ);
 static int	ft_export_word_appned(char *name,
@@ -26,10 +28,12 @@ static int	ft_export_word_appned(char *name,
 static char	*get_variable(char *word,
 				char **p_name, char **p_value, int *exp_append);
 
-int	ft_export(t_word_list *list, t_environment *environ)
+int	ft_export(t_word_list *list)
 {
-	int	status;
+	int				status;
+	t_environment	*environ;
 
+	environ = g_sh_variable.environment;
 	status = 0;
 	if (list)
 	{
