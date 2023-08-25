@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exapnd_hashdollor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:54:09 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 17:29:51 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 20:19:09 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 #include "status.h"
 #include "libft.h"
 
-void		expand_hashdollor(t_environment *environ, t_expander *epd);
+void		expand_hashdollor(t_expander *epd);
 static void	expand_question(t_expander *epd);
-static void	expand_env(t_environment *environ, t_expander *epd);
+static void	expand_env(t_expander *epd, t_environment *environ);
 
-void	expand_hashdollor(t_environment *environ, t_expander *epd)
+void	expand_hashdollor(t_expander *epd)
 {
 	if (ft_strncmp(epd->pstr, "$?", 2) == 0)
 		expand_question(epd);
@@ -34,7 +34,7 @@ void	expand_hashdollor(t_environment *environ, t_expander *epd)
 		epd->pstr++;
 	}
 	else
-		expand_env(environ, epd);
+		expand_env(epd, g_sh_variable.environment);
 }
 
 static void	expand_question(t_expander *epd)
@@ -48,7 +48,7 @@ static void	expand_question(t_expander *epd)
 	free(str_exit_num);
 }
 
-static void	expand_env(t_environment *environ, t_expander *epd)
+static void	expand_env(t_expander *epd, t_environment *environ)
 {
 	char				*env_key;
 	char				*skey;

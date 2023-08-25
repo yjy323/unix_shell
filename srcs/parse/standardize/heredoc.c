@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:00:08 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:07:30 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	*get_heredoc_name(int heredoc_num)
 	char	*str_num;
 
 	str_num = ft_xitoa(heredoc_num);
-	res = ft_xstrjoin(g_sh_variable.wtd, str_num);
+	res = ft_xstrjoin(g_sh_variable.temp_dir_path, str_num);
 	free(str_num);
 	return (res);
 }

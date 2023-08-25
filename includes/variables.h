@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 04:17:03 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:10:13 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:05:42 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ typedef struct s_variable		t_variable;
 typedef struct s_environment	t_environment;
 
 typedef struct s_sh_variable {
-	char			*mwd; // delete
-	char			*wtd; // temp_dir_path;
+	char			*temp_dir_path;
 	int				status;
 	t_environment	*environment;
 }t_sh_variable;
