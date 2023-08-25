@@ -6,9 +6,11 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 15:15:27 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:52:37 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,21 +19,21 @@
 #include "hashlib.h"
 #include "variables.h"
 
-int			ft_cd(t_word_list *list, t_environment *environ);
+int			ft_cd(t_word_list *list);
 static int	set_pwd(t_environment *environ);
 static int	set_oldpwd(t_environment *environ);
 
-int	ft_cd(t_word_list *list, t_environment *environ)
+int	ft_cd(t_word_list *list)
 {
 	char	*dir_name;
 
 	if (list)
 		dir_name = list->word->word;
 	else
-		dir_name = hash_search_variable_value("HOME", environ->env_table);
+		dir_name = hash_search_variable_value("HOME", g_sh_variable.environment->env_table);
 	chdir(dir_name);
-	set_oldpwd(environ);
-	set_pwd(environ);
+	set_oldpwd(g_sh_variable.environment);
+	set_pwd(g_sh_variable.environment);
 	return (0);
 }
 

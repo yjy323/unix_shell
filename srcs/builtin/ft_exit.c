@@ -6,9 +6,11 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:38:32 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 15:03:09 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:53:22 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -16,11 +18,14 @@
 #include "command.h"
 #include "libft.h"
 
-int			ft_exit(t_word_list *list, int status);
+int			ft_exit(t_word_list *list);
 static bool	valid_argument(char *word);
 
-int	ft_exit(t_word_list *list, int status)
+int	ft_exit(t_word_list *list)
 {
+	int	status;
+
+	status = g_sh_variable.status;
 	if (!list)
 		exit(status);
 	else

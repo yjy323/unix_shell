@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   do_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:10:49 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:14:04 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 17:13:49 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 #include <fcntl.h>
 #include <unistd.h>
@@ -21,12 +23,12 @@
 
 #include "libft.h"
 
-int			do_redirect(t_redirect_list *redirects);
+int			do_redirect(char *curr_cmd, t_redirect_list *redirects);
 static int	do_redirect_stdin(char *file);
 static int	do_redirect_stdout(char *file);
 static int	do_redirect_stdout_append(char *file);
 
-int	do_redirect(t_redirect_list *redirects)
+int	do_redirect(char *curr_cmd, t_redirect_list *redirects)
 {
 	t_redirect_list	*iter;
 	char			*operator;
@@ -55,6 +57,8 @@ int	do_redirect(t_redirect_list *redirects)
 		}
 		iter = iter->next;
 	}
+	if (status != 0)
+		return (exception_handler(status, curr_cmd));
 	return (status);
 }
 
@@ -64,9 +68,9 @@ static int	do_redirect_stdin(char *file)
 
 	fd = open(file, O_RDONLY, 0644);
 	if (fd == -1)
-		return (exception_handler(EGENRAL, file));
+		return (EGENRAL);
 	if (dup2(fd, STDIN_FILENO) == -1)
-		return (exception_handler(EGENRAL, file));
+		return (EGENRAL);
 	return (SUCCESS);
 }
 
@@ -76,9 +80,9 @@ static int	do_redirect_stdout(char *file)
 
 	fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		return (exception_handler(EGENRAL, file));
+		return (EGENRAL);
 	if (dup2(fd, STDOUT_FILENO) == -1)
-		return (exception_handler(EGENRAL, file));
+		return (EGENRAL);
 	return (SUCCESS);
 }
 
@@ -88,8 +92,8 @@ static int	do_redirect_stdout_append(char *file)
 
 	fd = open(file, O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
-		return (exception_handler(EGENRAL, file));
+		return (EGENRAL);
 	if (dup2(fd, STDOUT_FILENO) == -1)
-		return (exception_handler(EGENRAL, file));
+		return (EGENRAL);
 	return (SUCCESS);
 }

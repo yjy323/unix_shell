@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_environmet_variable.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:25:41 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:15:36 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static void	create_environmet_variable_contents(char **initial_environ,
 		value = get_value(initial_environ[i]);
 		bind_variable(name, value, env->env_table, V_CREATE);
 		env->env_array[i] = ft_xstrdup(initial_environ[i]);
+		free(name);
+		free(value);
 		i++;
 	}
 	return ;
