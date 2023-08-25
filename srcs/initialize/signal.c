@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 23:16:01 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/21 19:50:12 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:21:50 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,29 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
-void		initialize_shell_signals(void);
+void		initialize_shell_signals(int process_level);
+static void	initialize_shell_signals_root(void);
+static void	initialize_shell_signals_child(void);
 static void	*set_signal_handler(int sig, void (*handler)(int signo));
 static void	sigint_sighandler(int signo);
 
-void	initialize_shell_signals(void)
+void	initialize_shell_signals(int process_level)
+{
+	if (process_level == 0)
+		initialize_shell_signals_root();
+	else
+		initialize_shell_signals_child();
+}
+
+static void	initialize_shell_signals_root(void)
 {
 	set_signal_handler(SIGINT, sigint_sighandler);
+	set_signal_handler(SIGQUIT, SIG_IGN);
+}
+
+static void	initialize_shell_signals_child(void)
+{
+	set_signal_handler(SIGINT, SIG_DFL);
 	set_signal_handler(SIGQUIT, SIG_IGN);
 }
 

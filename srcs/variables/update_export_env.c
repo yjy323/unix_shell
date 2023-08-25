@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_export_env.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:03:26 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 15:09:19 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 13:27:51 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "hashlib.h"
 #include "variables.h"
+#include "utils.h"
 #include "libft.h"
 
 char		**update_export_env(char *name,
@@ -76,7 +77,7 @@ static char	*make_export_env(char *name, char *value)
 
 	idx = 0;
 	new_len = ft_strlen(name) + ft_strlen(value) + 1;
-	new_env = (char *)malloc(sizeof(char) * (new_len + 1));
+	new_env = (char *)xmalloc(sizeof(char) * (new_len + 1));
 	new_env[new_len] = 0;
 	while (*name)
 	{
@@ -94,7 +95,7 @@ static char	**resize_export_env(t_environment *environ)
 	size_t	idx;
 
 	environ->array_size += 16;
-	new_export_env = (char **)malloc(
+	new_export_env = (char **)xmalloc(
 			sizeof(char *) * (environ->array_size + 1));
 	idx = 0;
 	while (environ->env_array[idx])

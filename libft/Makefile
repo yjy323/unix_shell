@@ -20,6 +20,7 @@ FILES =		ft_isalpha \
 			ft_strnstr \
 			ft_strchr \
 			ft_strrchr \
+			ft_strdup \
 			ft_memset \
 			ft_memcpy \
 			ft_memmove \
@@ -28,6 +29,8 @@ FILES =		ft_isalpha \
 			ft_bzero \
 			ft_calloc \
 			ft_atoi \
+			ft_substr \
+			ft_strjoin \
 			ft_strmapi \
 			ft_strtrim \
 			ft_split \

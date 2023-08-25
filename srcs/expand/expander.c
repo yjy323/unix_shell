@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:02:58 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/15 17:18:58 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:56:45 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_expander(t_expander *epd, char *istr)
 {
 	epd->istr = istr;
 	epd->pstr = istr;
-	epd->ostr = ft_strdup("");
+	epd->ostr = ft_xstrdup("");
 	ft_memset(&epd->buffer, 0, DEBS);
 	epd->buffer_idx = 0;
 	epd->isin_singlequote = false;
@@ -46,7 +46,7 @@ void	clear_expander_buffer(t_expander *epd)
 	char	*tmp_str;
 
 	tmp_str = epd->ostr;
-	epd->ostr = ft_strjoin(epd->ostr, epd->buffer);
+	epd->ostr = ft_xstrjoin(epd->ostr, epd->buffer);
 	free(tmp_str);
 	ft_memset(&epd->buffer, 0, DEBS);
 	epd->buffer_idx = 0;

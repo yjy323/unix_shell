@@ -6,27 +6,30 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 16:12:20 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:44:44 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser/parse.h"
+#include "parse/parser.h"
+#include "parse/lex.h"
+#include "parse/standardize.h"
+#include "utils.h"
 
-t_command			*parse(char *str);
+t_command			*parse(char *str, t_sh_variable *sh_variable);
 static t_command	*parse_lex_list(t_lex_list *lex_list);
 static void			parse_redirect(t_parser *parser, \
 									char *word, char *filename);
 static void			parse_connection(t_parser *parser, char *word);
 static void			parse_simple(t_parser *parser, t_lex_node *lex_data);
 
-t_command	*parse(char *str)
+t_command	*parse(char *str, t_sh_variable *sh_variable)
 {
 	t_lex_list	*lex_list;
 	t_command	*command;
 
 	command = 0;
 	lex_list = lex(str);
-	if (syntex_check(lex_list) == true)
+	if (standardize(lex_list, sh_variable) == 0)
 		command = parse_lex_list(lex_list);
 	free_lex_list(lex_list);
 	return (command);
@@ -71,8 +74,8 @@ static void	parse_redirect(t_parser *parser, char *word, char *filename)
 		parser->cur_command = parser->root;
 	}
 	redirect = get_redirect();
-	redirect->word = ft_strdup(word);
-	redirect->filename = ft_strdup(filename);
+	redirect->word = ft_xstrdup(word);
+	redirect->filename = ft_xstrdup(filename);
 	push_redirect_list(&parser->cur_command->simple->redirects, redirect);
 }
 
@@ -84,7 +87,7 @@ static void	parse_connection(t_parser *parser, char *word)
 	command->simple = get_simple_com();
 	command->type = cm_connection;
 	command->connection = get_connection();
-	command->connection->word = ft_strdup(word);
+	command->connection->word = ft_xstrdup(word);
 	command->connection->first = parser->root;
 	command->connection->second = get_command();
 	command->connection->second->simple = get_simple_com();
@@ -108,6 +111,6 @@ static void	parse_simple(t_parser *parser, t_lex_node *lex_data)
 	command = parser->cur_command;
 	word_desc = get_word_desc();
 	word_desc->flag = lex_data->flag;
-	word_desc->word = ft_strdup(lex_data->word);
+	word_desc->word = ft_xstrdup(lex_data->word);
 	push_word_list(&command->simple->words, word_desc);
 }

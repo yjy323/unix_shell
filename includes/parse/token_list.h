@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   token_list.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 19:14:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:13:00 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/24 15:18:18 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/25 13:42:11 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef TOKEN_LIST_H
+# define TOKEN_LIST_H
 
-# include <unistd.h>
+typedef struct s_token_list {
+	char				*word;
+	struct s_token_list	*next;
+}t_token_list;
 
-void	*xmalloc(size_t bytes);
-void	*xrealloc(void *ptr, size_t bytes);
-char	*ft_xstrdup(const char *s1);
-char	*ft_xsubstr(const char *s, unsigned int start, size_t len);
-char	*ft_xstrjoin(const char *s1, const char *s2);
-char	*ft_xitoa(int n);
+void			init_token_list(t_token_list *token_list);
+t_token_list	*get_token_list(void);
+void			free_token_list(t_token_list *token_list);
+void			push_token_list(t_token_list **token_list, char	*word);
+char			*pop_token_list(t_token_list **token_list);
 
 #endif

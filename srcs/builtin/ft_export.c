@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 19:05:23 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 13:28:04 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "hashlib.h"
 #include "variables.h"
 #include "libft.h"
+#include "utils.h"
 
 int			ft_export(t_word_list *list, t_environment *environ);
 static int	ft_export_without_args(t_hash_table *table);
@@ -82,7 +83,7 @@ static int	ft_export_word(char *word, t_environment *environ)
 	name = 0;
 	value = 0;
 	if (get_variable(word, &name, &value, &exp_append) == 0)
-		name = ft_strdup(word);
+		name = ft_xstrdup(word);
 	if (exp_append)
 		ft_export_word_appned(name, value, environ);
 	else
@@ -107,9 +108,9 @@ static int	ft_export_word_appned(char *name,
 	{
 		entry = (t_variable *)bucket->data;
 		if (entry && entry->value)
-			value = ft_strjoin(entry->value, value);
+			value = ft_xstrjoin(entry->value, value);
 		else
-			value = ft_strdup(value);
+			value = ft_xstrdup(value);
 		free(temp);
 	}
 	if (value)
@@ -129,16 +130,16 @@ static char	*get_variable(char *word,
 		if (word[idx] == '=')
 		{
 			word[idx] = 0;
-			*p_name = ft_strdup(word);
-			*p_value = ft_strdup(word + idx + 1);
+			*p_name = ft_xstrdup(word);
+			*p_value = ft_xstrdup(word + idx + 1);
 			word[idx] = '=';
 			break ;
 		}
 		else if (word[idx] == '+' && word[idx + 1] == '=')
 		{
 			word[idx] = 0;
-			*p_name = ft_strdup(word);
-			*p_value = ft_strdup(word + idx + 2);
+			*p_name = ft_xstrdup(word);
+			*p_value = ft_xstrdup(word + idx + 2);
 			word[idx] = '+';
 			*p_exp_append = 1;
 			break ;

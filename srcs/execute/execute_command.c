@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:48:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 06:32:53 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 13:14:24 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
+#include "utils.h"
 #include "status.h"
 
 extern int	g_status;

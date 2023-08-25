@@ -6,11 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 18:50:23 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/14 03:10:37 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:52:58 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser/lex.h"
+#include <stdlib.h>
+
+#include "parse/lex_list.h"
+#include "utils.h"
 
 void			init_lex_node(t_lex_node *lex_node);
 t_lex_node		*get_lex_node(void);
