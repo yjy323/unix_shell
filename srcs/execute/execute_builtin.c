@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:42:09 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:50:59 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 20:35:55 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int	execute_buitin(t_word_list *words)
 	else if (!ft_strncmp(command, "unset", len))
 		status = ft_unset(argument);
 	else
-		status = ENOCOMD;
+		status = ENOCMD;
 	return (status);
 }

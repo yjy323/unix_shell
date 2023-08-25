@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:07:30 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:24:09 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	take_heredoc(t_lex_list *cur, int heredoc_num)
 	pid = fork();
 	filename = get_heredoc_name(heredoc_num);
 	if (pid == -1)
-		return (exception_handler(EGENRAL, "fork()"));
+		return (exception_handler(EGENRAL, "fork()", 0, 0));
 	else if (pid == 0)
 	{
 		initialize_shell_signals(2);
