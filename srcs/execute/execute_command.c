@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:48:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:14:24 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:36:53 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "variables.h"
 #include "utils.h"
 #include "status.h"
-
-extern int	g_status;
 
 int	execute_command(t_command *command, t_environment *environ);
 int	execute_command_internal(t_command *command,

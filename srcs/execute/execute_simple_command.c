@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:20:06 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:37:07 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 #include "libft.h"
 #include "status.h"
-
-extern int	g_status;
 
 int					execute_simple_command(t_command *command,
 						t_environment *environ,

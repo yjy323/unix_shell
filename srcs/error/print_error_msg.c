@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error_msg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 01:26:10 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 04:29:56 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 15:36:28 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "status.h"
 
 #include "libft.h"
-
-extern int	g_status;
 
 void		print_error_msg(int status, char *arg_str);
 static void	ft_perror(char *arg_str, char *err_msg);
