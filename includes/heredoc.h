@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:16:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 17:50:27 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:09:40 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "variables.h"
 # include "parse/lex.h"
 
-int		take_heredoc(t_lex_list *cur, \
-						t_sh_variable *sh_variable, int heredoc_num);
+int		take_heredoc(t_lex_list *cur, int heredoc_num);
 
 #endif

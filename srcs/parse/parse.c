@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 13:29:03 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:44:44 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:14:14 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 #include "parse/standardize.h"
 #include "utils.h"
 
-t_command			*parse(char *str, t_sh_variable *sh_variable);
+t_command			*parse(char *str);
 static t_command	*parse_lex_list(t_lex_list *lex_list);
 static void			parse_redirect(t_parser *parser, \
 									char *word, char *filename);
 static void			parse_connection(t_parser *parser, char *word);
 static void			parse_simple(t_parser *parser, t_lex_node *lex_data);
 
-t_command	*parse(char *str, t_sh_variable *sh_variable)
+t_command	*parse(char *str)
 {
 	t_lex_list	*lex_list;
 	t_command	*command;
 
 	command = 0;
 	lex_list = lex(str);
-	if (standardize(lex_list, sh_variable) == 0)
+	if (standardize(lex_list) == 0)
 		command = parse_lex_list(lex_list);
 	free_lex_list(lex_list);
 	return (command);

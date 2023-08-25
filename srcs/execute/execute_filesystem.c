@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_filesystem.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 17:47:59 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:23:19 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	execute_filesystem_internal(t_word_list *words,
 	char	*executable_file;
 	char	*file;
 
-	initialize_shell_signals(1);
+	initialize_shell_signals(2);
 	file = words->word->word;
 	argument = make_argument(words);
 	executable_file = set_excutable_file(file, environ->env_table);

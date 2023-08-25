@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 17:31:38 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:09:08 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ static t_word_list	*update_expanded_words(t_word_list *words,
 	t_word_list	*expanded_words;
 
 	expanded_words = expand_words(environ, words);
-	free(words);
+	free_word_list(words);
 	return (expanded_words);
 }

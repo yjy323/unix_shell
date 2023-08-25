@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:07:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 16:01:35 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:17:28 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "command.h"
 # include "variables.h"
 
-t_command	*parse(char *str, t_sh_variable *sh_variable);
+t_command	*parse(char *str);
 
 #endif

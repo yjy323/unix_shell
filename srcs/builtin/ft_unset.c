@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:54:23 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:09:03 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int	ft_unset(t_word_list *list)
 			dispose_variable(bucket->data);
 			hash_remove(name, environ->env_table);
 			remove_export_env(name, environ->env_array);
+			if (bucket->key)
+				free(bucket->key);
+			free(bucket);
 		}
 		iter = iter->next;
 	}

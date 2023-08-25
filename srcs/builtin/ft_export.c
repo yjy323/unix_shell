@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:53:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:09:00 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ static int	ft_export_word(char *word, t_environment *environ)
 			update_export_env(name, value, environ, V_CREATE);
 		bind_variable(name, value, environ->env_table, V_CREATE);
 	}
+	free(name);
+	free(value);
 	return (0);
 }
 

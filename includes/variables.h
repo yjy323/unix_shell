@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variables.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 04:17:03 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:19:41 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:10:13 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct s_environment{
 	t_hash_table	*env_table;
 }	t_environment;
 
-void			clear_sh_variable(t_sh_variable *sh_variable);
-void			init_sh_variable(t_sh_variable *sh_variable);
+void			clear_sh_variable();
+void			init_sh_variable();
 t_variable		*bind_variable(char *name, char *value, t_hash_table *table, int flag);
 t_variable		*bind_variable(char *name,
 					char *value, t_hash_table *table, int flag);

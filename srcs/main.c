@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 17:36:33 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 18:24:21 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,42 @@
 
 
 int			main(int argc, char *args[], char **environment);
-static void	reader_loop(t_sh_variable *sh_variable);
+static void	reader_loop();
 static char	*sh_readline(void);
 
-t_sh_variable	g_sh_variable;
+/* leaks check */
+void	check_leaks(void)
+{
+	system("leaks minishell");
+}
 
 int	main(int argc, char *args[], char **environment)
 {
 	(void)argc;
 	(void)args;
-	initialize(&g_sh_variable, environment);
-	reader_loop(&g_sh_variable);
-	clear_sh_variable(&g_sh_variable);
+
+	/* leaks check */
+	atexit(check_leaks);
+
+	initialize(environment);
+	reader_loop();
+	clear_sh_variable();
 	return (0);
 }
 
-static void	reader_loop(t_sh_variable *sh_variable)
+static void	reader_loop()
 {
 	char		*str;
 	t_command	*command;
 
 	while (1)
 	{
+		initialize_shell_signals(0);
 		str = sh_readline();
-		command = parse(str, sh_variable);
+		initialize_shell_signals(1);
+		if (!str)
+			return ;
+		command = parse(str);
 		execute_command(command);
 		free(str);
 		if (command)
@@ -66,7 +78,7 @@ static char	*sh_readline(void)
 	if (rl_eof_found)
 	{
 		printf("exit\n");
-		exit(0);
+		return (0);
 	}
 	add_history(str);
 	return (str);

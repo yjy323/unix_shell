@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:10:31 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 15:32:12 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:17:40 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include "variables.h"
 #include "libft.h"
 
-int			standardize(t_lex_list *list, t_sh_variable *sh_variable);
+int			standardize(t_lex_list *list);
 static int	standardize_internal(t_lex_list *qlist, t_lex_list *plist, \
-								t_sh_variable *sh_variable, int *heredoc_num);
+								int *heredoc_num);
 
-int	standardize(t_lex_list *list, t_sh_variable *sh_variable)
+int	standardize(t_lex_list *list)
 {
 	t_lex_list	*plist;
 	t_lex_list	*qlist;
@@ -36,7 +36,7 @@ int	standardize(t_lex_list *list, t_sh_variable *sh_variable)
 	}
 	while (plist)
 	{
-		if (standardize_internal(qlist, plist, sh_variable, &heredoc_num) == -1)
+		if (standardize_internal(qlist, plist, &heredoc_num) == -1)
 			return (-1);
 		qlist = plist;
 		plist = plist->next;
@@ -45,7 +45,7 @@ int	standardize(t_lex_list *list, t_sh_variable *sh_variable)
 }
 
 static int	standardize_internal(t_lex_list *qlist, t_lex_list *plist, \
-								t_sh_variable *sh_variable, int *heredoc_num)
+								int *heredoc_num)
 {
 	if (plist->data->type == cm_simple)
 		return (0);
@@ -54,7 +54,7 @@ static int	standardize_internal(t_lex_list *qlist, t_lex_list *plist, \
 	if (plist->data->type == cm_redirect
 		&& ft_strncmp(plist->data->word, "<< ", 3))
 	{
-		if (take_heredoc(plist, sh_variable, (*heredoc_num)++) == 1)
+		if (take_heredoc(plist, (*heredoc_num)++) == 1)
 			return (-1);
 	}
 	return (0);
