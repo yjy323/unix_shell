@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hash_search_variable_value.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:36:08 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 18:40:08 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 16:35:58 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*hash_search_variable_value(char *key, t_hash_table *table)
 	char				*value;
 
 	bucket = hash_search(key, table);
+	if (!bucket)
+		return (0);
 	value = ((t_variable *)bucket->data)->value;
 	return (value);
 }

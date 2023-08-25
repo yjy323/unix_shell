@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 15:37:07 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:29:23 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ static t_word_list	*update_expanded_words(t_word_list *words,
 	t_word_list	*expanded_words;
 
 	expanded_words = expand_words(environ, words);
-	free(words);
+	free_word_list(words);
 	return (expanded_words);
 }

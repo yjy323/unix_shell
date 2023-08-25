@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:28:04 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:49:59 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ static int	ft_export_word(char *word, t_environment *environ)
 			update_export_env(name, value, environ, V_CREATE);
 		bind_variable(name, value, environ->env_table, V_CREATE);
 	}
+	free(name);
+	free(value);
 	return (0);
 }
 
