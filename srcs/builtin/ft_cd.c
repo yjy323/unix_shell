@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 15:02:40 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 15:15:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_cd(t_word_list *list, t_environment *environ)
 	if (list)
 		dir_name = list->word->word;
 	else
-		dir_name = getenv("HOME");
+		dir_name = hash_search_variable_value("HOME", environ->env_table);
 	chdir(dir_name);
 	set_oldpwd(environ);
 	set_pwd(environ);
