@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:12:59 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 12:30:46 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/24 07:09:09 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,45 @@
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
+#include "status.h"
 
 extern int	g_status;
 
-int			execute_connection_command(t_command *command, t_environment *environ, int pre_in, int pre_out);
+int			execute_connection_command(t_command *command,
+				t_environment *environ, int pre_in, int pre_out);
 static void	make_pram_pipe_fd(int *param_fd, int in_fd, int out_fd);
-static void	close_pipe_fd(int in_fd, int out_fd);
-static int	execute_subprocess(t_command *command, t_environment *environ, int *io_fd, int unused_fd);
+static int	close_pipe_fd(int in_fd, int out_fd);
+static int	execute_subprocess(t_command *command,
+				t_environment *environ, int *io_fd, int unused_fd);
 
-//  구조 리팩토링 여부 결정 필요
-int	execute_connection_command(t_command *command, t_environment *environ, int pre_in, int pre_out)
+int	execute_connection_command(t_command *command,
+		t_environment *environ, int pre_in, int pre_out)
 {
 	int	pipe_fd[2];
-	int	param_pipe_fd[2];
+	int	io_fd[2];
 	int	pids[2];
 	int	idx;
 	int	status;
 
 	pipe(pipe_fd);
-	make_pram_pipe_fd(param_pipe_fd, pre_in, pipe_fd[1]);
-	pids[0] = execute_subprocess(command->connection->first, environ, param_pipe_fd, pipe_fd[0]);
-	make_pram_pipe_fd(param_pipe_fd, pipe_fd[0], pre_out);
-	pids[1] = execute_subprocess(command->connection->second, environ, param_pipe_fd, pipe_fd[1]);
+	if (pipe_fd[0] == -1 || pipe_fd[1] == -1)
+		return (exception_handler(EGENRAL, "|"));
+	make_pram_pipe_fd(io_fd, pre_in, pipe_fd[1]);
+	pids[0] = execute_subprocess(command->connection->first,
+			environ, io_fd, pipe_fd[0]);
+	make_pram_pipe_fd(io_fd, pipe_fd[0], pre_out);
+	pids[1] = execute_subprocess(command->connection->second,
+			environ, io_fd, -1);
 	idx = 0;
 	while (idx < 2)
 	{
 		waitpid(pids[idx++], &status, 0);
-		g_status = WEXITSTATUS(status);
+		status = WEXITSTATUS(status);
 	}
 	if (pre_out != -1)
-		exit(g_status);
+		exit(status);
 	else
-		return (g_status);
+		return (status);
 }
 
 static void	make_pram_pipe_fd(int *param_fd, int in_fd, int out_fd)
@@ -58,27 +65,32 @@ static void	make_pram_pipe_fd(int *param_fd, int in_fd, int out_fd)
 	param_fd[1] = out_fd;
 }
 
-static void	close_pipe_fd(int in_fd, int out_fd)
-{
-	if (in_fd != -1)
-		close(in_fd);
-	if (out_fd != -1)
-		close(out_fd);
-}
-
-static int	execute_subprocess(t_command *command, t_environment *environ, int *io_fd, int unused_fd)
+static int	execute_subprocess(t_command *command,
+				t_environment *environ, int *io_fd, int unused_fd)
 {
 	int	pid;
+	int	status;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (unused_fd != -1)
-			close(unused_fd);
-		g_status = execute_command_internal(command, environ, io_fd[0], io_fd[1]);
-		exit(g_status);
+		if (unused_fd != -1 && close(unused_fd) == -1)
+			exception_handler_sub_ps(EGENRAL,
+				command->simple->words->word->word);
+		status = execute_command_internal(command,
+				environ, io_fd[0], io_fd[1]);
+		exit(status);
 	}
 	else
 		close_pipe_fd(io_fd[0], io_fd[1]);
 	return (pid);
+}
+
+static int	close_pipe_fd(int in_fd, int out_fd)
+{
+	if (in_fd != -1 && close(in_fd) == -1)
+		return (exception_handler(EGENRAL, "|"));
+	if (out_fd != -1 && close(out_fd) == -1)
+		return (exception_handler(EGENRAL, "|"));
+	return (SUCCESS);
 }

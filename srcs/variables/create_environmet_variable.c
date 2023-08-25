@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:19 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:18:08 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include "utils.h"
 
 t_environment	*create_environmet_variable(char **initial_environ);
-static void		create_environmet_variable_contents(char **initial_environ, t_environment *env, int size);
+static void		create_environmet_variable_contents(char **initial_environ,
+					t_environment *env, int size);
 static int		get_environ_size(char **environ);
 static char		*get_name(char *exported_env);
 static char		*get_value(char *exported_env);
@@ -38,7 +39,8 @@ t_environment	*create_environmet_variable(char **initial_environ)
 	return (env);
 }
 
-static void	create_environmet_variable_contents(char **initial_environ, t_environment *env, int size)
+static void	create_environmet_variable_contents(char **initial_environ,
+				t_environment *env, int size)
 {
 	int				i;
 	char			*name;
@@ -65,7 +67,6 @@ static int	get_environ_size(char **environ)
 		size++;
 	return (size);
 }
-
 
 static char	*get_name(char *exported_env)
 {

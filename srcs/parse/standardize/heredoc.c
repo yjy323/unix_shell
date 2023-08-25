@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 18:15:35 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:19:19 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include "initialize.h"
 #include "variables.h"
 #include "utils.h"
-#include "error.h"
+#include "status.h"
 // ft_xitoa();
 #include "libft.h"
 

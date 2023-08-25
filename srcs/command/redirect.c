@@ -6,14 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:20:18 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 15:09:59 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:19:56 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "command.h"
-#include "error.h"
+#include "status.h"
 #include "utils.h"
 
 void		init_redirect(t_redirect *redirect);

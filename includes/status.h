@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   status.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:01:20 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 17:40:41 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 05:35:11 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
-
-# include <errno.h>
+#ifndef STATUS_H
+# define STATUS_H
 
 # define SYNTEX_ERROR 1
 # define SYNTEX_ERROR_MESSAGE "syntax error near unexpected token"
 # define SYNTEX_ERROR_FORMAT "%s: %s `%s'\n"
-# define INVOPT 2
-# define ENOPMS 126
-# define ENOCMD 127
 # define EOPTION 255
 
-void	crash(int errnum, char *word);
+# define SUCCESS 0
+# define EGENRAL 1
+# define EMISUSE 2
+# define ENOPERM 126
+# define ENOCOMD 127
+# define ESIGNAL 128
+
+# define MNOPERM ""
+# define MNOCOMD ""
+
+void	crash(int status, char *arg_str);
+int		exception_handler(int status, char *arg_str);
+void	exception_handler_sub_ps(int status, char *arg_str);
+void	print_error_msg(int status, char *arg_str);
 
 #endif

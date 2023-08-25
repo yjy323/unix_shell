@@ -6,12 +6,12 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:38:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 16:48:54 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:19:07 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse/lex_list.h"
-#include "error.h"
+#include "status.h"
 
 int			syntex_check(t_lex_list *pre, t_lex_list *cur);
 static int	redirect_syntex_check(t_lex_list *cur);

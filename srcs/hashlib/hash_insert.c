@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 17:17:37 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/09 04:11:34 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:06:59 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 #include "hashlib.h"
 
-t_bucket_contents *hash_insert(char *string, t_hash_table *table);
+t_bucket_contents	*hash_insert(char *string, t_hash_table *table);
 
-t_bucket_contents *hash_insert(char *string, t_hash_table *table)
+t_bucket_contents	*hash_insert(char *string, t_hash_table *table)
 {
-	t_bucket_contents *item;
-	int bucket;
-	unsigned int hv;
+	t_bucket_contents	*item;
+	int					bucket;
+	unsigned int		hv;
 
 	if (table == 0)
 		table = hash_create (0);

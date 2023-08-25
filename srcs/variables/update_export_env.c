@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:03:26 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 16:14:42 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:09:19 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 #include "variables.h"
 #include "libft.h"
 
-char		**update_export_env(char *name, char *value, t_environment *environ, int flag);
-static char	**update_export_env_internal(char *name, char *value, char **export_env);
+char		**update_export_env(char *name,
+				char *value, t_environment *environ, int flag);
+static char	**update_export_env_internal(char *name,
+				char *value, char **export_env);
 static char	**add_export_env(char *name, char *value, t_environment *environ);
 static char	*make_export_env(char *name, char *value);
 static char	**resize_export_env(t_environment *environ);
 
-char	**update_export_env(char *name, char *value, t_environment *environ, int flag)
+char	**update_export_env(char *name,
+			char *value, t_environment *environ, int flag)
 {
 	t_bucket_contents	*bucket;
 	t_hash_table		*table;
@@ -32,11 +35,13 @@ char	**update_export_env(char *name, char *value, t_environment *environ, int fl
 	if (!bucket && flag == V_CREATE)
 		environ->env_array = add_export_env(name, value, environ);
 	else
-		environ->env_array = update_export_env_internal(name, value, environ->env_array);
+		environ->env_array = update_export_env_internal(name,
+				value, environ->env_array);
 	return (environ->env_array);
 }
 
-static char	**update_export_env_internal(char *name, char *value, char **export_env)
+static char	**update_export_env_internal(char *name,
+				char *value, char **export_env)
 {
 	int	idx;
 
@@ -89,7 +94,8 @@ static char	**resize_export_env(t_environment *environ)
 	size_t	idx;
 
 	environ->array_size += 16;
-	new_export_env = (char **)malloc(sizeof(char *) * (environ->array_size + 1));
+	new_export_env = (char **)malloc(
+			sizeof(char *) * (environ->array_size + 1));
 	idx = 0;
 	while (environ->env_array[idx])
 	{

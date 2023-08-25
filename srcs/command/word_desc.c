@@ -6,14 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:49:32 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 15:10:04 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:20:00 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "command.h"
-#include "error.h"
+#include "status.h"
 #include "utils.h"
 
 void		init_word_desc(t_word_desc *word_desc);

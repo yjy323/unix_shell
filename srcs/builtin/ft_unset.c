@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 16:43:29 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:03:57 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_unset(t_word_list *list, t_environment *environ);
 
 int	ft_unset(t_word_list *list, t_environment *environ)
 {
-	t_word_list 		*iter;
+	t_word_list			*iter;
 	char				*name;
 	t_bucket_contents	*bucket;
 

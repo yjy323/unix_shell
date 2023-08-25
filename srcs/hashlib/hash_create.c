@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:49:37 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/22 15:21:19 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/23 15:06:11 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_hash_table	*hash_create(int buckets);
 t_hash_table	*hash_create(int buckets)
 {
 	t_hash_table	*new_table;
-	int			i;
+	int				i;
 
 	new_table = (t_hash_table *)malloc(sizeof (t_hash_table));
 	if (buckets == 0)

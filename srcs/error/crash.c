@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash_str_equal.c                                   :+:      :+:    :+:   */
+/*   crash.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 17:44:41 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 15:07:30 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/24 03:21:03 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/24 03:58:24 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdbool.h>
+#include <stdlib.h>
 
-#include "command.h"
-#include "libft.h"
+#include "status.h"
 
-bool	hash_str_equal(const char *key, const char *string);
+extern int	g_status;
 
-bool	hash_str_equal(const char *key, const char *string)
+void	crash(int status, char *arg_str)
 {
-	size_t	key_len;
-	size_t	string_len;
-
-	key_len = ft_strlen(key);
-	string_len = ft_strlen(string);
-	if (key_len == string_len
-		&& !ft_strncmp(key, string, key_len))
-		return (true);
-	else
-		return (false);
+	print_error_msg(status, arg_str);
+	g_status = status;
+	exit(status);
 }

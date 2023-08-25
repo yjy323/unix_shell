@@ -6,14 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 23:51:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 15:09:36 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:19:30 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "command.h"
-#include "error.h"
+#include "status.h"
 #include "utils.h"
 
 void		init_command(t_command *command);

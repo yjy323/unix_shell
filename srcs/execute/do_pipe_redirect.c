@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   do_pipe_redirect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 18:02:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/22 18:05:11 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/23 15:12:08 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/24 07:09:41 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "error.h"
-#include "minishell.h"
+#include <unistd.h>
 
-extern int	g_status;
+#include "status.h"
 
-void	crash(int errnum, char *word)
+int	do_pipe_redirect(int *p_pipe_in_fd, int *p_pipe_out_fd)
 {
-	if (errnum == SYNTEX_ERROR)
-	{
-		printf(SYNTEX_ERROR_FORMAT, SH_NAME, SYNTEX_ERROR_MESSAGE, word);
-		g_status = 258;
-	}
-
+	if (*p_pipe_in_fd != -1 && dup2(*p_pipe_in_fd, STDIN_FILENO) == -1)
+		return (exception_handler(EGENRAL, "|"));
+	if (*p_pipe_out_fd != -1 && dup2(*p_pipe_out_fd, STDOUT_FILENO) == -1)
+		return (exception_handler(EGENRAL, "|"));
+	return (SUCCESS);
 }
