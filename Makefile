@@ -102,7 +102,6 @@ CFILES =		main.c \
 				builtin/ft_export.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c \
-				here_doc/do_here_doc.c \
 				error/crash.c \
 				error/exception_handler.c \
 				error/exception_handler_sub_ps.c \

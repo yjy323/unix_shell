@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   create_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:35:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/11 20:17:04 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 13:27:39 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "variables.h"
+#include "utils.h"
 
 t_variable	*create_variable(char *name, char *value);
 
@@ -20,7 +21,7 @@ t_variable	*create_variable(char *name, char *value)
 {
 	t_variable	*entry;
 
-	entry = (t_variable *)malloc(sizeof(t_variable));
+	entry = (t_variable *)xmalloc(sizeof(t_variable));
 	entry->name = name;
 	entry->value = value;
 	return (entry);

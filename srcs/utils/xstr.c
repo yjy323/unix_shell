@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:57:27 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 18:01:24 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:25:29 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_xsubstr(const char *s, unsigned int start, size_t len)
 		size = ft_strlen(s) - start;
 	else
 		size = len;
-	dst = (char *)malloc(sizeof(char) * (size + 1));
+	dst = (char *)xmalloc(sizeof(char) * (size + 1));
 	if (!s || !dst || len < 0)
 		return (0);
 	i = 0;

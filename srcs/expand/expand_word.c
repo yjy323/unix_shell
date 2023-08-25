@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:19:13 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:26:17 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	expand_env(t_environment *environ, t_expander *epd)
 	ekey = epd->pstr + 1;
 	while (ft_isalnum(*ekey))
 		ekey++;
-	env_key = ft_substr(skey, 1, ekey - skey - 1);
+	env_key = ft_xsubstr(skey, 1, ekey - skey - 1);
 	env_val = hash_search_variable_value(env_key, environ->env_table);
 	if (env_val)
 		add_expander_str(epd, env_val);

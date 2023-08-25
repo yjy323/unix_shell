@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:18:08 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:25:41 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ t_environment	*create_environmet_variable(char **initial_environ)
 	t_environment	*env;
 	int				size;
 
-	env = malloc(sizeof(t_environment));
+	env = xmalloc(sizeof(t_environment));
 	size = get_environ_size(initial_environ);
 	env->env_table = hash_create(size * HASH_REHASH_MULTIPLIER);
-	env->env_array = malloc(sizeof(char *) * (size + 1));
+	env->env_array = xmalloc(sizeof(char *) * (size + 1));
 	env->array_size = size;
 	env->env_array[size] = 0;
 	create_environmet_variable_contents(initial_environ, env, size);

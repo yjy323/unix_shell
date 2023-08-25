@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hash_grow.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 17:16:33 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 15:06:43 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/25 13:27:20 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "hashlib.h"
+#include "utils.h"
 
 void		hash_grow(t_hash_table *table);
 static void	hash_rehash(t_hash_table *table, int nsize);
@@ -39,7 +40,7 @@ static void	hash_rehash(t_hash_table *table, int nsize)
 	osize = table->nbuckets;
 	old_bucket_array = table->bucket_array;
 	table->nbuckets = nsize;
-	table->bucket_array = (t_bucket_contents **)malloc(
+	table->bucket_array = (t_bucket_contents **)xmalloc(
 			table->nbuckets * sizeof (t_bucket_contents *));
 	i = 0;
 	while (i < table->nbuckets)

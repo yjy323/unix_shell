@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:13:42 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:28:04 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	ft_export_word(char *word, t_environment *environ)
 	name = 0;
 	value = 0;
 	if (get_variable(word, &name, &value, &exp_append) == 0)
-		name = ft_strdup(word);
+		name = ft_xstrdup(word);
 	if (exp_append)
 		ft_export_word_appned(name, value, environ);
 	else
