@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:17:32 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:24:21 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ static void	reader_loop()
 
 	while (1)
 	{
+		initialize_shell_signals(0);
 		str = sh_readline();
+		initialize_shell_signals(1);
 		if (!str)
 			return ;
 		command = parse(str);
