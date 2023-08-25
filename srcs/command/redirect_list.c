@@ -6,15 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 22:00:16 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:19:50 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:49:43 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 #include "command.h"
-#include "status.h"
-#include "utils.h"
 
 void			init_redirect_list(t_redirect_list *redirect_list);
 t_redirect_list	*get_redirect_list(void);

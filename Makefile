@@ -14,12 +14,11 @@ BUILD_LIBFT = make -C libft $@
 SRCS_RT_DIR =	srcs/
 
 SRCS_DIR =		initialize/ \
-				parse/ \
-				parse/env_replacer/ \
-				parse/tokenize/ \
-				parse/lex/ \
-				parse/standardize/ \
-				parse/syntex_check/ \
+				parser/ \
+				parser/env_replacer/ \
+				parser/tokenizer/ \
+				parser/lexer/ \
+				parser/syntex_check/ \
 				execute/ \
 				expand/ \
 				execute/ \
@@ -35,7 +34,6 @@ CFILES =		main.c \
 				initialize/initialize.c \
 				initialize/signal.c \
 				initialize/shtty.c \
-				initialize/shell.c \
 				hash/hash_create.c \
 				hash/hash_dispose.c \
 				hash/hash_shouldgrow.c \
@@ -47,8 +45,6 @@ CFILES =		main.c \
 				hash/hash_remove.c \
 				hash/hash_search_variable_value.c \
 				\
-				variables/init_sh_variable.c \
-				variables/clear_sh_variable.c \
 				variables/create_variable.c \
 				variables/dispose_variable.c \
 				variables/bind_variable.c \
@@ -58,24 +54,18 @@ CFILES =		main.c \
 				variables/create_environmet_variable.c \
 				variables/valid_environment_variable.c \
 				\
-				parse/parse.c \
-				parse/tokenize/tokenize.c \
-				parse/tokenize/token_list.c \
-				parse/lex/lex.c \
-				parse/lex/lex_node.c \
-				parse/lex/lex_list.c \
-				parse/standardize/standardize.c \
-				parse/standardize/syntex_check.c \
-				parse/standardize/standardize.c \
-				parse/syntex_check/syntex_check.c \
-				expand/expand_heredoc.c \
-				expand/expand_words.c \
-				expand/exapnd_hashdollor.c \
+				parser/parse.c \
+				parser/tokenizer/tokenize.c \
+				parser/tokenizer/token_list.c \
+				parser/lexer/lex.c \
+				parser/lexer/lex_node.c \
+				parser/lexer/lex_list.c \
+				parser/syntex_check/syntex_check.c \
+				expand/expand.c \
 				expand/expand_word.c \
 				expand/expander.c \
 				expand/word_desc_split.c \
 				expand/remove_quote_nulls.c \
-				heredoc/heredoc.c \
 				\
 				command/command.c \
 				command/simple_com.c \
@@ -84,8 +74,7 @@ CFILES =		main.c \
 				command/redirect_list.c \
 				command/redirect.c \
 				command/word_desc.c \
-				utils/xalloc.c \
-				utils/xstr.c \
+				utils/utils.c \
 				\
 				execute/execute_command.c \
 				execute/execute_connection_command.c \
@@ -103,6 +92,7 @@ CFILES =		main.c \
 				builtin/ft_export.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c \
+				here_doc/do_here_doc.c \
 				error/crash.c \
 				error/exception_handler.c \
 				error/exception_handler_sub_ps.c \

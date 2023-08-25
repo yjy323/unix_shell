@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:51:55 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:58:40 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	remove_quote_nulls_word_desc(t_word_desc *word_desc)
 		if ((*pword == '\'' || *pword == '\"')
 			&& ft_strchr(pword + 1, *pword))
 		{
-			tmp_str = ft_xsubstr(pword, 1, \
+			tmp_str = ft_substr(pword, 1, \
 				ft_strchr(pword + 1, *pword) - pword - 1);
 			add_expander_str(&epd, tmp_str);
 			free(tmp_str);

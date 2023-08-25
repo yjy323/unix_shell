@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:21:24 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:19 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:56:16 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_word_list	*expand_words(t_environment *environ, t_word_list *list)
 	{
 		word_desc = get_word_desc();
 		word_desc->flag = list->word->flag;
-		word_desc->word = ft_xstrdup(list->word->word);
+		word_desc->word = ft_strdup(list->word->word);
 		if (word_desc->flag | W_HASDOLLAR)
 			expand_word(environ, word_desc);
 		tmp_list = word_desc_split(word_desc);

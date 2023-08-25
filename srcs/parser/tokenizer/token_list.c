@@ -6,14 +6,12 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:26:47 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 15:52:38 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:50:41 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-#include "parse/token_list.h"
-#include "utils.h"
+#include "parser/tokenize.h"
+#include "command.h"
 
 void			init_token_list(t_token_list *token_list);
 t_token_list	*get_token_list(void);

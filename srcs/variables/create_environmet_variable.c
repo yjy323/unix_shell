@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_environmet_variable.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:25:41 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:08:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "variables.h"
 #include "hashlib.h"
 #include "libft.h"
-#include "utils.h"
 
 t_environment	*create_environmet_variable(char **initial_environ);
 static void		create_environmet_variable_contents(char **initial_environ,
@@ -29,10 +28,10 @@ t_environment	*create_environmet_variable(char **initial_environ)
 	t_environment	*env;
 	int				size;
 
-	env = xmalloc(sizeof(t_environment));
+	env = malloc(sizeof(t_environment));
 	size = get_environ_size(initial_environ);
 	env->env_table = hash_create(size * HASH_REHASH_MULTIPLIER);
-	env->env_array = xmalloc(sizeof(char *) * (size + 1));
+	env->env_array = malloc(sizeof(char *) * (size + 1));
 	env->array_size = size;
 	env->env_array[size] = 0;
 	create_environmet_variable_contents(initial_environ, env, size);
@@ -52,7 +51,7 @@ static void	create_environmet_variable_contents(char **initial_environ,
 		name = get_name(initial_environ[i]);
 		value = get_value(initial_environ[i]);
 		bind_variable(name, value, env->env_table, V_CREATE);
-		env->env_array[i] = ft_xstrdup(initial_environ[i]);
+		env->env_array[i] = ft_strdup(initial_environ[i]);
 		i++;
 	}
 	return ;
@@ -80,7 +79,7 @@ static char	*get_name(char *exported_env)
 		if (exported_env[i] == '=')
 		{
 			exported_env[i] = 0;
-			name = ft_xstrdup(exported_env);
+			name = ft_strdup(exported_env);
 			exported_env[i] = '=';
 			break ;
 		}
@@ -100,7 +99,7 @@ static char	*get_value(char *exported_env)
 	{
 		if (exported_env[i] == '=')
 		{
-			value = ft_xstrdup(exported_env + (i + 1));
+			value = ft_strdup(exported_env + (i + 1));
 			break ;
 		}
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_filesystem.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:28:29 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/24 05:32:10 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "status.h"
 
 #include "libft.h"
-#include "utils.h"
 
 extern int	g_status;
 
@@ -83,12 +82,12 @@ static char	**make_argument(t_word_list *words)
 		iter = iter->next;
 		cnt++;
 	}
-	argument = xmalloc(sizeof(char *) * (cnt + 1));
+	argument = malloc(sizeof(char *) * (cnt + 1));
 	argument[cnt] = 0;
 	i = 0;
 	while (i < cnt)
 	{
-		argument[i] = ft_xstrdup(words->word->word);
+		argument[i] = ft_strdup(words->word->word);
 		i++;
 		words = words->next;
 	}
@@ -103,7 +102,7 @@ static char	*set_excutable_file(char *file, t_hash_table *table)
 	if (access(file, F_OK | X_OK) == 0)
 		return (file);
 	path = ft_split(hash_search_variable_value("PATH", table), ':');
-	executable_file = search_excutable_file(ft_xstrjoin("/", file), path);
+	executable_file = search_excutable_file(ft_strjoin("/", file), path);
 	return (executable_file);
 }
 
@@ -117,7 +116,7 @@ static char	*search_excutable_file(char *file, char **path)
 	executable_file = 0;
 	while (*tmp)
 	{
-		temp_executable_file = ft_xstrjoin(*tmp, file);
+		temp_executable_file = ft_strjoin(*tmp, file);
 		if (!executable_file && access(temp_executable_file, F_OK) == 0)
 			executable_file = temp_executable_file;
 		else

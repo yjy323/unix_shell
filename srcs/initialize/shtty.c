@@ -6,15 +6,14 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 19:41:34 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 14:22:58 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:56:23 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <termios.h>
-
-void	set_tty(void);
+#include <term.h>
 
 void	set_tty(void)
 {

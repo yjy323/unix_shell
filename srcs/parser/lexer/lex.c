@@ -6,14 +6,13 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:20:39 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/14 03:10:25 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse/tokenize.h"
-#include "parse/lex_list.h"
+#include "parser/tokenize.h"
+#include "parser/lex.h"
 #include "libft.h"
-#include "utils.h"
 
 t_lex_list				*lex(char *str);
 static t_lex_list		*lex_token_list(t_token_list *token_list);
@@ -54,7 +53,7 @@ static void	add_word_to_lex_list(t_lex_list **lex_list, char *word)
 	t_lex_node	*lex_data;
 
 	lex_data = get_lex_node();
-	lex_data->word = ft_xstrdup(word);
+	lex_data->word = ft_strdup(word);
 	lex_data->type = get_command_type(word);
 	if (lex_data->type == cm_simple)
 		lex_data->flag = get_simple_com_flag(word);
@@ -76,7 +75,7 @@ static int	get_simple_com_flag(char *str)
 		}
 		else if (*str == '\"' && ft_strchr(str + 1, '\"'))
 		{
-			substr = ft_xsubstr(str, 0, ft_strchr(str + 1, '\"') - str);
+			substr = ft_substr(str, 0, ft_strchr(str + 1, '\"') - str);
 			if (ft_strchr(substr, '$'))
 				flag |= W_HASDOLLAR;
 			flag |= W_DQUOTED;

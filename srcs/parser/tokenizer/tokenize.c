@@ -6,13 +6,13 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 15:30:49 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:50:50 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse/token_list.h"
+#include "parser/tokenize.h"
+#include "command.h"
 #include "libft.h"
-#include "utils.h"
 
 t_token_list	*tokenize(char *str);
 static size_t	add_oper_to_token_list(t_token_list **new_token, char *str);
@@ -43,9 +43,9 @@ static size_t	add_oper_to_token_list(t_token_list **token_list, char *str)
 	size_t	size_oper;
 
 	if (!ft_strncmp(str, ">>", 2) || !ft_strncmp(str, "<<", 2))
-		str_oper = ft_xsubstr(str, 0, 2);
+		str_oper = ft_substr(str, 0, 2);
 	else
-		str_oper = ft_xsubstr(str, 0, 1);
+		str_oper = ft_substr(str, 0, 1);
 	push_token_list(token_list, str_oper);
 	size_oper = ft_strlen(str_oper);
 	return (size_oper);
@@ -68,7 +68,7 @@ static size_t	add_word_to_token_list(t_token_list **token_list, char *str)
 		pend++;
 	}
 	pend--;
-	str_word = ft_xsubstr(str, 0, pend - str + 1);
+	str_word = ft_substr(str, 0, pend - str + 1);
 	push_token_list(token_list, str_word);
 	size_word = ft_strlen(str_word);
 	return (size_word);

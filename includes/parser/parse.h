@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:07:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 16:01:35 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:15:30 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,17 @@
 
 # include "stdbool.h"
 # include "command.h"
-# include "variables.h"
+# include "lex.h"
+# include "utils.h"
 
-t_command	*parse(char *str, t_sh_variable *sh_variable);
+typedef struct s_parser {
+	t_command	*root;
+	t_command	*cur_command;
+}t_parser;
+
+t_command	*parse(char *str);
+bool		syntex_check(t_lex_list *lex_list);
+
+void		do_here_doc(char *filename, char *limiter);
 
 #endif

@@ -6,15 +6,11 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 02:20:18 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:19:39 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/22 14:34:37 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 #include "command.h"
-#include "status.h"
-#include "utils.h"
 
 void			init_connection(t_connection *connection);
 t_connection	*get_connection(void);
