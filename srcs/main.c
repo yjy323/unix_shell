@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:13:20 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:45:44 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 #include "variables.h"
 #include "execute.h"
 
-int	g_status;
-
 int			main(int argc, char *args[], char **environment);
 static void	reader_loop(t_sh_variable *sh_variable);
 static char	*sh_readline(void);
@@ -32,7 +30,7 @@ static char	*sh_readline(void);
 int	main(int argc, char *args[], char **environment)
 {
 	t_sh_variable	sh_variable;
-	
+
 	(void)argc;
 	(void)args;
 	initialize(&sh_variable, environment);

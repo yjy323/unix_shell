@@ -6,12 +6,12 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:18:18 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 15:20:36 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:42:11 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_LIST
-# define TOKEN_LIST
+#ifndef TOKEN_LIST_H
+# define TOKEN_LIST_H
 
 typedef struct s_token_list {
 	char				*word;

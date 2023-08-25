@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:10:31 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:45:07 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 13:44:15 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	standardize(t_lex_list *list, t_sh_variable *sh_variable)
 static int	standardize_internal(t_lex_list *qlist, t_lex_list *plist, \
 								t_sh_variable *sh_variable, int *heredoc_num)
 {
-
 	if (syntex_check(qlist, plist) == -1)
 		return (-1);
 	if (plist->data->type == cm_redirect
