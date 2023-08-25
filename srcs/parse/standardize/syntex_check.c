@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:38:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:44:31 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:57:35 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	redirect_syntex_check(t_lex_list *cur)
 	if (!cur->next
 		|| !(cur->next->data->type == cm_simple))
 	{
-		crash(SYNTEX_ERROR, "newline");
+		exception_handler(EGENRAL, "newline");
 		return (-1);
 	}
 	return (0);
@@ -49,7 +49,7 @@ static int	connection_syntex_check(t_lex_list *pre)
 		|| !(pre->next->next)
 		|| (pre->next->next->data->type == cm_connection))
 	{
-		crash(SYNTEX_ERROR, "|");
+		exception_handler(EGENRAL, "|");
 		return (-1);
 	}
 	return (0);
