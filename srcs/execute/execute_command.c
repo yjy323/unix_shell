@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:48:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 15:26:30 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 18:55:57 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,15 @@ int	execute_command(t_command *command)
 
 int	execute_command_internal(t_command *command, int pre_in, int pre_out)
 {
+	int	status;
+
+	status = SUCCESS;
 	if (!command)
 		return (1);
 	if (command->type == cm_connection)
-		execute_connection_command(command, pre_in, pre_out);
+		status = execute_connection_command(command, pre_in, pre_out);
 	else if (command->type == cm_simple)
-		execute_simple_command(command, pre_in, pre_out);
-	return (0);
+		status = execute_simple_command(command, pre_in, pre_out);
+	g_sh_variable.status = status;
+	return (status);
 }

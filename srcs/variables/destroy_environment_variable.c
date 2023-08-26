@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:21:01 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 18:27:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 18:41:01 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	destroy_environment_table(t_hash_table *table)
 				var = (t_variable *)bucket->data;
 				dispose_variable(var);
 				bucket = bucket->next;
+				free(del->key);
 				free(del);
 			}
 		}

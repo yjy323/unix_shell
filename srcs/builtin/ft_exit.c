@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:38:32 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 17:18:29 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 18:43:59 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,22 @@ static bool	valid_argument(char *word);
 
 int	ft_exit(t_word_list *list)
 {
+	int	status;
+
 	if (!list)
-		exit(g_sh_variable.status);
+		status = g_sh_variable.status;
 	else
 	{
 		if (list->next)
 			return (exception_handler(EGENRAL, "exit", 0, INVARG_COUNT));
 		if (valid_argument(list->word->word) == false)
 			return (exception_handler(EEXITARG, "exit", list->word->word, INVARG_NUMERIC));
-		write(1, "exit\n", 5);
-		exit(ft_atoi(list->word->word) % 256);
+		status = ft_atoi(list->word->word) % 256;
 	}
+	write(1, "exit\n", 5);
+	clear_sh_variable();
+	g_sh_variable.status = status;
+	exit (status);
 }
 
 static bool	valid_argument(char *word)

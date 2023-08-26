@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 16:08:23 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 19:04:18 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static int	set_oldpwd(t_environment *environ)
 		value = ((t_variable *)bucket->data)->value;
 		bind_variable("OLDPWD", value, environ->env_table, V_NOCREATE);
 		update_export_env("OLDPWD", value, environ, V_NOCREATE);
+		free(value);
 	}
 	else
 	{
@@ -73,6 +74,7 @@ static int	set_oldpwd(t_environment *environ)
 		remove_export_env("OLDPWD", environ->env_array);
 		if (bucket)
 		{
+			dispose_variable(bucket->data);
 			if (bucket->key)
 				free(bucket->key);
 			free(bucket);

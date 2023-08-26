@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 17:14:48 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 18:59:12 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	ft_unset(t_word_list *list)
 		bucket = hash_search(iter->word->word, environ->env_table);
 		if (bucket)
 		{
-			dispose_variable(bucket->data);
 			hash_remove(name, environ->env_table);
 			remove_export_env(name, environ->env_array);
+			dispose_variable(bucket->data);
 			if (bucket->key)
 				free(bucket->key);
 			free(bucket);
