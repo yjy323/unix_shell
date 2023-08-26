@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:02:58 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:45 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 14:21:10 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_expander(t_expander *epd, char *istr)
 	epd->ostr = ft_xstrdup("");
 	ft_memset(&epd->buffer, 0, DEBS);
 	epd->buffer_idx = 0;
+	epd->isin_doublequote = false;
 	epd->isin_singlequote = false;
 }
 

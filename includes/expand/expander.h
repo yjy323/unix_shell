@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:37:26 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/23 15:01:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 13:57:38 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_expander {
 	char	buffer[DEBS];
 	size_t	buffer_idx;
 	bool	isin_singlequote;
+	bool	isin_doublequote;
 }t_expander;
 
 void	init_expander(t_expander *epd, char *istr);

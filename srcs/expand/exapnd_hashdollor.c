@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:54:09 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:28:22 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 14:07:40 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	expand_hashdollor(t_expander *epd)
 {
 	if (ft_strncmp(epd->pstr, "$?", 2) == 0)
 		expand_question(epd);
-	else if (!ft_isalnum(*(epd->pstr + 1)))
+	else if (!ft_isalnum(*(epd->pstr + 1)) && *(epd->pstr + 1) != '_')
 	{
 		add_expander_c(epd, '$');
 		epd->pstr++;
@@ -56,7 +56,7 @@ static void	expand_env(t_expander *epd, t_environment *environ)
 
 	skey = epd->pstr;
 	ekey = epd->pstr + 1;
-	while (ft_isalnum(*ekey))
+	while (ft_isalnum(*ekey) || *ekey == '_')
 		ekey++;
 	env_key = ft_xsubstr(skey, 1, ekey - skey - 1);
 	env_val = hash_search_variable_value(env_key, environ->env_table);
