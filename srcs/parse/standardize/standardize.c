@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:10:31 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 18:17:40 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:20:32 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	standardize_internal(t_lex_list *qlist, t_lex_list *plist, \
 	if (syntex_check(qlist, plist) == -1)
 		return (-1);
 	if (plist->data->type == cm_redirect
-		&& ft_strncmp(plist->data->word, "<< ", 3))
+		&& ft_strncmp(plist->data->word, "<<", 3) == 0)
 	{
 		if (take_heredoc(plist, (*heredoc_num)++) == 1)
 			return (-1);

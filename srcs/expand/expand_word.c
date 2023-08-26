@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 19:59:50 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 14:21:57 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ static char	*expand_str(char *str)
 			expand_hashdollor(&epd);
 		else
 		{
-			if (*epd.pstr == '\'' \
+			if (*epd.pstr == '\"' && !epd.isin_singlequote \
+				&& (epd.isin_doublequote || ft_strchr(epd.pstr + 1, '\"')))
+				epd.isin_doublequote = !epd.isin_doublequote;
+			if (*epd.pstr == '\'' && !epd.isin_doublequote \
 				&& (epd.isin_singlequote || ft_strchr(epd.pstr + 1, '\'')))
 				epd.isin_singlequote = !epd.isin_singlequote;
 			add_expander_c(&epd, *epd.pstr);

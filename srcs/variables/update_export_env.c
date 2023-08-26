@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:03:26 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:47:25 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:24:32 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,12 @@ static char	**update_export_env_internal(char *name,
 static char	**add_export_env(char *name, char *value, t_environment *environ)
 {
 	size_t	idx;
-	char	**tmp;
 
 	idx = 0;
 	while (environ->env_array[idx])
 		idx++;
 	if (idx + 1 > environ->array_size)
-	{
-		tmp = environ->env_array;
 		environ->env_array = resize_export_env(environ);
-		free(tmp);
-	}
 	environ->env_array[idx++] = make_export_env(name, value);
 	environ->env_array[idx] = 0;
 	return (environ->env_array);
@@ -108,6 +103,6 @@ static char	**resize_export_env(t_environment *environ)
 		new_export_env[idx] = environ->env_array[idx];
 		idx++;
 	}
-	//free(export_env);
+	free(environ->env_array);
 	return (new_export_env);
 }
