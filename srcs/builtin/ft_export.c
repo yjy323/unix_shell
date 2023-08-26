@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:04:24 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 19:56:07 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ static int	ft_export_word(char *word, t_environment *environ)
 	{
 		if (value)
 			update_export_env(name, value, environ, V_CREATE);
-		if (!hash_search(name, environ->env_table))
-			bind_variable(name, value, environ->env_table, V_CREATE);
+		bind_variable(name, value, environ->env_table, V_CREATE);
 	}
 	free(name);
 	free(value);

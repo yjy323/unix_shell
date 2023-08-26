@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 20:30:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/24 01:23:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 20:20:00 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ static bool	compare_export_env_name(char *name, char *str, int equal_sign_idx)
 {
 	str[equal_sign_idx] = 0;
 	if (hash_str_equal(name, str))
+	{
+		str[equal_sign_idx] = '=';
 		return (true);
+	}
 	else
+	{
+		str[equal_sign_idx] = '=';
 		return (false);
+	}
 }

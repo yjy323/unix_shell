@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:04:18 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 20:20:21 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	ft_cd(t_word_list *list)
 		dir_name = list->word->word;
 	else
 	{
-		env_home = hash_search_variable_value("HOME", g_sh_variable.environment->env_table);
+		env_home = hash_search_variable_value("HOME",
+				g_sh_variable.environment->env_table);
 		if (!env_home)
 			return (exception_handler(EGENRAL, "cd", 0, INVHOME));
 		dir_name = env_home;
@@ -41,17 +42,6 @@ int	ft_cd(t_word_list *list)
 	chdir(dir_name);
 	set_oldpwd(g_sh_variable.environment);
 	set_pwd(g_sh_variable.environment);
-	return (SUCCESS);
-}
-
-static int	set_pwd(t_environment *environ)
-{
-	char	*value;
-
-	value = getcwd(0, 0);
-	bind_variable("PWD", value, environ->env_table, V_NOCREATE);
-	update_export_env("PWD", value, environ, V_NOCREATE);
-	free(value);
 	return (SUCCESS);
 }
 
@@ -66,7 +56,6 @@ static int	set_oldpwd(t_environment *environ)
 		value = ((t_variable *)bucket->data)->value;
 		bind_variable("OLDPWD", value, environ->env_table, V_NOCREATE);
 		update_export_env("OLDPWD", value, environ, V_NOCREATE);
-		free(value);
 	}
 	else
 	{
@@ -80,5 +69,16 @@ static int	set_oldpwd(t_environment *environ)
 			free(bucket);
 		}
 	}
+	return (SUCCESS);
+}
+
+static int	set_pwd(t_environment *environ)
+{
+	char	*value;
+
+	value = getcwd(0, 0);
+	bind_variable("PWD", value, environ->env_table, V_NOCREATE);
+	update_export_env("PWD", value, environ, V_NOCREATE);
+	free(value);
 	return (SUCCESS);
 }
