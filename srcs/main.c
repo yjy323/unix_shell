@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 18:57:18 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 19:52:48 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char *args[], char **environment)
 	(void)args;
 
 	/* leaks check */
-	atexit(check_leaks);
+	//atexit(check_leaks);
 
 	initialize(environment);
 	reader_loop();

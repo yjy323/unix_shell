@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 16:17:21 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 19:40:47 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 #include "libft.h"
 #include "status.h"
 
-int					execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd);
-static int			save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd);
+int					execute_simple_command(t_command *command,
+						int pipe_in_fd, int pipe_out_fd);
+static int			save_standard_fd(char *curr_cmd,
+						int *p_save_stdin_fd, int *p_save_stdout_fd);
 static t_word_list	*update_expanded_words(t_word_list *words);
 static char			*get_curr_cmd(t_word_list *list);
 
@@ -52,7 +54,8 @@ int	execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd)
 	return (g_sh_variable.status);
 }
 
-static int	save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd)
+static int	save_standard_fd(char *curr_cmd,
+				int *p_save_stdin_fd, int *p_save_stdout_fd)
 {
 	*p_save_stdin_fd = dup(STDIN_FILENO);
 	*p_save_stdout_fd = dup(STDOUT_FILENO);
