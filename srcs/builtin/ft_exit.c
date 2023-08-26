@@ -6,16 +6,18 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:38:32 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:53:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 17:18:29 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #include "command.h"
+#include "status.h"
 #include "libft.h"
 
 int			ft_exit(t_word_list *list);
@@ -23,26 +25,43 @@ static bool	valid_argument(char *word);
 
 int	ft_exit(t_word_list *list)
 {
-	int	status;
-
-	status = g_sh_variable.status;
 	if (!list)
-		exit(status);
+		exit(g_sh_variable.status);
 	else
 	{
+		if (list->next)
+			return (exception_handler(EGENRAL, "exit", 0, INVARG_COUNT));
 		if (valid_argument(list->word->word) == false)
-			return (1);
-		exit(ft_atoi(list->word->word));
+			return (exception_handler(EEXITARG, "exit", list->word->word, INVARG_NUMERIC));
+		write(1, "exit\n", 5);
+		exit(ft_atoi(list->word->word) % 256);
 	}
 }
 
 static bool	valid_argument(char *word)
 {
-	while (*word)
+	int		cnt;
+	int		flag_neg;
+	char	*longlong_max;
+
+	cnt = 0;
+	flag_neg = 0;
+	if (*word == '-' || *word == '+')
 	{
-		if (!(*word >= '0' && *word <= '9'))
-			return (false);
 		word++;
+		flag_neg = 1;
 	}
+	if (flag_neg)
+		longlong_max = "9223372036854775808";
+	else
+		longlong_max = "9223372036854775807";
+	while (word[cnt])
+	{
+		if (!(word[cnt] >= '0' && word[cnt] <= '9'))
+			return (false);
+		cnt++;
+	}
+	if (cnt > 19 || (cnt == 19 && ft_strncmp(longlong_max, word, 19) < 0))
+		return (false);
 	return (true);
 }

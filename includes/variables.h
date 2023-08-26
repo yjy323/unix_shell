@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   variables.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 04:17:03 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 21:05:59 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 18:26:10 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char			**update_export_env(char *name,
 					char *value, t_environment *environ, int flag);
 char			**remove_export_env(char *name, char **export_env);
 int				find_export_env(char *name, char **export_env);
-t_environment	*create_environmet_variable(char **initial_environ);
+t_environment	*create_environment_variable(char **initial_environ);
+void			destroy_environment_variable(t_environment *environ);
 
 #endif

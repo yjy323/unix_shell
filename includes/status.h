@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:01:20 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 21:19:48 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 16:16:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define EOPTION 255
 
 # define SUCCESS 0
+# define NOTBUILTIN 4242
 # define EGENRAL 1
 # define EMISUSE 2
 # define ENOPERM 126
@@ -24,6 +25,7 @@
 # define EEXITARG 255
 # define ESYNTEX 258
 
+# define INVHOME "HOME not set"
 # define INVARG "not a valid identifier"
 # define INVARG_COUNT "too many arguments"
 # define INVARG_NUMERIC "numeric argument required"

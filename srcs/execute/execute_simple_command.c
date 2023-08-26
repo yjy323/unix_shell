@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 15:27:08 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 16:17:21 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int	execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd)
 		|| do_redirect(curr_cmd, command->simple->redirects))
 		return (EGENRAL);
 	status = execute_buitin(command->simple->words);
-	if (status == ENOCMD)
+	if (status == NOTBUILTIN)
 		status = execute_filesystem(command->simple->words, curr_cmd);
 	if (undo_redirect(curr_cmd, save_stdin_fd, save_stdout_fd))
 		return (EGENRAL);
-	return (status);
+	return (g_sh_variable.status);
 }
 
 static int	save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd)
