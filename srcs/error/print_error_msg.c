@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_error_msg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 01:26:10 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 21:20:13 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 20:26:58 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_error_msg(int status, char *cmd, char *arg, char *msg);
 
 void	print_error_msg(int status, char *cmd, char *arg, char *msg)
 {
-	write(2, "bash: ", 6);
+	write(2, "minishell: ", 11);
 	if (status == ESYNTEX)
 		write(2, MSYNTAX, ft_strlen(MSYNTAX));
 	if (cmd)

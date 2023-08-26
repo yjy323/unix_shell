@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:52:48 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 20:26:27 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static char	*sh_readline(void)
 {
 	char	*str;
 
-	str = readline("minshell-3.2$ ");
+	str = readline("minishell-1.0$ ");
 	if (rl_eof_found)
 	{
 		printf("exit\n");
