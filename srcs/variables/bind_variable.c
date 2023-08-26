@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bind_variable.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:22:00 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:18:03 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:54:17 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,20 @@ t_variable	*bind_variable(char *name,
 {
 	t_bucket_contents	*bucket;
 	t_variable			*entry;
+	char				*dup_name;
+	char				*dup_value;
 
 	entry = hash_lookup(name, table);
+	dup_name = 0;
+	dup_value = 0;
+	if (name)
+		dup_name = ft_xstrdup(name);
+	if (value)
+		dup_value = ft_xstrdup(value);
 	if (!entry && flag == V_CREATE)
 	{
 		bucket = hash_insert(ft_xstrdup(name), table);
-		entry = create_variable(ft_xstrdup(name), ft_xstrdup(value));
+		entry = create_variable(dup_name, dup_value);
 		bucket->data = (void *)entry;
 	}
 	else
@@ -37,7 +45,7 @@ t_variable	*bind_variable(char *name,
 		if (entry)
 		{
 			free(entry->value);
-			entry->value = ft_xstrdup(value);
+			entry->value = dup_value;
 		}
 	}
 	return (entry);

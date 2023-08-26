@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:09:00 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:14:06 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 #include <stdio.h>
 
+#include "builtin.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
 #include "libft.h"
 #include "utils.h"
+#include "status.h"
 
 int			ft_export(t_word_list *list);
 static int	ft_export_without_args(t_hash_table *table);
@@ -34,14 +36,14 @@ int	ft_export(t_word_list *list)
 	t_environment	*environ;
 
 	environ = g_sh_variable.environment;
-	status = 0;
+	status = SUCCESS;
 	if (list)
 	{
 		if (list->word->word && *list->word->word == '-')
 			return (1);
 		while (list)
 		{
-			ft_export_word(list->word->word, environ);
+			status = ft_export_word(list->word->word, environ);
 			list = list->next;
 		}
 	}
@@ -74,7 +76,7 @@ static int	ft_export_without_args(t_hash_table *table)
 		}
 		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	ft_export_word(char *word, t_environment *environ)
@@ -83,6 +85,8 @@ static int	ft_export_word(char *word, t_environment *environ)
 	char	*value;
 	int		exp_append;
 
+	if (valid_environ_convention("export", word))
+		return (EGENRAL);
 	exp_append = 0;
 	name = 0;
 	value = 0;
@@ -94,11 +98,12 @@ static int	ft_export_word(char *word, t_environment *environ)
 	{
 		if (value)
 			update_export_env(name, value, environ, V_CREATE);
-		bind_variable(name, value, environ->env_table, V_CREATE);
+		if (!hash_search(name, environ->env_table))
+			bind_variable(name, value, environ->env_table, V_CREATE);
 	}
 	free(name);
 	free(value);
-	return (0);
+	return (SUCCESS);
 }
 
 static int	ft_export_word_appned(char *name,
@@ -122,7 +127,7 @@ static int	ft_export_word_appned(char *name,
 	if (value)
 		update_export_env(name, value, environ, V_CREATE);
 	bind_variable(name, value, environ->env_table, V_CREATE);
-	return (0);
+	return (SUCCESS);
 }
 
 static char	*get_variable(char *word,

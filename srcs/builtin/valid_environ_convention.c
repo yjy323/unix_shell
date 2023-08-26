@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_environment_variable.c                       :+:      :+:    :+:   */
+/*   valid_environ_convention.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 16:43:53 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/23 15:09:26 by jy_23            ###   ########.fr       */
+/*   Created: 2023/08/26 16:47:05 by jy_23             #+#    #+#             */
+/*   Updated: 2023/08/26 17:15:00 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-
+#include "status.h"
 #include "libft.h"
 
-bool	valid_env_variable(char *name)
-{
-	int	i;
+int	valid_environ_convention(char *cmd, char *key);
 
-	if (ft_isdigit(*name))
-		return (1);
-	i = 0;
-	while (name[i])
+int	valid_environ_convention(char *cmd, char *key)
+{
+	if (*key == '=')
+		return (exception_handler(EGENRAL, cmd, key, INVARG));
+	while (*key)
 	{
-		if (ft_isalnum(name[i])
-			|| name[i] != '_')
-			return (1);
-		i++;
+		if (!ft_isalnum(*key) || *key == '_')
+			return (exception_handler(EGENRAL, cmd, key, INVARG));
+		else if (*key == '=')
+			break ;
+		key++;
 	}
-	return (0);
+	return (SUCCESS);
 }

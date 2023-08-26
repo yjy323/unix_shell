@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 21:31:07 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/26 16:17:21 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,30 @@
 #include "libft.h"
 #include "status.h"
 
-int					execute_simple_command(t_command *command, char *curr_cmd, int pipe_in_fd, int pipe_out_fd);
+int					execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd);
 static int			save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd);
 static t_word_list	*update_expanded_words(t_word_list *words);
+static char			*get_curr_cmd(t_word_list *list);
 
-int	execute_simple_command(t_command *command, char *curr_cmd, int pipe_in_fd, int pipe_out_fd)
+int	execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd)
 {
-	int	save_stdin_fd;
-	int	save_stdout_fd;
-	int	status;
+	int		save_stdin_fd;
+	int		save_stdout_fd;
+	int		status;
+	char	*curr_cmd;
 
 	command->simple->words = update_expanded_words(command->simple->words);
+	curr_cmd = get_curr_cmd(command->simple->words);
 	if (do_pipe_redirect(curr_cmd, &pipe_in_fd, &pipe_out_fd)
 		|| save_standard_fd(curr_cmd, &save_stdin_fd, &save_stdout_fd)
 		|| do_redirect(curr_cmd, command->simple->redirects))
 		return (EGENRAL);
 	status = execute_buitin(command->simple->words);
-	if (status == ENOCMD)
+	if (status == NOTBUILTIN)
 		status = execute_filesystem(command->simple->words, curr_cmd);
 	if (undo_redirect(curr_cmd, save_stdin_fd, save_stdout_fd))
 		return (EGENRAL);
-	return (status);
+	return (g_sh_variable.status);
 }
 
 static int	save_standard_fd(char *curr_cmd, int *p_save_stdin_fd, int *p_save_stdout_fd)
@@ -66,4 +69,12 @@ static t_word_list	*update_expanded_words(t_word_list *words)
 	expanded_words = expand_words(words);
 	free_word_list(words);
 	return (expanded_words);
+}
+
+static char	*get_curr_cmd(t_word_list *list)
+{
+	if (!list || !list->word || !list->word->word)
+		return (0);
+	else
+		return (list->word->word);
 }

@@ -56,8 +56,8 @@ CFILES =		main.c \
 				variables/update_export_env.c \
 				variables/remove_export_env.c \
 				variables/find_export_env.c \
-				variables/create_environmet_variable.c \
-				variables/valid_environment_variable.c \
+				variables/create_environment_variable.c \
+				varables/destroy_environment_variable.c \
 				\
 				parse/parse.c \
 				parse/tokenize/tokenize.c \
@@ -104,6 +104,7 @@ CFILES =		main.c \
 				builtin/ft_export.c \
 				builtin/ft_pwd.c \
 				builtin/ft_unset.c \
+				builtin/valid_environ_convention.c \
 				error/crash.c \
 				error/exception_handler.c \
 				error/exception_handler_sub_ps.c \

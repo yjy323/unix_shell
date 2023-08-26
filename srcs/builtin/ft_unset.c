@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 18:09:03 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:14:48 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "builtin.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
+#include "status.h"
 
 int	ft_unset(t_word_list *list);
 
@@ -33,6 +35,8 @@ int	ft_unset(t_word_list *list)
 	while (iter)
 	{
 		name = iter->word->word;
+		if (valid_environ_convention("unset", name))
+			return (EGENRAL);
 		bucket = hash_search(iter->word->word, environ->env_table);
 		if (bucket)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_filesystem.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 21:24:35 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:57:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,17 @@ static char	*set_excutable_file(char *file, t_hash_table *table)
 {
 	char	*executable_file;
 	char	**path;
+	char	*env_path;
 
+	executable_file = 0;
 	if (access(file, F_OK | X_OK) == 0)
 		return (file);
-	path = ft_split(hash_search_variable_value("PATH", table), ':'); // seg check
-	executable_file = search_excutable_file(ft_xstrjoin("/", file), path);
+	env_path = hash_search_variable_value("PATH", table);
+	if (env_path)
+	{
+		path = ft_split(env_path, ':');
+		executable_file = search_excutable_file(ft_xstrjoin("/", file), path);
+	}
 	if (!executable_file)
 		return (file);
 	else
