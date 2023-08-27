@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 18:18:55 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:00:17 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <readline/history.h>
 #include "variables.h"
 #include "execute.h"
-#include "initialize.h"
+#include "prompt.h"
 #include "parse/parse.h"
 
 
@@ -64,6 +64,7 @@ static void	reader_loop()
 			return ;
 		command = parse(str);
 		execute_command(command);
+		clear_tmp(g_sh_variable.temp_dir_path);
 		free(str);
 		if (command)
 			free_command(command);

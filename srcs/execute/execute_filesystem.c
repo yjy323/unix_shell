@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 18:19:42 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:00:03 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "initialize.h"
+#include "prompt.h"
 #include "execute.h"
 #include "command.h"
 #include "hashlib.h"
@@ -45,10 +45,7 @@ int	execute_filesystem(t_word_list *words, char *curr_cmd)
 	else if (pid == 0)
 		execute_filesystem_internal(words, curr_cmd, g_sh_variable.environment);
 	else
-	{
-		waitpid(pid, &status, 0);
-		status = WEXITSTATUS(status);
-	}
+		status = job_control(pid);
 	return (status);
 }
 

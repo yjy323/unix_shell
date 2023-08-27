@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 23:16:01 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/27 17:54:33 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:00:11 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
-#include "initialize.h"
+#include "prompt.h"
 
 void		initialize_shell_signals(int process_level);
 static void	initialize_shell_signals_rl(void);

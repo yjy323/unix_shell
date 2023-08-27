@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   prompt.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/21 19:47:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 18:13:13 by youjeong         ###   ########.fr       */
+/*   Created: 2023/08/21 19:49:21 by youjeong          #+#    #+#             */
+/*   Updated: 2023/08/27 17:31:10 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialize.h"
+#ifndef PROMPT_H
+# define PROMPT_H
+
+# include "variables.h"
 
 void	initialize(char **environment);
+void	initialize_shell_signals(int process_level);
+void	set_tty(void);
+void	set_sh_variable(char **environment);
 
-void	initialize(char **environment)
-{
-	set_tty();
-	initialize_shell_signals(0);
-	set_sh_variable(environment);
-}
+void	*set_signal_handler(int sig, void (*handler)(int signo));
+void	sigint_sighandler(int signo);
+void	signal_sighandler_child(int signo);
+void	sigint_sighandler_heredoc(int signo);
+int		clear_tmp(char *tmp_path);
+
+#endif
