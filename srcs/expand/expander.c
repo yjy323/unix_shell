@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:02:58 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/26 14:21:10 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:50 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expand/expander.h"
 #include "libft.h"
+
+#include "expand/expander.h"
 
 void	init_expander(t_expander *epd, char *istr);
 void	add_expander_c(t_expander *epd, char c);

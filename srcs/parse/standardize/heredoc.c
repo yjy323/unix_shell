@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/27 19:18:35 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:59:49 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 
+#include "libft.h"
+
 #include "minishell.h"
-#include "expand/expand.h"
-#include "parse/lex_list.h"
 #include "prompt.h"
+#include "parse/lex_list.h"
+#include "expand/expand.h"
+#include "status.h"
 #include "variables.h"
 #include "utils.h"
-#include "status.h"
-#include "libft.h"
 
 int			take_heredoc(t_lex_list *cur, int heredoc_num);
 static char	*get_heredoc_name(int heredoc_num);

@@ -16,9 +16,11 @@
 # include "variables.h"
 
 void	initialize(char **environment);
+void	destroy(void);
 void	initialize_shell_signals(int process_level);
 void	set_tty(void);
 void	set_sh_variable(char **environment);
+char	*sh_readline(void);
 
 void	*set_signal_handler(int sig, void (*handler)(int signo));
 void	sigint_sighandler(int signo);

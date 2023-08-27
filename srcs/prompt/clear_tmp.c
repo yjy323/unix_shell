@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:04:55 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 17:41:46 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:00:11 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 #include <stdbool.h>
 #include <dirent.h>
 
+#include "libft.h"
+
 #include "status.h"
 #include "utils.h"
-#include "libft.h"
 
 int			clear_tmp(char *tmp_path);
 static bool	is_tmp_file(char *file);

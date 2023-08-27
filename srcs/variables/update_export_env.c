@@ -6,16 +6,17 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:03:26 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:04:22 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:01:20 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+#include "libft.h"
+
 #include "hashlib.h"
 #include "variables.h"
 #include "utils.h"
-#include "libft.h"
 
 char		**update_export_env(char *name,
 				char *value, t_environment *environ, int flag);

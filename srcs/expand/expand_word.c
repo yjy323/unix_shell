@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   expand_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:47:48 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/26 14:21:57 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:35 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
+
+#include "libft.h"
+
 #include "command.h"
 #include "expand/expander.h"
 #include "expand/expand.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "libft.h"
 
 void		expand_word(t_word_desc *word);
 static char	*expand_str(char *str);

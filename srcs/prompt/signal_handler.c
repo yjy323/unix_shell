@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 21:00:37 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/27 19:10:28 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 21:00:30 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 #include <signal.h>
 #include <readline/readline.h>
 
+#include "libft.h"
+
 #include "minishell.h"
 #include "status.h"
 #include "unistd.h"
 #include "utils.h"
-#include "libft.h"
 
 void	*set_signal_handler(int sig, void (*handler)(int signo));
 void	sigint_sighandler(int signo);
@@ -69,5 +70,6 @@ void	sigint_sighandler_heredoc(int signo)
 {
 	(void)signo;
 	g_sh_variable.status = 1;
+	printf("\n");
 	exit(1);
 }

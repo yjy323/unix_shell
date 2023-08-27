@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_error_msg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 01:26:10 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 20:26:58 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:54:25 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 
-#include "status.h"
-
 #include "libft.h"
+
+#include "status.h"
 
 void	print_error_msg(int status, char *cmd, char *arg, char *msg);
 

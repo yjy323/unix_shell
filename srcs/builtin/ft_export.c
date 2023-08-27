@@ -6,21 +6,21 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:56:07 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:53:17 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
 #include <stdio.h>
 
+#include "libft.h"
+
 #include "builtin.h"
+#include "minishell.h"
+#include "status.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "libft.h"
 #include "utils.h"
-#include "status.h"
 
 int			ft_export(t_word_list *list);
 static int	ft_export_without_args(t_hash_table *table);

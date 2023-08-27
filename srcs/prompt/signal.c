@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 23:16:01 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/27 19:00:11 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 19:41:07 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void	initialize_shell_signals_root(void)
 
 static void	initialize_shell_signals_child(void)
 {
-
 	set_signal_handler(SIGINT, signal_sighandler_child);
 	set_signal_handler(SIGQUIT, signal_sighandler_child);
 }

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   word_desc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:49:32 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:20:00 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:53:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "command.h"
 #include "status.h"
+#include "command.h"
 #include "utils.h"
 
 void		init_word_desc(t_word_desc *word_desc);

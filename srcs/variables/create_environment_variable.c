@@ -6,15 +6,16 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:37:51 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 17:20:41 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:01:03 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+#include "libft.h"
+
 #include "variables.h"
 #include "hashlib.h"
-#include "libft.h"
 #include "utils.h"
 
 t_environment	*create_environment_variable(char **initial_environ);

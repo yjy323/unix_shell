@@ -28,16 +28,17 @@ SRCS_DIR =		prompt/ \
 				variables/ \
 				error/ \
 				utils/ \
-				command/ \
-				heredoc/
+				command/
 
 CFILES =		main.c \
 				prompt.h/initialize.c \
+				prompt.h/destroy.c \
 				prompt.h/signal.c \
 				prompt.h/signal_handler.c \
 				prompt.h/shtty.c \
 				prompt.h/shell.c \
 				prompt.h/clear_tmp.c \
+				\
 				hash/hash_create.c \
 				hash/hash_dispose.c \
 				hash/hash_shouldgrow.c \

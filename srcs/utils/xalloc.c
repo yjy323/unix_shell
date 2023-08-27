@@ -6,14 +6,15 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 02:01:11 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:49:33 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:00:45 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
 #include <stdio.h>
-#include "status.h"
+
 #include "libft.h"
+
+#include "status.h"
 
 void	*xmalloc(size_t bytes);
 void	*xrealloc(void *ptr, size_t bytes);

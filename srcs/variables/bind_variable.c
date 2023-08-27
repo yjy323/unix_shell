@@ -6,13 +6,14 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 18:22:00 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 20:20:54 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:00:57 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 #include "variables.h"
 #include "hashlib.h"
-#include "libft.h"
 #include "utils.h"
 
 t_variable			*bind_variable(char *name,

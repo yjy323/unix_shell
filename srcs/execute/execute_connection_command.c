@@ -6,21 +6,20 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:12:59 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 18:29:09 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:56:47 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <unistd.h>
 #include <stdlib.h>
 
+#include "minishell.h"
 #include "prompt.h"
 #include "execute.h"
+#include "status.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "status.h"
 
 int			execute_connection_command(t_command *command,
 				int pre_in, int pre_out);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 23:51:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:19:30 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:53:35 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "command.h"
 #include "status.h"
+#include "command.h"
 #include "utils.h"
 
 void		init_command(t_command *command);

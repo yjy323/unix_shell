@@ -6,12 +6,13 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:57:27 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/26 15:39:33 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 21:00:51 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include "libft.h"
+
+#include "utils.h"
 
 char		*ft_xstrdup(const char *s1);
 char		*ft_xsubstr(const char *s, unsigned int start, size_t len);

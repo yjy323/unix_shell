@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   valid_environ_convention.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 16:47:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:16:19 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:53:28 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "status.h"
 #include "libft.h"
+
+#include "status.h"
 
 int	valid_environ_convention(char *cmd, char *key);
 

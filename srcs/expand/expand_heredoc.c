@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 23:45:31 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 19:59:13 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 #include "expand/expand.h"
 #include "expand/expander.h"
 #include "hashlib.h"

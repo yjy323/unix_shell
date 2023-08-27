@@ -6,14 +6,13 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 03:21:03 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:41:11 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:54:06 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
 #include <stdlib.h>
 
+#include "minishell.h"
 #include "status.h"
 
 void	crash(int status, char *cmd, char *arg, char *msg);

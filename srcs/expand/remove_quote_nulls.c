@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quote_nulls.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 22:51:55 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:53 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 #include "command.h"
 #include "expand/expander.h"
-#include "libft.h"
 
 void		remove_quote_nulls(t_word_list *list);
 static void	remove_quote_nulls_word_desc(t_word_desc *word_desc);

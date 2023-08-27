@@ -6,16 +6,15 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:58:41 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 17:13:58 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:03 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
 #include <unistd.h>
 
-#include "execute.h"
+#include "minishell.h"
 #include "status.h"
+#include "execute.h"
 
 int			undo_redirect(t_redirect_list *redirects,
 				char *curr_cmd, int save_stdin_fd, int save_stdout_fd);

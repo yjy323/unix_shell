@@ -6,22 +6,21 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:10:49 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 16:15:42 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:54:54 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <fcntl.h>
 #include <unistd.h>
 
+#include "libft.h"
+
+#include "minishell.h"
 #include "execute.h"
+#include "status.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "status.h"
-
-#include "libft.h"
 
 int			do_redirect(t_redirect_list *redirects, char *curr_cmd);
 static int	do_redirect_stdin(t_redirect *redir, char *curr_cmd);

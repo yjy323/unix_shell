@@ -6,20 +6,19 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 06:06:31 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 18:59:12 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:53:20 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <stdlib.h>
 #include <unistd.h>
 
 #include "builtin.h"
+#include "minishell.h"
+#include "status.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "status.h"
 
 int	ft_unset(t_word_list *list);
 

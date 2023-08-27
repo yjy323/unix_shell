@@ -6,20 +6,19 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:48:13 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 18:55:57 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:56:32 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 #include "minishell.h"
-
-#include <stdlib.h>	
-
+#include "status.h"
 #include "execute.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
 #include "utils.h"
-#include "status.h"
 
 int	execute_command(t_command *command);
 int	execute_command_internal(t_command *command, int pre_in, int pre_out);

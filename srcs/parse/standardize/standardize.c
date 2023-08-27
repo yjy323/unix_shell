@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   standardize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:10:31 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/26 18:20:32 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:59:53 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 #include "parse/syntex.h"
-#include "heredoc.h"
+#include "parse/heredoc.h"
 #include "parse/lex_list.h"
 #include "variables.h"
-#include "libft.h"
 
 int			standardize(t_lex_list *list);
 static int	standardize_internal(t_lex_list *qlist, t_lex_list *plist, \

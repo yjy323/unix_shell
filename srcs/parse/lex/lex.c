@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lex.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:20:39 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:59:19 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 #include "parse/tokenize.h"
 #include "parse/lex_list.h"
-#include "libft.h"
 #include "utils.h"
 
 t_lex_list				*lex(char *str);

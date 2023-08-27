@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   word_desc_split.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 17:57:17 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/24 17:56:34 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:56 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 #include "command.h"
 #include "expand/expand.h"
-#include "libft.h"
 
 t_word_list		*word_desc_split(t_word_desc *word_desc);
 static size_t	add_word_desc_to_word_list(t_word_list **word_list, char *word);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 22:00:16 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 13:19:50 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 20:53:42 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "command.h"
 #include "status.h"
+#include "command.h"
 #include "utils.h"
 
 void			init_redirect_list(t_redirect_list *redirect_list);

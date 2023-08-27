@@ -6,19 +6,20 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:38:32 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:41:47 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:52:30 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "command.h"
-#include "status.h"
 #include "libft.h"
+
+#include "minishell.h"
+#include "status.h"
+#include "prompt.h"
+#include "command.h"
 
 int			ft_exit(t_word_list *list);
 static bool	valid_argument(char *word);
@@ -39,7 +40,7 @@ int	ft_exit(t_word_list *list)
 		status = ft_atoi(list->word->word) % 256;
 	}
 	write(1, "exit\n", 5);
-	clear_sh_variable();
+	destroy();
 	g_sh_variable.status = status;
 	exit (status);
 }

@@ -6,19 +6,18 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 20:20:21 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:52:00 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "minishell.h"
+#include "status.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "status.h"
 
 int			ft_cd(t_word_list *list);
 static int	set_pwd(t_environment *environ);

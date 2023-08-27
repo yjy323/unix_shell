@@ -6,15 +6,16 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:21:24 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/26 19:21:01 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:58:41 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 #include "command.h"
 #include "expand/expand.h"
 #include "expand/expander.h"
 #include "variables.h"
-#include "libft.h"
 
 t_word_list	*expand_words(t_word_list *list);
 static void	move_word_list(t_word_list **src, t_word_list **dst);

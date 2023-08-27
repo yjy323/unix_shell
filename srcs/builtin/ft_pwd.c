@@ -6,15 +6,15 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 05:51:46 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 16:30:10 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:52:54 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+
+#include "minishell.h"
 
 int	ft_pwd(void)
 {

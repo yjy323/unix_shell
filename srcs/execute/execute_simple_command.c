@@ -6,25 +6,23 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 16:46:44 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:57:27 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "minishell.h"
 
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "libft.h"
+
+#include "minishell.h"
 #include "execute.h"
+#include "status.h"
+#include "expand/expand.h"
 #include "command.h"
 #include "hashlib.h"
 #include "variables.h"
-#include "status.h"
-#include "expand/expand.h"
-
-#include "libft.h"
-#include "status.h"
 
 int					execute_simple_command(t_command *command,
 						int pipe_in_fd, int pipe_out_fd);

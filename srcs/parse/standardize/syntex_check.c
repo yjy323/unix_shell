@@ -6,12 +6,13 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:38:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 20:48:31 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 20:59:56 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse/lex_list.h"
 #include "status.h"
+
+#include "parse/lex_list.h"
 
 int			syntex_check(t_lex_list *pre, t_lex_list *cur);
 static int	redirect_syntex_check(t_lex_list *cur);
