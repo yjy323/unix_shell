@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 21:24:09 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 17:42:38 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 int			take_heredoc(t_lex_list *cur, int heredoc_num);
 static char	*get_heredoc_name(int heredoc_num);
 static void	do_heredoc(char *filename, char *limiter);
+static void	heredoc_reader_loop(int fd, char *limiter);
 
 int	take_heredoc(t_lex_list *cur, int heredoc_num)
 {
@@ -72,26 +73,35 @@ static char	*get_heredoc_name(int heredoc_num)
 static void	do_heredoc(char *filename, char *limiter)
 {
 	int		fd;
+
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	heredoc_reader_loop(fd, limiter);
+	close(fd);
+}
+
+static void	heredoc_reader_loop(int fd, char *limiter)
+{
 	char	*line;
 	char	*oline;
 
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		line = readline("> ");
 		if (rl_eof_found)
+		{
+			g_sh_variable.status = 0;
 			exit(1);
+		}
 		if (ft_strlen(line) == ft_strlen(limiter)
 			&& !ft_strncmp(line, limiter, ft_strlen(line)))
 			break ;
 		oline = line;
 		line = expand_for_heredoc(line);
 		free(oline);
-		write(fd, line, ft_strlen(line));
+		write((int)fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
 	}
 	if (line)
 		free(line);
-	close(fd);
 }
