@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 16:15:52 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 16:33:54 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ static char	*search_excutable_file(char *file, char **path)
 	executable_file = 0;
 	while (*tmp)
 	{
-		printf("%s\n", *tmp);
 		temp_executable_file = ft_xstrjoin(*tmp, file);
 		if (!executable_file && access(temp_executable_file, F_OK) == 0)
 			executable_file = temp_executable_file;
