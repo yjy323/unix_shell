@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 15:51:49 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 16:46:44 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd)
 	if (undo_redirect(command->simple->redirects
 			, curr_cmd, save_stdin_fd, save_stdout_fd))
 		return (EGENRAL);
-	return (g_sh_variable.status);
+	return (status);
 }
 
 static int	save_standard_fd(char *curr_cmd,

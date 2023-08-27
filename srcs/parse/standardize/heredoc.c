@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 21:24:09 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 18:29:16 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <sys/wait.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -21,8 +20,9 @@
 #include "minishell.h"
 #include "expand/expand.h"
 #include "parse/lex_list.h"
-#include "initialize.h"
+#include "prompt.h"
 #include "variables.h"
+#include "execute.h"
 #include "utils.h"
 #include "status.h"
 #include "libft.h"
@@ -50,10 +50,9 @@ int	take_heredoc(t_lex_list *cur, int heredoc_num)
 	}
 	else
 	{
-		waitpid(pid, &status, 0);
+		status = job_control(pid);
 		free(cur->next->data->word);
 		cur->next->data->word = filename;
-		status = WEXITSTATUS(status);
 	}
 	return (status);
 }
@@ -61,10 +60,14 @@ int	take_heredoc(t_lex_list *cur, int heredoc_num)
 static char	*get_heredoc_name(int heredoc_num)
 {
 	char	*res;
+	char	*temp_filename;
 	char	*str_num;
 
+	temp_filename = "_temp_here_doc.tmp";
 	str_num = ft_xitoa(heredoc_num);
-	res = ft_xstrjoin(g_sh_variable.temp_dir_path, str_num);
+	temp_filename = ft_xstrjoin(str_num, temp_filename);
+	res = ft_xstrjoin(g_sh_variable.temp_dir_path, temp_filename);
+	free(temp_filename);
 	free(str_num);
 	return (res);
 }

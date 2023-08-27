@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 20:12:59 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:40:29 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 18:29:09 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <sys/wait.h>
 
-#include "initialize.h"
+#include "prompt.h"
 #include "execute.h"
 #include "command.h"
 #include "hashlib.h"
@@ -47,10 +46,7 @@ int	execute_connection_command(t_command *command,
 	pids[1] = execute_subprocess(command->connection->second, io_fd, -1);
 	idx = 0;
 	while (idx < 2)
-	{
-		waitpid(pids[idx++], &status, 0);
-		status = WEXITSTATUS(status);
-	}
+		status = job_control(pids[idx++]);
 	if (pre_out != -1)
 		exit(status);
 	else
@@ -73,7 +69,6 @@ static int	execute_subprocess(t_command *command, int *io_fd, int unused_fd)
 		return (exception_handler(EGENRAL, "fork()", 0, 0));
 	else if (pid == 0)
 	{
-		initialize_shell_signals(2);
 		if (unused_fd != -1 && close(unused_fd) == -1)
 			return (exception_handler(EGENRAL, "close()", 0, 0));
 		status = execute_command_internal(command, io_fd[0], io_fd[1]);

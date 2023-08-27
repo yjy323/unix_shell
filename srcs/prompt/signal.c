@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 23:16:01 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/26 19:50:51 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 17:01:49 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <readline/readline.h>
 
-#include "initialize.h"
+#include "prompt.h"
 
 void		initialize_shell_signals(int process_level);
 static void	initialize_shell_signals_rl(void);

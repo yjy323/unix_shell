@@ -13,7 +13,7 @@ BUILD_LIBFT = make -C libft $@
 
 SRCS_RT_DIR =	srcs/
 
-SRCS_DIR =		initialize/ \
+SRCS_DIR =		prompt/ \
 				parse/ \
 				parse/env_replacer/ \
 				parse/tokenize/ \
@@ -32,11 +32,12 @@ SRCS_DIR =		initialize/ \
 				heredoc/
 
 CFILES =		main.c \
-				initialize/initialize.c \
-				initialize/signal.c \
-				initialize/signal_handler.c \
-				initialize/shtty.c \
-				initialize/shell.c \
+				prompt.h/initialize.c \
+				prompt.h/signal.c \
+				prompt.h/signal_handler.c \
+				prompt.h/shtty.c \
+				prompt.h/shell.c \
+				prompt.h/clear_tmp.c \
 				hash/hash_create.c \
 				hash/hash_dispose.c \
 				hash/hash_shouldgrow.c \
@@ -97,6 +98,7 @@ CFILES =		main.c \
 				execute/undo_redirect.c \
 				execute/get_redir_flag.c \
 				execute/do_pipe_redirect.c \
+				execute/job_control.c \
 				\
 				builtin/ft_cd.c \
 				builtin/ft_echo.c \

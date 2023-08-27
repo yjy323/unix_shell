@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 19:50:40 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 16:33:36 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 17:16:40 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include <readline/history.h>
 #include "variables.h"
 #include "execute.h"
-#include "initialize.h"
+#include "prompt.h"
 #include "parse/parse.h"
 
 
@@ -42,7 +42,7 @@ int	main(int argc, char *args[], char **environment)
 	(void)args;
 
 	/* leaks check */
-	atexit(check_leaks);
+	//atexit(check_leaks);
 
 	initialize(environment);
 	reader_loop();
@@ -64,6 +64,7 @@ static void	reader_loop()
 			return ;
 		command = parse(str);
 		execute_command(command);
+		clear_tmp(g_sh_variable.temp_dir_path);
 		free(str);
 		if (command)
 			free_command(command);

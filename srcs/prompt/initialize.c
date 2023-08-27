@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 19:47:38 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 18:13:13 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 17:01:49 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "initialize.h"
+#include "prompt.h"
 
 void	initialize(char **environment);
 

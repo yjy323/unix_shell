@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.h                                       :+:      :+:    :+:   */
+/*   prompt.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITIALIZE_H
-# define INITIALIZE_H
+#ifndef PROMPT_H
+# define PROMPT_H
 
 # include "variables.h"
 
@@ -22,5 +22,6 @@ void	set_sh_variable(char **environment);
 
 void	sigint_sighandler(int signo);
 void	sigint_sighandler_heredoc(int signo);
+int		clear_tmp(char *tmp_path);
 
 #endif
