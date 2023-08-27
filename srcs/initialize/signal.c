@@ -6,7 +6,7 @@
 /*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 23:16:01 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/25 21:02:07 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/26 19:50:51 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	initialize_shell_signals_root(void)
 
 static void	initialize_shell_signals_child(void)
 {
-	set_signal_handler(SIGINT, SIG_DFL);
+	set_signal_handler(SIGINT, sigint_sighandler_heredoc);
 	set_signal_handler(SIGQUIT, SIG_IGN);
 }
 
