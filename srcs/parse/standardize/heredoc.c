@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/27 18:29:16 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 19:18:35 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/wait.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -22,7 +23,6 @@
 #include "parse/lex_list.h"
 #include "prompt.h"
 #include "variables.h"
-#include "execute.h"
 #include "utils.h"
 #include "status.h"
 #include "libft.h"
@@ -30,6 +30,7 @@
 int			take_heredoc(t_lex_list *cur, int heredoc_num);
 static char	*get_heredoc_name(int heredoc_num);
 static void	do_heredoc(char *filename, char *limiter);
+static void	heredoc_reader_loop(int fd, char *limiter);
 
 int	take_heredoc(t_lex_list *cur, int heredoc_num)
 {
@@ -44,13 +45,14 @@ int	take_heredoc(t_lex_list *cur, int heredoc_num)
 		return (exception_handler(EGENRAL, "fork()", 0, 0));
 	else if (pid == 0)
 	{
-		initialize_shell_signals(2);
+		initialize_shell_signals(3);
 		do_heredoc(filename, cur->next->data->word);
 		exit(0);
 	}
 	else
 	{
-		status = job_control(pid);
+		waitpid(pid, &status, 0);
+		status = WEXITSTATUS(status);
 		free(cur->next->data->word);
 		cur->next->data->word = filename;
 	}
@@ -75,26 +77,35 @@ static char	*get_heredoc_name(int heredoc_num)
 static void	do_heredoc(char *filename, char *limiter)
 {
 	int		fd;
+
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	heredoc_reader_loop(fd, limiter);
+	close(fd);
+}
+
+static void	heredoc_reader_loop(int fd, char *limiter)
+{
 	char	*line;
 	char	*oline;
 
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		line = readline("> ");
 		if (rl_eof_found)
+		{
+			g_sh_variable.status = 0;
 			exit(1);
+		}
 		if (ft_strlen(line) == ft_strlen(limiter)
 			&& !ft_strncmp(line, limiter, ft_strlen(line)))
 			break ;
 		oline = line;
 		line = expand_for_heredoc(line);
 		free(oline);
-		write(fd, line, ft_strlen(line));
+		write((int)fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
 	}
 	if (line)
 		free(line);
-	close(fd);
 }
