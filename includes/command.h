@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:20:24 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/25 13:12:52 by youjeong         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:21:57 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ typedef struct s_word_list {
 
 typedef struct s_redirect_list {
 	t_redirect				*redirect;
-	struct s_redirect_list	*next;	
+	struct s_redirect_list	*next;
 }t_redirect_list;
 
 typedef struct s_redirect {
 	char	*word;
 	char	*filename;
+	int		fd;
 }t_redirect;
 
 typedef struct s_word_desc {

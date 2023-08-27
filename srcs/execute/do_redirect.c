@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:10:49 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 20:21:16 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 16:15:42 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,75 +23,71 @@
 
 #include "libft.h"
 
-int			do_redirect(char *curr_cmd, t_redirect_list *redirects);
-static int	do_redirect_stdin(char *curr_cmd, char *file, char *redir);
-static int	do_redirect_stdout(char *curr_cmd, char *file);
-static int	do_redirect_stdout_append(char *curr_cmd, char *file);
+int			do_redirect(t_redirect_list *redirects, char *curr_cmd);
+static int	do_redirect_stdin(t_redirect *redir, char *curr_cmd);
+static int	do_redirect_stdout(t_redirect *redir, char *curr_cmd);
+static int	do_redirect_stdout_append(t_redirect *redir, char *curr_cmd);
 
-int	do_redirect(char *curr_cmd, t_redirect_list *redirects)
+int	do_redirect(t_redirect_list *redirects, char *curr_cmd)
 {
 	t_redirect_list	*iter;
-	char			*operator;
-	char			*file;
+	t_redirect		*redir;
 	int				status;
+	t_redir_flag	redir_flag;
 
 	iter = redirects;
 	status = SUCCESS;
 	while (iter)
 	{
-		operator = iter->redirect->word;
-		file = iter->redirect->filename;
-		if (ft_strlen(operator) == 1)
-		{
-			if (*operator == '<')
-				status = do_redirect_stdin(curr_cmd, file, "<");
-			else if (*operator == '>')
-				status = do_redirect_stdout(curr_cmd, file);
-		}
-		else if (ft_strlen(operator) == 2)
-		{
-			if (*operator == '<' && *(operator + 1) == '<')
-				status = do_redirect_stdin(curr_cmd, file, "<<");
-			else if (*operator == '>' && *(operator + 1) == '>')
-				status = do_redirect_stdout_append(curr_cmd, file);
-		}
+		redir = iter->redirect;
+		redir_flag = get_redir_flag(redir->word);
+		if (redir_flag == redir_in)
+			status = do_redirect_stdin(redir, curr_cmd);
+		else if (redir_flag == redir_out)
+			status = do_redirect_stdout(redir, curr_cmd);
+		else if (redir_flag == redir_here_doc)
+			status = do_redirect_stdin(redir, curr_cmd);
+		else if (redir_flag == redir_out_append)
+			status = do_redirect_stdout_append(redir, curr_cmd);
 		iter = iter->next;
 	}
 	return (status);
 }
 
-static int	do_redirect_stdin(char *curr_cmd, char *file, char *redir)
+static int	do_redirect_stdin(t_redirect *redir, char *curr_cmd)
 {
 	int	fd;
 
-	fd = open(file, O_RDONLY, 0644);
+	fd = open(redir->filename, O_RDONLY, 0644);
 	if (fd == -1)
-		return (exception_handler(EGENRAL, curr_cmd, redir, 0));
+		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
+	redir->fd = fd;
 	if (dup2(fd, STDIN_FILENO) == -1)
-		return (exception_handler(EGENRAL, curr_cmd, redir, 0));
+		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
 	return (SUCCESS);
 }
 
-static int	do_redirect_stdout(char *curr_cmd, char *file)
+static int	do_redirect_stdout(t_redirect *redir, char *curr_cmd)
 {
 	int	fd;
 
-	fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0644);
+	fd = open(redir->filename, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		return (exception_handler(EGENRAL, curr_cmd, ">", 0));
+		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
+	redir->fd = fd;
 	if (dup2(fd, STDOUT_FILENO) == -1)
-		return (exception_handler(EGENRAL, curr_cmd, ">", 0));
+		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
 	return (SUCCESS);
 }
 
-static int	do_redirect_stdout_append(char *curr_cmd, char *file)
+static int	do_redirect_stdout_append(t_redirect *redir, char *curr_cmd)
 {
 	int	fd;
 
-	fd = open(file, O_RDWR | O_CREAT | O_APPEND, 0644);
+	fd = open(redir->filename, O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
-		return (exception_handler(EGENRAL, curr_cmd, ">>", 0));
+		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
 	if (dup2(fd, STDOUT_FILENO) == -1)
-		return (exception_handler(EGENRAL, curr_cmd, ">>", 0));
+		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
 	return (SUCCESS);
 }

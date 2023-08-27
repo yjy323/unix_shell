@@ -95,6 +95,7 @@ CFILES =		main.c \
 				execute/execute_builtin.c \
 				execute/do_redirect.c \
 				execute/undo_redirect.c \
+				execute/get_redir_flag.c \
 				execute/do_pipe_redirect.c \
 				\
 				builtin/ft_cd.c \

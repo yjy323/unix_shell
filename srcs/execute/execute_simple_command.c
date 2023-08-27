@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 18:52:23 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:40:47 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 15:51:49 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,17 @@ int	execute_simple_command(t_command *command, int pipe_in_fd, int pipe_out_fd)
 
 	command->simple->words = update_expanded_words(command->simple->words);
 	curr_cmd = get_curr_cmd(command->simple->words);
+	if (!curr_cmd)
+		return (SUCCESS);
 	if (do_pipe_redirect(curr_cmd, &pipe_in_fd, &pipe_out_fd)
 		|| save_standard_fd(curr_cmd, &save_stdin_fd, &save_stdout_fd)
-		|| do_redirect(curr_cmd, command->simple->redirects))
+		|| do_redirect(command->simple->redirects, curr_cmd))
 		return (EGENRAL);
 	status = execute_buitin(command->simple->words);
 	if (status == NOTBUILTIN)
 		status = execute_filesystem(command->simple->words, curr_cmd);
-	if (undo_redirect(curr_cmd, save_stdin_fd, save_stdout_fd))
+	if (undo_redirect(command->simple->redirects
+			, curr_cmd, save_stdin_fd, save_stdout_fd))
 		return (EGENRAL);
 	return (g_sh_variable.status);
 }

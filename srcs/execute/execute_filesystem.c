@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:15:19 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/26 19:40:56 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 16:15:52 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	execute_filesystem_internal(t_word_list *words, char *curr_cmd,
 	char	*file;
 
 	initialize_shell_signals(2);
-	file = words->word->word;
+	file = curr_cmd;
 	argument = make_argument(words);
 	executable_file = set_excutable_file(file, environ->env_table);
 	if (access(executable_file, F_OK) != 0)
@@ -129,6 +129,7 @@ static char	*search_excutable_file(char *file, char **path)
 	executable_file = 0;
 	while (*tmp)
 	{
+		printf("%s\n", *tmp);
 		temp_executable_file = ft_xstrjoin(*tmp, file);
 		if (!executable_file && access(temp_executable_file, F_OK) == 0)
 			executable_file = temp_executable_file;
