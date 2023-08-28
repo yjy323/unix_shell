@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youjeong <youjeong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:46:22 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/27 20:59:49 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/28 13:56:12 by youjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,9 @@ static void	heredoc_reader_loop(int fd, char *limiter)
 	while (1)
 	{
 		line = readline("> ");
-		if (rl_eof_found)
-		{
-			g_sh_variable.status = 0;
-			exit(1);
-		}
-		if (ft_strlen(line) == ft_strlen(limiter)
-			&& !ft_strncmp(line, limiter, ft_strlen(line)))
+		if (rl_eof_found
+			|| (ft_strlen(line) == ft_strlen(limiter)
+				&& !ft_strncmp(line, limiter, ft_strlen(line))))
 			break ;
 		oline = line;
 		line = expand_for_heredoc(line);
