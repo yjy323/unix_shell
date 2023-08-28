@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:44:47 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 20:53:17 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/27 23:16:36 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	ft_export(t_word_list *list)
 	status = SUCCESS;
 	if (list)
 	{
-		if (list->word->word && *list->word->word == '-')
-			return (1);
 		while (list)
 		{
 			status = ft_export_word(list->word->word, environ);
