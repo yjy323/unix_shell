@@ -3,13 +3,12 @@ NAME =		minishell
 CC =		cc -g3
 CFLAGS =	-Wall -Wextra -Werror
 INCLUDE = 	-I includes \
-			-I libft/includes
-
+			-I libft/includes \
+			-I readline/include
 RM =		rm -rf
-LIB = -Llibft -lft -lncurses
-LINKING_FLAGS = -lreadline -L/opt/homebrew/opt/readline/lib
-COMFILE_FLAGS = -I/opt/homebrew/opt/readline/include
+LIB = -Llibft -lft -Lreadline/lib -lreadline -lhistory
 BUILD_LIBFT = make -C libft $@
+BUILD_REALINE = make -C readline $@
 
 SRCS_RT_DIR =	srcs/
 
@@ -125,32 +124,32 @@ VPATH = 		$(SRCS_RT_DIR) \
 				$(addprefix $(SRCS_RT_DIR), $(SRCS_DIR))
 
 $(OBJS_DIR)%o: %c
-	$(CC) $(CFLAGS) ${INCLUDE} $(COMFILE_FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) ${INCLUDE} -c $< -o $@
 
-$(NAME): make_mandatory
+$(NAME): make_readline make_mandatory
 
 all: $(NAME)
 
-bonus: make_bonus
+bonus: all
+
+make_readline:
+	make -C readline
 
 make_mandatory: $(OBJS)
 	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) $(LINKING_FLAGS) -o $(NAME) $^
-	touch $@
-
-make_bonus: $(OBJS_BONUS)
-	$(BUILD_LIBFT)
-	$(CC) $(CFLAGS) $(LIB) $(LINKING_FLAGS) -o $(NAME) $^
+	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $^
 	touch $@
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)
 	$(RM) make_mandatory make_bonus
 	$(BUILD_LIBFT)
+	$(BUILD_REALINE)
 
 fclean: clean
 	$(RM) $(NAME)
 	$(BUILD_LIBFT)
+	$(BUILD_REALINE)
 
 re: 
 	make fclean
