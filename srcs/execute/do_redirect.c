@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 19:10:49 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 20:54:54 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/28 15:47:35 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ static int	do_redirect_stdout_append(t_redirect *redir, char *curr_cmd)
 	fd = open(redir->filename, O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
+	redir->fd = fd;
 	if (dup2(fd, STDOUT_FILENO) == -1)
 		return (exception_handler(EGENRAL, curr_cmd, redir->word, 0));
 	return (SUCCESS);

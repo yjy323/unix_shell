@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 21:00:37 by youjeong          #+#    #+#             */
-/*   Updated: 2023/08/28 15:28:58 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/28 15:57:45 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	signal_sighandler_child(int signo)
 {
 	char	*str_ecode;
 
-	str_ecode = ft_xitoa(ESIGNAL + signo);
+	str_ecode = ft_xitoa(signo);
 	if (signo == SIGQUIT)
 	{
 		write(2, "QUIT: ", 6);

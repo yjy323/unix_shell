@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 19:03:26 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/27 21:01:20 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/08/29 12:27:43 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 char		**update_export_env(char *name,
 				char *value, t_environment *environ, int flag);
 static char	**update_export_env_internal(char *name,
-				char *value, char **export_env);
+				char *value, char **export_env, int idx);
 static char	**add_export_env(char *name, char *value, t_environment *environ);
 static char	*make_export_env(char *name, char *value);
 static char	**resize_export_env(t_environment *environ);
@@ -31,23 +31,22 @@ char	**update_export_env(char *name,
 {
 	t_bucket_contents	*bucket;
 	t_hash_table		*table;
+	int					idx;
 
 	table = environ->env_table;
 	bucket = hash_search(name, table);
-	if (!bucket && flag == V_CREATE)
+	idx = find_export_env(name, environ->env_array);
+	if ((!bucket || (bucket && idx == -1)) && flag == V_CREATE)
 		environ->env_array = add_export_env(name, value, environ);
 	else
 		environ->env_array = update_export_env_internal(name,
-				value, environ->env_array);
+				value, environ->env_array, idx);
 	return (environ->env_array);
 }
 
 static char	**update_export_env_internal(char *name,
-				char *value, char **export_env)
+				char *value, char **export_env, int idx)
 {
-	int	idx;
-
-	idx = find_export_env(name, export_env);
 	if (idx != -1)
 	{
 		free(export_env[idx]);
