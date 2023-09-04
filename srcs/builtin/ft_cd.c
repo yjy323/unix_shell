@@ -6,7 +6,7 @@
 /*   By: jy_23 <jy_23@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:28:05 by jy_23             #+#    #+#             */
-/*   Updated: 2023/08/29 12:35:40 by jy_23            ###   ########.fr       */
+/*   Updated: 2023/09/04 17:24:11 by jy_23            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,3 +110,4 @@ static t_word_list	*make_arguemnt(char *name, char *value)
 	word_desc->word = var;
 	word_list->word = word_desc;
 	return (word_list);
+}
